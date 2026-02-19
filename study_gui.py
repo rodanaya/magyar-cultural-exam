@@ -1099,9 +1099,9 @@ class StatsScreen(Screen):
         yield Footer()
 
     def on_mount(self) -> None:
-        self._render()
+        self._refresh_stats()
 
-    def _render(self) -> None:
+    def _refresh_stats(self) -> None:
         progress = self.app.progress
         sessions = progress.get("sessions", [])
         q_data = progress.get("questions", {})
