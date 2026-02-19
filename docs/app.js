@@ -44,9 +44,11 @@ function levenshtein(a, b) {
   return dp[m][n];
 }
 
-function fuzzyMatch(input, keyword, threshold = 0.75) {
+function fuzzyMatch(input, keyword, threshold = 0.72) {
   const normIn  = normalizeText(input);
   const normKw  = normalizeText(keyword);
+  // lower threshold for long Hungarian words (> 5 chars)
+  const effectiveThreshold = normKw.length > 5 ? Math.min(threshold, 0.72) : threshold;
   if (normIn.includes(normKw)) return true;
   const words = normIn.split(/\s+/);
   const kwLen = normKw.split(/\s+/).length;
@@ -55,7 +57,7 @@ function fuzzyMatch(input, keyword, threshold = 0.75) {
     const maxLen = Math.max(window.length, normKw.length);
     if (maxLen === 0) continue;
     const dist = levenshtein(window, normKw);
-    if (1 - dist / maxLen >= threshold) return true;
+    if (1 - dist / maxLen >= effectiveThreshold) return true;
   }
   return false;
 }
@@ -161,12 +163,15 @@ function saveProgress() {
 
 function recordAttempt(q, correct) {
   const qid = questionId(q);
-  const rec = progress.questions[qid] ?? {
-    attempts: 0, correct: 0, accuracy: 0,
-    topic: q.topic, question_hu: q.question_hu
-  };
+  const rec = progress.questions[qid] ?? { attempts:0, correct:0, accuracy:0, topic:q.topic, question_hu:q.question_hu };
   rec.attempts++;
-  if (correct) rec.correct++;
+  if (correct) {
+    rec.correct++;
+    rec.consecutive_wrong = 0;
+  } else {
+    rec.consecutive_wrong = (rec.consecutive_wrong || 0) + 1;
+  }
+  rec.is_leech = (rec.consecutive_wrong || 0) >= 5;
   rec.accuracy = rec.correct / rec.attempts;
   rec.last_seen = new Date().toISOString().slice(0, 10);
   progress.questions[qid] = rec;
@@ -212,6 +217,23 @@ function renderHome() {
   document.getElementById('home-meta').innerHTML =
     `<span>Studied: <b>${total}</b> cards</span>
      <span>Sessions: <b>${sessions}</b></span>`;
+
+  // ── Leech badge ──
+  const leechCount = Object.values(progress.questions).filter(r => r.is_leech).length;
+  let leechEl = document.getElementById('home-leech-badge');
+  if (!leechEl) {
+    leechEl = document.createElement('div');
+    leechEl.id = 'home-leech-badge';
+    const metaRow = document.getElementById('home-meta');
+    metaRow.insertAdjacentElement('afterend', leechEl);
+  }
+  if (leechCount > 0) {
+    leechEl.style.display = 'block';
+    leechEl.innerHTML = `<div style="color:var(--red);font-size:13px;padding:4px 0">🐛 <b>${leechCount}</b> leech card(s) — answered wrong 5× in a row</div>`;
+  } else {
+    leechEl.style.display = 'none';
+    leechEl.innerHTML = '';
+  }
 
   // ── Topic grid ──
   const topics = [...new Set(QUESTIONS.map(q => q.topic))].sort();
@@ -288,12 +310,44 @@ function shuffle(arr) {
   return arr;
 }
 
+function weightedSample(pool, n) {
+  if (pool.length <= n) return [...pool];
+  const weights = pool.map(q => {
+    const rec = progress.questions[questionId(q)];
+    if (!rec) return 3.0;              // unseen
+    if (rec.accuracy < 0.4) return 2.0; // weak
+    return 1.0;
+  });
+  const total = weights.reduce((a, b) => a + b, 0);
+  const chosen = new Set();
+  const result = [];
+  let safety = 0;
+  while (result.length < n && safety++ < n * 10) {
+    let r = Math.random() * total;
+    for (let i = 0; i < pool.length; i++) {
+      r -= weights[i];
+      if (r <= 0 && !chosen.has(i)) {
+        chosen.add(i);
+        result.push(pool[i]);
+        break;
+      }
+    }
+  }
+  // fill any remaining with unselected items
+  if (result.length < n) {
+    for (let i = 0; i < pool.length && result.length < n; i++) {
+      if (!chosen.has(i)) result.push(pool[i]);
+    }
+  }
+  return result;
+}
+
 /* ══════════════════════════════════════════
    LEARN MODE
 ══════════════════════════════════════════ */
 
 function startLearn() {
-  const pool = shuffle(getPool());
+  const pool = shuffle(weightedSample(getPool(), 20));
   if (pool.length === 0) { alert('No questions for selected topic.'); return; }
   session = { mode: 'learn', topic: selectedTopic, cards: pool, idx: 0, score: 0, total: pool.length,
               hintUsed: false, revealed: false, examEnd: null, timerHandle: null };
@@ -375,7 +429,7 @@ function rateLearnCard(quality) {
 ══════════════════════════════════════════ */
 
 function startQuiz() {
-  const pool = shuffle(getPool());
+  const pool = shuffle(weightedSample(getPool(), 20));
   if (pool.length === 0) { alert('No questions for selected topic.'); return; }
   session = { mode: 'quiz', topic: selectedTopic, cards: pool, idx: 0, score: 0, total: pool.length,
               hintUsed: false, revealed: false, examEnd: null, timerHandle: null };
@@ -498,7 +552,7 @@ function nextQuizQuestion() {
 ══════════════════════════════════════════ */
 
 function startMC() {
-  const pool = shuffle(getPool());
+  const pool = shuffle(weightedSample(getPool(), 20));
   if (pool.length < 4) { alert('Need at least 4 questions for Multiple Choice.'); return; }
   session = { mode: 'mc', topic: selectedTopic, cards: pool, idx: 0, score: 0, total: pool.length,
               hintUsed: false, revealed: false, examEnd: null, timerHandle: null };
@@ -696,6 +750,24 @@ function showStats() {
   topicHtml += '</div>';
   content.innerHTML += topicHtml;
 
+  // ── Leech Cards ──
+  const leechesList = Object.values(progress.questions).filter(r => r.is_leech);
+  if (leechesList.length > 0) {
+    const maxShow = 8;
+    const shown   = leechesList.slice(0, maxShow);
+    const extra   = leechesList.length - shown.length;
+    let leechHtml = '<div class="stat-block"><h3>Leech Cards</h3>';
+    leechHtml += '<div style="font-size:12px;color:var(--muted);margin-bottom:8px">Answered wrong 5× in a row</div>';
+    for (const r of shown) {
+      leechHtml += `<div class="stat-row"><span style="color:var(--red);font-size:13px">🐛 ${r.question_hu}</span></div>`;
+    }
+    if (extra > 0) {
+      leechHtml += `<div style="font-size:12px;color:var(--muted);margin-top:6px">+ ${extra} more</div>`;
+    }
+    leechHtml += '</div>';
+    content.innerHTML += leechHtml;
+  }
+
   // ── Recent sessions ──
   const recent = [...progress.sessions].reverse().slice(0, 10);
   if (recent.length) {
@@ -715,6 +787,44 @@ function showStats() {
 }
 
 /* ══════════════════════════════════════════
+   EXPORT / IMPORT PROGRESS
+══════════════════════════════════════════ */
+
+function exportProgress() {
+  const blob = new Blob([JSON.stringify(progress, null, 2)], {type: 'application/json'});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = 'magyar-progress.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function importProgress() {
+  document.getElementById('import-file-input').click();
+}
+
+function onImportFile(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      // merge: prefer imported data but keep local srs if imported has none
+      progress.questions = data.questions || progress.questions;
+      progress.sessions  = data.sessions  || progress.sessions;
+      progress.srs       = data.srs       || progress.srs;
+      saveProgress();
+      renderHome();
+      alert('Progress imported successfully!');
+    } catch(_) { alert('Invalid file — could not import.'); }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+/* ══════════════════════════════════════════
    GO HOME
 ══════════════════════════════════════════ */
 
@@ -724,10 +834,30 @@ function goHome() {
 }
 
 /* ══════════════════════════════════════════
+   THEME
+══════════════════════════════════════════ */
+
+function toggleTheme() {
+  const html  = document.documentElement;
+  const theme = html.dataset.theme === 'light' ? 'dark' : 'light';
+  html.dataset.theme = theme;
+  localStorage.setItem('magyar_theme', theme);
+  document.getElementById('theme-btn').textContent = theme === 'light' ? '🌙' : '☀️';
+}
+
+function applyTheme() {
+  const theme = localStorage.getItem('magyar_theme') || 'dark';
+  document.documentElement.dataset.theme = theme;
+  const btn = document.getElementById('theme-btn');
+  if (btn) btn.textContent = theme === 'light' ? '🌙' : '☀️';
+}
+
+/* ══════════════════════════════════════════
    INIT
 ══════════════════════════════════════════ */
 
 async function init() {
+  applyTheme();
   loadProgress();
 
   try {

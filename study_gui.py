@@ -17,6 +17,7 @@ import random
 import sys
 import os
 import time
+import unicodedata
 
 try:
     from textual.app import App, ComposeResult
@@ -36,6 +37,96 @@ from study import (
     record_attempt, record_session, record_vocab_attempt,
     QUESTIONS_FILE, PROGRESS_FILE,
 )
+
+# ── Enhancement 1: Accent-aware typo tolerance ────────────────────────────────
+
+
+def normalize_hu(text: str) -> str:
+    """Lowercase and strip Hungarian combining accent marks via NFD decomposition."""
+    lowered = text.lower()
+    nfd = unicodedata.normalize("NFD", lowered)
+    return "".join(ch for ch in nfd if unicodedata.category(ch) != "Mn")
+
+
+def score_answer_tolerant(user_input: str, keywords: list) -> tuple:
+    """
+    Wrapper around score_answer that also tries accent-stripped input.
+    Returns the better (score, matched, missed) tuple.
+    """
+    result = score_answer(user_input, keywords)
+    score, matched, missed = result
+    if score < 1.0:
+        result2 = score_answer(normalize_hu(user_input), keywords)
+        if result2[0] > score:
+            return result2
+    return result
+
+
+# ── Enhancement 2: Leech detection ───────────────────────────────────────────
+
+
+def update_leech(progress: dict, qid: str, correct: bool) -> None:
+    """
+    Track consecutive wrong answers per question.
+    Sets is_leech=True when consecutive_wrong >= 5.
+    Caller is responsible for saving progress.
+    """
+    entry = progress.setdefault("questions", {}).setdefault(qid, {
+        "attempts": 0, "correct": 0, "last_seen": None,
+        "accuracy": 0.0, "question_hu": "", "topic": None,
+    })
+    if correct:
+        entry["consecutive_wrong"] = 0
+        entry["is_leech"] = False
+    else:
+        entry["consecutive_wrong"] = entry.get("consecutive_wrong", 0) + 1
+        entry["is_leech"] = entry["consecutive_wrong"] >= 5
+
+
+# ── Enhancement 3: Smart session sizing ──────────────────────────────────────
+
+
+def weighted_sample(pool: list, n: int, progress: dict) -> list:
+    """
+    Draw up to n unique questions from pool, weighted by performance.
+    Unseen questions get weight 3.0, accuracy < 0.4 gets 2.0, others 1.0.
+    """
+    if not pool:
+        return []
+    q_data = progress.get("questions", {})
+    weights = []
+    for q in pool:
+        qid = question_id(q["question_hu"])
+        entry = q_data.get(qid)
+        if entry is None:
+            weights.append(3.0)
+        elif entry.get("accuracy", 1.0) < 0.4:
+            weights.append(2.0)
+        else:
+            weights.append(1.0)
+
+    target = min(n, len(pool))
+    chosen: list = []
+    seen_ids: set = set()
+    max_attempts = target * 20
+    attempts = 0
+    while len(chosen) < target and attempts < max_attempts:
+        picks = random.choices(pool, weights=weights, k=1)
+        p = picks[0]
+        pid = question_id(p["question_hu"])
+        if pid not in seen_ids:
+            seen_ids.add(pid)
+            chosen.append(p)
+        attempts += 1
+
+    if len(chosen) < target:
+        # Fallback: shuffle and slice
+        remaining = [q for q in pool if question_id(q["question_hu"]) not in seen_ids]
+        random.shuffle(remaining)
+        chosen.extend(remaining[: target - len(chosen)])
+
+    return chosen
+
 
 # ── Constants ─────────────────────────────────────────────────────────────────
 
@@ -266,9 +357,19 @@ class HomeScreen(Screen):
         if overall_a:
             opct = overall_c / overall_a * 100
             oc = "green" if opct >= 60 else ("yellow" if opct >= 30 else "red")
-            lines.append(f"[bold]Overall Readiness:[/bold] [{oc}]{opct:.0f}%[/{oc}]\n")
+            lines.append(f"[bold]Overall Readiness:[/bold] [{oc}]{opct:.0f}%[/{oc}]")
         else:
-            lines.append("[bold]Overall Readiness:[/bold] [dim]No data yet[/dim]\n")
+            lines.append("[bold]Overall Readiness:[/bold] [dim]No data yet[/dim]")
+
+        # Leech count
+        leech_count = sum(
+            1 for entry in progress.get("questions", {}).values()
+            if entry.get("is_leech")
+        )
+        lines.append(
+            f"[bold red]Leeches:[/bold red]  {leech_count}  "
+            f"[dim](answered wrong 5x in a row)[/dim]\n"
+        )
 
         # SRS 7-day forecast
         forecast = srs_forecast(progress, questions, 7)
@@ -312,15 +413,16 @@ class HomeScreen(Screen):
             self.notify("Select a topic first (press 1–6)", severity="warning")
             return
         if mode == "learn":
-            qs = list(get_questions_for_topic(app.questions, app.selected_topic))
+            pool = list(get_questions_for_topic(app.questions, app.selected_topic))
+            qs = weighted_sample(pool, 20, app.progress)
             app.push_screen(LearnScreen(qs, app.selected_topic))
         elif mode == "quiz":
-            qs = list(get_questions_for_topic(app.questions, app.selected_topic))
-            random.shuffle(qs)
+            pool = list(get_questions_for_topic(app.questions, app.selected_topic))
+            qs = weighted_sample(pool, 20, app.progress)
             app.push_screen(QuizScreen(qs, "quiz", topic=app.selected_topic))
         elif mode == "mc":
-            qs = list(get_questions_for_topic(app.questions, app.selected_topic))
-            random.shuffle(qs)
+            pool = list(get_questions_for_topic(app.questions, app.selected_topic))
+            qs = weighted_sample(pool, 20, app.progress)
             app.push_screen(MultiChoiceScreen(qs, app.selected_topic))
         elif mode == "weak":
             qs = self._weak_questions()
@@ -400,14 +502,14 @@ class LearnScreen(Screen):
     """Card-by-card: question → reveal → self-rate (feeds SRS)."""
 
     BINDINGS = [
-        Binding("space",  "reveal",    "Reveal"),
-        Binding("r",      "reveal",    "Reveal", show=False),
-        Binding("1",      "rate1",     "Didn't know", show=False),
-        Binding("2",      "rate2",     "Almost",      show=False),
-        Binding("3",      "rate3",     "Got it",      show=False),
-        Binding("right",  "next_card", "Next",  show=False),
-        Binding("left",   "prev_card", "Prev",  show=False),
-        Binding("escape", "go_home",   "Home"),
+        Binding("space",  "reveal",     "Reveal",      show=True),
+        Binding("r",      "reveal",     "Reveal",      show=False),
+        Binding("1",      "rate_bad",   "1 Didn't know", show=True),
+        Binding("3",      "rate_ok",    "3 Got it",    show=True),
+        Binding("5",      "rate_good",  "5 Easy",      show=True),
+        Binding("right",  "next_card",  "Next",        show=False),
+        Binding("left",   "prev_card",  "Prev",        show=False),
+        Binding("escape", "go_home",    "Home"),
     ]
 
     def __init__(self, questions: list, topic: int) -> None:
@@ -515,14 +617,20 @@ class LearnScreen(Screen):
         if not self.revealed:
             self._reveal()
 
-    def action_rate1(self) -> None:
-        self._rate(1)
+    def action_rate_bad(self) -> None:
+        """Rate as 'Didn't know' (quality 1) — only fires after reveal."""
+        if self.revealed:
+            self._rate(1)
 
-    def action_rate2(self) -> None:
-        self._rate(3)
+    def action_rate_ok(self) -> None:
+        """Rate as 'Got it' (quality 3) — only fires after reveal."""
+        if self.revealed:
+            self._rate(3)
 
-    def action_rate3(self) -> None:
-        self._rate(5)
+    def action_rate_good(self) -> None:
+        """Rate as 'Easy' (quality 5) — only fires after reveal."""
+        if self.revealed:
+            self._rate(5)
 
     def action_next_card(self) -> None:
         if not self.revealed:
@@ -572,8 +680,9 @@ class QuizScreen(Screen):
     """Free-text quiz for quiz / weak / srs / exam modes. Has hint button."""
 
     BINDINGS = [
-        Binding("escape", "go_back", "Back"),
-        Binding("h",      "hint",    "Hint"),
+        Binding("escape", "go_back",         "Back"),
+        Binding("h",      "hint",            "Hint",        show=True),
+        Binding("enter",  "submit_or_next",  "Submit/Next", show=True),
     ]
 
     def __init__(
@@ -710,7 +819,7 @@ class QuizScreen(Screen):
         if isinstance(kws, str):
             kws = [k.strip() for k in kws.split(",") if k.strip()]
 
-        sc, matched, missed = score_answer(user_answer, kws)
+        sc, matched, missed = score_answer_tolerant(user_answer, kws)
         if self.hint_used:
             sc *= 0.8
 
@@ -719,6 +828,8 @@ class QuizScreen(Screen):
 
         record_attempt(self.app.progress, q, sc)
         qid = question_id(q["question_hu"])
+        is_correct = sc >= 0.6
+        update_leech(self.app.progress, qid, is_correct)
         update_srs(self.app.progress, qid, srs_quality(sc))
         save_progress(self.app.progress, PROGRESS_FILE)
 
@@ -778,6 +889,14 @@ class QuizScreen(Screen):
 
     def action_hint(self) -> None:
         self._show_hint()
+
+    def action_submit_or_next(self) -> None:
+        """Submit answer if not yet answered; advance to next question if already answered."""
+        if not self.answered:
+            self._submit()
+        else:
+            self.idx += 1
+            self._show_question()
 
     # ── Button / Input handlers ───────────────────────────────────────────────
 
@@ -908,6 +1027,7 @@ class MultiChoiceScreen(Screen):
 
         record_attempt(self.app.progress, q, sc)
         qid = question_id(q["question_hu"])
+        update_leech(self.app.progress, qid, is_correct)
         update_srs(self.app.progress, qid, 5 if is_correct else 0)
         save_progress(self.app.progress, PROGRESS_FILE)
 
@@ -1185,6 +1305,60 @@ class StatsScreen(Screen):
                 lines.append(f"  [red]{acc:.0f}%[/red]  [T{t}]  {qtext}")
         else:
             lines.append("  [green]No frequently missed questions — great work![/green]")
+
+        # Enhancement 2: Leech Cards section
+        leech_entries = [
+            entry for entry in q_data.values() if entry.get("is_leech")
+        ]
+        lines.append("\n[bold red]Leech Cards[/bold red]  [dim](wrong 5x in a row)[/dim]")
+        lines.append("─" * 50)
+        if leech_entries:
+            display = leech_entries[:10]
+            for le in display:
+                qtext = le.get("question_hu", "?")[:60]
+                lines.append(f"  [red]•[/red] {qtext}")
+            if len(leech_entries) > 10:
+                lines.append(f"  [dim]…and {len(leech_entries) - 10} more[/dim]")
+        else:
+            lines.append("  [green]No leeches — great consistency![/green]")
+
+        # Enhancement 6: Recent Sessions chart
+        recent_sessions = sessions[-10:][::-1]  # last 10, newest first
+        if recent_sessions:
+            lines.append("\n[bold]Recent Sessions[/bold]")
+            lines.append("─" * 50)
+            for sess in recent_sessions:
+                try:
+                    date_str = datetime.datetime.fromisoformat(sess["date"]).strftime("%Y-%m-%d")
+                except (ValueError, KeyError):
+                    date_str = "?"
+                mode_label = sess.get("mode", "?").title()
+                topic_val = sess.get("topic", "")
+                if topic_val:
+                    mode_display = f"{mode_label} — T{topic_val}"
+                else:
+                    mode_display = mode_label
+                raw_score = sess.get("score", 0)
+                total_val = sess.get("total", 1) or 1
+                # Normalise score to 0-100 percent
+                if sess.get("mode") == "exam":
+                    # exam score is already points out of 30
+                    pct_int = int(raw_score / 30 * 100)
+                else:
+                    pct_int = int(raw_score / total_val * 100)
+                pct_int = max(0, min(100, pct_int))
+                filled = round(pct_int / 10)
+                bar = "█" * filled + "░" * (10 - filled)
+                if pct_int >= 80:
+                    color = "green"
+                elif pct_int >= 60:
+                    color = "yellow"
+                else:
+                    color = "red"
+                lines.append(
+                    f"  {date_str}  {mode_display:<16}  "
+                    f"[{color}]{bar}[/{color}]  [{color}]{pct_int}%[/{color}]"
+                )
 
         if recommend_topic:
             tname = TOPIC_SHORT.get(recommend_topic, f"Topic {recommend_topic}")

@@ -6,7 +6,12 @@
     "answer_en": "The Hungarian flag consists of three horizontal stripes: red on top, white in the middle, and green on the bottom.",
     "topic": 1,
     "difficulty": 1,
-    "keywords_hu": ["piros", "fehér", "zöld", "vízszintes"]
+    "keywords_hu": [
+      "piros",
+      "fehér",
+      "zöld",
+      "vízszintes"
+    ]
   },
   {
     "question_hu": "Mi látható a magyar címer bal oldalán?",
@@ -15,7 +20,12 @@
     "answer_en": "The left side of the Hungarian coat of arms shows four silver and four red stripes, symbolizing the Árpád dynasty kings.",
     "topic": 1,
     "difficulty": 2,
-    "keywords_hu": ["ezüst", "piros", "sáv", "Árpád"]
+    "keywords_hu": [
+      "ezüst",
+      "piros",
+      "sáv",
+      "Árpád"
+    ]
   },
   {
     "question_hu": "Mi látható a magyar címer jobb oldalán?",
@@ -24,7 +34,10 @@
     "answer_en": "The right side of the Hungarian coat of arms shows a double cross standing on a triple hill.",
     "topic": 1,
     "difficulty": 2,
-    "keywords_hu": ["kettős kereszt", "hármas halom"]
+    "keywords_hu": [
+      "kettős kereszt",
+      "hármas halom"
+    ]
   },
   {
     "question_hu": "Mi van a magyar címer tetején?",
@@ -33,7 +46,10 @@
     "answer_en": "The Holy Crown (Hungarian Holy Crown) is at the top of the Hungarian coat of arms.",
     "topic": 1,
     "difficulty": 1,
-    "keywords_hu": ["Szent Korona", "korona"]
+    "keywords_hu": [
+      "Szent Korona",
+      "korona"
+    ]
   },
   {
     "question_hu": "Ki írta a magyar Himnusz szövegét, és mikor?",
@@ -42,7 +58,10 @@
     "answer_en": "The text of the Himnusz was written by Ferenc Kölcsey in 1823.",
     "topic": 1,
     "difficulty": 1,
-    "keywords_hu": ["Kölcsey Ferenc", "1823"]
+    "keywords_hu": [
+      "Kölcsey Ferenc",
+      "1823"
+    ]
   },
   {
     "question_hu": "Ki szerezte a Himnusz zenéjét?",
@@ -51,7 +70,9 @@
     "answer_en": "The music of the Himnusz was composed by Ferenc Erkel.",
     "topic": 1,
     "difficulty": 1,
-    "keywords_hu": ["Erkel Ferenc"]
+    "keywords_hu": [
+      "Erkel Ferenc"
+    ]
   },
   {
     "question_hu": "Ki írta a Szózatot?",
@@ -60,7 +81,9 @@
     "answer_en": "The Szózat was written by Mihály Vörösmarty.",
     "topic": 1,
     "difficulty": 1,
-    "keywords_hu": ["Vörösmarty Mihály"]
+    "keywords_hu": [
+      "Vörösmarty Mihály"
+    ]
   },
   {
     "question_hu": "Melyek a magyar nemzeti ünnepek?",
@@ -69,7 +92,11 @@
     "answer_en": "The three national holidays are: March 15 (1848 revolution), August 20 (state founding, Saint Stephen's Day), and October 23 (1956 revolution and 1989 republic proclamation).",
     "topic": 1,
     "difficulty": 1,
-    "keywords_hu": ["március 15", "augusztus 20", "október 23"]
+    "keywords_hu": [
+      "március 15",
+      "augusztus 20",
+      "október 23"
+    ]
   },
   {
     "question_hu": "Mit ünneplünk augusztus 20-án?",
@@ -78,7 +105,10 @@
     "answer_en": "On August 20, we celebrate the founding of the state and the feast of King Saint Stephen.",
     "topic": 1,
     "difficulty": 1,
-    "keywords_hu": ["államalapítás", "Szent István"]
+    "keywords_hu": [
+      "államalapítás",
+      "Szent István"
+    ]
   },
   {
     "question_hu": "Mit ünneplünk március 15-én?",
@@ -87,7 +117,11 @@
     "answer_en": "On March 15, we commemorate the 1848 civic revolution and war of independence.",
     "topic": 1,
     "difficulty": 1,
-    "keywords_hu": ["1848", "forradalom", "szabadságharc"]
+    "keywords_hu": [
+      "1848",
+      "forradalom",
+      "szabadságharc"
+    ]
   },
   {
     "question_hu": "Mit ünneplünk október 23-án?",
@@ -96,7 +130,12 @@
     "answer_en": "On October 23, we commemorate the 1956 revolution, and on this day the Hungarian Republic was proclaimed in 1989.",
     "topic": 1,
     "difficulty": 1,
-    "keywords_hu": ["1956", "forradalom", "1989", "köztársaság"]
+    "keywords_hu": [
+      "1956",
+      "forradalom",
+      "1989",
+      "köztársaság"
+    ]
   },
   {
     "question_hu": "Ki írta a Nemzeti dalt?",
@@ -105,7 +144,9 @@
     "answer_en": "The Nemzeti dal was written by Sándor Petőfi.",
     "topic": 1,
     "difficulty": 1,
-    "keywords_hu": ["Petőfi Sándor"]
+    "keywords_hu": [
+      "Petőfi Sándor"
+    ]
   },
   {
     "question_hu": "Mi a Nemzeti dal első sora?",
@@ -114,7 +155,9 @@
     "answer_en": "The first line of the Nemzeti dal is: 'Rise up, Hungarians, the homeland calls!'",
     "topic": 1,
     "difficulty": 2,
-    "keywords_hu": ["Talpra magyar"]
+    "keywords_hu": [
+      "Talpra magyar"
+    ]
   },
   {
     "question_hu": "Mi az a kokárda, és mikor viselik?",
@@ -123,7 +166,13 @@
     "answer_en": "The kokárda is a badge made of the national colors (red-white-green), worn on March 15 to commemorate the 1848 revolution.",
     "topic": 1,
     "difficulty": 1,
-    "keywords_hu": ["kokárda", "piros", "fehér", "zöld", "március 15"]
+    "keywords_hu": [
+      "kokárda",
+      "piros",
+      "fehér",
+      "zöld",
+      "március 15"
+    ]
   },
   {
     "question_hu": "Mi a Himnusz teljes címe?",
@@ -132,7 +181,10 @@
     "answer_en": "The full title of the Himnusz is: 'Hymn from the stormy centuries of the Hungarian people'.",
     "topic": 1,
     "difficulty": 3,
-    "keywords_hu": ["Himnusz", "zivataros századaiból"]
+    "keywords_hu": [
+      "Himnusz",
+      "zivataros századaiból"
+    ]
   },
   {
     "question_hu": "Milyen alkalomból szólal meg a Himnusz és a Szózat?",
@@ -141,7 +193,11 @@
     "answer_en": "The Himnusz is the opening piece and the Szózat is the closing piece of state celebrations.",
     "topic": 1,
     "difficulty": 2,
-    "keywords_hu": ["Himnusz", "Szózat", "ünnepség"]
+    "keywords_hu": [
+      "Himnusz",
+      "Szózat",
+      "ünnepség"
+    ]
   },
   {
     "question_hu": "Melyik évben használták először a piros-fehér-zöld színösszeállítást nemzeti jelképként?",
@@ -150,7 +206,10 @@
     "answer_en": "The red-white-green tricolor became an official national symbol during the 1848 revolution, though it had been used earlier.",
     "topic": 1,
     "difficulty": 3,
-    "keywords_hu": ["piros-fehér-zöld", "1848"]
+    "keywords_hu": [
+      "piros-fehér-zöld",
+      "1848"
+    ]
   },
   {
     "question_hu": "Mi a kettős kereszt eredete a magyar címerben?",
@@ -159,7 +218,11 @@
     "answer_en": "The double cross originates from the Byzantine (Byzantine apostolic double cross) tradition and symbolizes the adoption of Christianity. It was first used by the Árpád dynasty kings.",
     "topic": 1,
     "difficulty": 3,
-    "keywords_hu": ["kettős kereszt", "kereszténység", "Árpád"]
+    "keywords_hu": [
+      "kettős kereszt",
+      "kereszténység",
+      "Árpád"
+    ]
   },
   {
     "question_hu": "Milyen jelentősége van a hármas halomnak a magyar címerben?",
@@ -168,7 +231,12 @@
     "answer_en": "According to tradition, the triple hill symbolizes the Tátra, Fátra, and Mátra mountain ranges.",
     "topic": 1,
     "difficulty": 3,
-    "keywords_hu": ["hármas halom", "Tátra", "Fátra", "Mátra"]
+    "keywords_hu": [
+      "hármas halom",
+      "Tátra",
+      "Fátra",
+      "Mátra"
+    ]
   },
   {
     "question_hu": "Mikor volt a honfoglalás, és ki vezette?",
@@ -177,7 +245,13 @@
     "answer_en": "The Hungarian conquest took place in 895-896. Prince Árpád led the seven Hungarian tribes into the Carpathian Basin.",
     "topic": 2,
     "difficulty": 1,
-    "keywords_hu": ["895", "896", "Árpád", "hét magyar törzs", "Kárpát-medence"]
+    "keywords_hu": [
+      "895",
+      "896",
+      "Árpád",
+      "hét magyar törzs",
+      "Kárpát-medence"
+    ]
   },
   {
     "question_hu": "Hány magyar törzs érkezett a Kárpát-medencébe a honfoglalás idején?",
@@ -186,7 +260,10 @@
     "answer_en": "Seven Hungarian tribes arrived in the Carpathian Basin during the conquest.",
     "topic": 2,
     "difficulty": 1,
-    "keywords_hu": ["hét", "törzs"]
+    "keywords_hu": [
+      "hét",
+      "törzs"
+    ]
   },
   {
     "question_hu": "Ki volt Magyarország első királya, és mikor koronázták meg?",
@@ -195,7 +272,11 @@
     "answer_en": "Hungary's first king was Saint Stephen (Stephen I), who was crowned in 1000 (or January 1, 1001).",
     "topic": 2,
     "difficulty": 1,
-    "keywords_hu": ["Szent István", "1000", "1001"]
+    "keywords_hu": [
+      "Szent István",
+      "1000",
+      "1001"
+    ]
   },
   {
     "question_hu": "Mi volt Szent István legfontosabb történelmi szerepe?",
@@ -204,7 +285,11 @@
     "answer_en": "Saint Stephen founded the Hungarian Christian state, introduced Christianity, and established the ecclesiastical and secular administration (county system).",
     "topic": 2,
     "difficulty": 1,
-    "keywords_hu": ["kereszténység", "állam", "államalapítás"]
+    "keywords_hu": [
+      "kereszténység",
+      "állam",
+      "államalapítás"
+    ]
   },
   {
     "question_hu": "Mi az Aranybulla, és mikor adták ki?",
@@ -213,7 +298,11 @@
     "answer_en": "The Golden Bull was issued by King Andrew II in 1222. It is the Hungarian 'Magna Carta', which limited royal power and guaranteed certain rights to the nobility.",
     "topic": 2,
     "difficulty": 2,
-    "keywords_hu": ["Aranybulla", "1222", "II. András"]
+    "keywords_hu": [
+      "Aranybulla",
+      "1222",
+      "II. András"
+    ]
   },
   {
     "question_hu": "Milyen jogot biztosított az Aranybulla a nemeseknek?",
@@ -222,7 +311,10 @@
     "answer_en": "The Golden Bull granted the right of resistance (ius resistendi), which allowed the nobility to resist the king if he acted unlawfully.",
     "topic": 2,
     "difficulty": 3,
-    "keywords_hu": ["ellenállási jog", "ius resistendi"]
+    "keywords_hu": [
+      "ellenállási jog",
+      "ius resistendi"
+    ]
   },
   {
     "question_hu": "Mikor volt a mohácsi csata, és mi történt?",
@@ -231,7 +323,13 @@
     "answer_en": "The Battle of Mohács was in 1526. King Louis II died in the battle, and the Ottoman (Turkish) occupation began, lasting about 150 years.",
     "topic": 2,
     "difficulty": 1,
-    "keywords_hu": ["1526", "Mohács", "II. Lajos", "török", "150"]
+    "keywords_hu": [
+      "1526",
+      "Mohács",
+      "II. Lajos",
+      "török",
+      "150"
+    ]
   },
   {
     "question_hu": "Meddig tartott a török hódoltság Magyarországon?",
@@ -240,7 +338,10 @@
     "answer_en": "The Turkish occupation lasted about 150 years in Hungary (1541-1699).",
     "topic": 2,
     "difficulty": 2,
-    "keywords_hu": ["150", "török hódoltság"]
+    "keywords_hu": [
+      "150",
+      "török hódoltság"
+    ]
   },
   {
     "question_hu": "Mikor volt az 1848-49-es forradalom és szabadságharc?",
@@ -249,7 +350,11 @@
     "answer_en": "The 1848-49 revolution started on March 15, 1848, in Pest, and the war of independence lasted until August 1849.",
     "topic": 2,
     "difficulty": 1,
-    "keywords_hu": ["1848", "március 15", "szabadságharc"]
+    "keywords_hu": [
+      "1848",
+      "március 15",
+      "szabadságharc"
+    ]
   },
   {
     "question_hu": "Kik voltak az 1848-as forradalom legfontosabb alakjai?",
@@ -258,7 +363,11 @@
     "answer_en": "The most important figures were Sándor Petőfi (poet, Nemzeti dal), Lajos Kossuth (politician, governor), and Lajos Batthyány (first Hungarian prime minister).",
     "topic": 2,
     "difficulty": 1,
-    "keywords_hu": ["Petőfi Sándor", "Kossuth Lajos", "Batthyány Lajos"]
+    "keywords_hu": [
+      "Petőfi Sándor",
+      "Kossuth Lajos",
+      "Batthyány Lajos"
+    ]
   },
   {
     "question_hu": "Mi volt a 12 pont?",
@@ -267,7 +376,11 @@
     "answer_en": "The 12 points was the list of demands of the March 15, 1848 revolution, which demanded, among other things, freedom of the press, a responsible Hungarian ministry, and equality before the law.",
     "topic": 2,
     "difficulty": 2,
-    "keywords_hu": ["12 pont", "1848", "sajtószabadság"]
+    "keywords_hu": [
+      "12 pont",
+      "1848",
+      "sajtószabadság"
+    ]
   },
   {
     "question_hu": "Ki volt az első magyar miniszterelnök?",
@@ -276,7 +389,9 @@
     "answer_en": "The first Hungarian prime minister was Lajos Batthyány (1848).",
     "topic": 2,
     "difficulty": 2,
-    "keywords_hu": ["Batthyány Lajos"]
+    "keywords_hu": [
+      "Batthyány Lajos"
+    ]
   },
   {
     "question_hu": "Mi volt a kiegyezés, és mikor jött létre?",
@@ -285,7 +400,11 @@
     "answer_en": "The Compromise was established in 1867 between Austria and Hungary, creating the Austro-Hungarian Monarchy.",
     "topic": 2,
     "difficulty": 2,
-    "keywords_hu": ["kiegyezés", "1867", "Osztrák-Magyar Monarchia"]
+    "keywords_hu": [
+      "kiegyezés",
+      "1867",
+      "Osztrák-Magyar Monarchia"
+    ]
   },
   {
     "question_hu": "Mikor és hol írták alá a trianoni békeszerződést?",
@@ -294,7 +413,11 @@
     "answer_en": "The Treaty of Trianon was signed on June 4, 1920, at the Grand Trianon Palace in Versailles.",
     "topic": 2,
     "difficulty": 1,
-    "keywords_hu": ["Trianon", "1920", "június 4"]
+    "keywords_hu": [
+      "Trianon",
+      "1920",
+      "június 4"
+    ]
   },
   {
     "question_hu": "Mi volt a trianoni békeszerződés következménye Magyarországra nézve?",
@@ -303,7 +426,10 @@
     "answer_en": "As a consequence of the Treaty of Trianon, Hungary lost about two-thirds of its territory and a significant portion of its population.",
     "topic": 2,
     "difficulty": 1,
-    "keywords_hu": ["kétharmad", "terület"]
+    "keywords_hu": [
+      "kétharmad",
+      "terület"
+    ]
   },
   {
     "question_hu": "Mikor volt az első világháború?",
@@ -312,7 +438,10 @@
     "answer_en": "World War I lasted from 1914 to 1918.",
     "topic": 2,
     "difficulty": 1,
-    "keywords_hu": ["1914", "1918"]
+    "keywords_hu": [
+      "1914",
+      "1918"
+    ]
   },
   {
     "question_hu": "Mikor volt a második világháború?",
@@ -321,7 +450,10 @@
     "answer_en": "World War II lasted from 1939 to 1945.",
     "topic": 2,
     "difficulty": 1,
-    "keywords_hu": ["1939", "1945"]
+    "keywords_hu": [
+      "1939",
+      "1945"
+    ]
   },
   {
     "question_hu": "Mikor tört ki az 1956-os forradalom?",
@@ -330,7 +462,10 @@
     "answer_en": "The 1956 revolution broke out on October 23, 1956, in Budapest.",
     "topic": 2,
     "difficulty": 1,
-    "keywords_hu": ["1956", "október 23"]
+    "keywords_hu": [
+      "1956",
+      "október 23"
+    ]
   },
   {
     "question_hu": "Ki volt Nagy Imre?",
@@ -339,7 +474,11 @@
     "answer_en": "Imre Nagy was the prime minister during the 1956 revolution, who was martyred after the Soviet intervention – he was executed in 1958.",
     "topic": 2,
     "difficulty": 2,
-    "keywords_hu": ["Nagy Imre", "1956", "miniszterelnök"]
+    "keywords_hu": [
+      "Nagy Imre",
+      "1956",
+      "miniszterelnök"
+    ]
   },
   {
     "question_hu": "Mi történt 1956-ban a szovjet beavatkozás során?",
@@ -348,7 +487,11 @@
     "answer_en": "The Soviet Union intervened militarily in Hungary to suppress the 1956 revolution. Soviet troops attacked Budapest on November 4.",
     "topic": 2,
     "difficulty": 2,
-    "keywords_hu": ["szovjet", "beavatkozás", "1956"]
+    "keywords_hu": [
+      "szovjet",
+      "beavatkozás",
+      "1956"
+    ]
   },
   {
     "question_hu": "Mikor volt a rendszerváltás Magyarországon?",
@@ -357,7 +500,12 @@
     "answer_en": "The regime change took place in 1989-1990. The Hungarian Republic was proclaimed on October 23, 1989, and the first free elections were held in 1990.",
     "topic": 2,
     "difficulty": 1,
-    "keywords_hu": ["rendszerváltás", "1989", "1990", "szabad választás"]
+    "keywords_hu": [
+      "rendszerváltás",
+      "1989",
+      "1990",
+      "szabad választás"
+    ]
   },
   {
     "question_hu": "Melyik évben tartották Magyarországon az első szabad választásokat?",
@@ -366,7 +514,10 @@
     "answer_en": "The first free elections were held in Hungary in 1990.",
     "topic": 2,
     "difficulty": 2,
-    "keywords_hu": ["1990", "szabad választás"]
+    "keywords_hu": [
+      "1990",
+      "szabad választás"
+    ]
   },
   {
     "question_hu": "Melyik oldalon harcolt Magyarország a második világháborúban?",
@@ -375,7 +526,9 @@
     "answer_en": "Hungary entered World War II on the side of the Axis powers.",
     "topic": 2,
     "difficulty": 2,
-    "keywords_hu": ["tengelyhatalmak"]
+    "keywords_hu": [
+      "tengelyhatalmak"
+    ]
   },
   {
     "question_hu": "Kik voltak a honfoglaló magyarok vezérei?",
@@ -384,7 +537,11 @@
     "answer_en": "The chief leader of the conquering Hungarians was Prince Árpád, who led the alliance of seven tribes.",
     "topic": 2,
     "difficulty": 2,
-    "keywords_hu": ["Árpád", "fejedelem", "hét törzs"]
+    "keywords_hu": [
+      "Árpád",
+      "fejedelem",
+      "hét törzs"
+    ]
   },
   {
     "question_hu": "Ki volt Janus Pannonius?",
@@ -393,7 +550,11 @@
     "answer_en": "Janus Pannonius was the most significant poet of the 15th-century Hungarian Renaissance, who wrote in Latin.",
     "topic": 3,
     "difficulty": 2,
-    "keywords_hu": ["Janus Pannonius", "reneszánsz", "15. század"]
+    "keywords_hu": [
+      "Janus Pannonius",
+      "reneszánsz",
+      "15. század"
+    ]
   },
   {
     "question_hu": "Ki volt Balassi Bálint?",
@@ -402,7 +563,11 @@
     "answer_en": "Bálint Balassi was the first great lyric poet of 16th-century Hungarian literature.",
     "topic": 3,
     "difficulty": 2,
-    "keywords_hu": ["Balassi Bálint", "lírai költő", "16. század"]
+    "keywords_hu": [
+      "Balassi Bálint",
+      "lírai költő",
+      "16. század"
+    ]
   },
   {
     "question_hu": "Mi Zrínyi Miklós legismertebb irodalmi műve?",
@@ -411,7 +576,10 @@
     "answer_en": "Miklós Zrínyi's most famous work is the Szigeti veszedelem (The Siege of Sziget), an outstanding work of the Baroque era.",
     "topic": 3,
     "difficulty": 2,
-    "keywords_hu": ["Zrínyi Miklós", "Szigeti veszedelem"]
+    "keywords_hu": [
+      "Zrínyi Miklós",
+      "Szigeti veszedelem"
+    ]
   },
   {
     "question_hu": "Ki volt Csokonai Vitéz Mihály?",
@@ -420,7 +588,10 @@
     "answer_en": "Mihály Csokonai Vitéz was an outstanding Hungarian poet of the Enlightenment era.",
     "topic": 3,
     "difficulty": 2,
-    "keywords_hu": ["Csokonai Vitéz Mihály", "felvilágosodás"]
+    "keywords_hu": [
+      "Csokonai Vitéz Mihály",
+      "felvilágosodás"
+    ]
   },
   {
     "question_hu": "Ki volt Kazinczy Ferenc, és miért fontos a magyar kultúra szempontjából?",
@@ -429,7 +600,10 @@
     "answer_en": "Ferenc Kazinczy was the leading figure of the Hungarian language reform (nyelvújítás), who fought for the modernization and unification of the Hungarian language.",
     "topic": 3,
     "difficulty": 2,
-    "keywords_hu": ["Kazinczy Ferenc", "nyelvújítás"]
+    "keywords_hu": [
+      "Kazinczy Ferenc",
+      "nyelvújítás"
+    ]
   },
   {
     "question_hu": "Ki írta a Toldi trilógiát?",
@@ -438,7 +612,10 @@
     "answer_en": "The Toldi trilogy was written by János Arany. He is the greatest Hungarian epic poet.",
     "topic": 3,
     "difficulty": 1,
-    "keywords_hu": ["Arany János", "Toldi"]
+    "keywords_hu": [
+      "Arany János",
+      "Toldi"
+    ]
   },
   {
     "question_hu": "Milyen híres regényeket írt Jókai Mór?",
@@ -447,7 +624,11 @@
     "answer_en": "Among Mór Jókai's most famous novels are Az arany ember (The Golden Man) and A kőszívű ember fiai (The Sons of the Stone-Hearted Man).",
     "topic": 3,
     "difficulty": 2,
-    "keywords_hu": ["Jókai Mór", "Az arany ember", "A kőszívű ember fiai"]
+    "keywords_hu": [
+      "Jókai Mór",
+      "Az arany ember",
+      "A kőszívű ember fiai"
+    ]
   },
   {
     "question_hu": "Ki volt Mikszáth Kálmán?",
@@ -456,7 +637,10 @@
     "answer_en": "Kálmán Mikszáth was an outstanding Hungarian novelist and short story writer at the turn of the 19th-20th century.",
     "topic": 3,
     "difficulty": 2,
-    "keywords_hu": ["Mikszáth Kálmán", "regényíró"]
+    "keywords_hu": [
+      "Mikszáth Kálmán",
+      "regényíró"
+    ]
   },
   {
     "question_hu": "Ki volt Ady Endre, és milyen irodalmi mozgalomhoz kötődik?",
@@ -465,7 +649,10 @@
     "answer_en": "Endre Ady was a reformer of 20th-century Hungarian literature and a defining figure of the Nyugat (West) literary journal movement.",
     "topic": 3,
     "difficulty": 2,
-    "keywords_hu": ["Ady Endre", "Nyugat"]
+    "keywords_hu": [
+      "Ady Endre",
+      "Nyugat"
+    ]
   },
   {
     "question_hu": "Ki volt Móricz Zsigmond, és mi a legismertebb műve?",
@@ -474,7 +661,10 @@
     "answer_en": "Zsigmond Móricz was one of the most significant Hungarian novelists of the 20th century. His most famous work is Légy jó mindhalálig (Be Good Until Death).",
     "topic": 3,
     "difficulty": 2,
-    "keywords_hu": ["Móricz Zsigmond", "Légy jó mindhalálig"]
+    "keywords_hu": [
+      "Móricz Zsigmond",
+      "Légy jó mindhalálig"
+    ]
   },
   {
     "question_hu": "Ki volt József Attila, és mi a legismertebb verse?",
@@ -483,7 +673,10 @@
     "answer_en": "Attila József was one of the greatest poets of 20th-century Hungarian literature. Among his most famous poems is A Dunánál (By the Danube).",
     "topic": 3,
     "difficulty": 1,
-    "keywords_hu": ["József Attila", "A Dunánál"]
+    "keywords_hu": [
+      "József Attila",
+      "A Dunánál"
+    ]
   },
   {
     "question_hu": "Ki volt Radnóti Miklós?",
@@ -492,7 +685,10 @@
     "answer_en": "Miklós Radnóti was an outstanding poet of 20th-century Hungarian literature who became a victim of the Holocaust.",
     "topic": 3,
     "difficulty": 2,
-    "keywords_hu": ["Radnóti Miklós", "holokauszt"]
+    "keywords_hu": [
+      "Radnóti Miklós",
+      "holokauszt"
+    ]
   },
   {
     "question_hu": "Ki volt Márai Sándor, és mi az egyik legismertebb regénye?",
@@ -501,7 +697,10 @@
     "answer_en": "Sándor Márai was one of the most significant Hungarian prose writers of the 20th century. His most famous novel is A gyertyák csonkig égnek (Embers).",
     "topic": 3,
     "difficulty": 2,
-    "keywords_hu": ["Márai Sándor", "A gyertyák csonkig égnek"]
+    "keywords_hu": [
+      "Márai Sándor",
+      "A gyertyák csonkig égnek"
+    ]
   },
   {
     "question_hu": "Melyik magyar író kapta meg az irodalmi Nobel-díjat, és mikor?",
@@ -510,7 +709,12 @@
     "answer_en": "Imre Kertész received the Nobel Prize in Literature in 2002 for his novel Sorstalanság (Fatelessness).",
     "topic": 3,
     "difficulty": 1,
-    "keywords_hu": ["Kertész Imre", "2002", "Sorstalanság", "Nobel"]
+    "keywords_hu": [
+      "Kertész Imre",
+      "2002",
+      "Sorstalanság",
+      "Nobel"
+    ]
   },
   {
     "question_hu": "Ki volt Liszt Ferenc?",
@@ -519,7 +723,11 @@
     "answer_en": "Ferenc Liszt was a world-famous Hungarian composer and piano virtuoso in the 19th century, one of the greatest figures of Romantic music.",
     "topic": 3,
     "difficulty": 1,
-    "keywords_hu": ["Liszt Ferenc", "zeneszerző", "zongorista"]
+    "keywords_hu": [
+      "Liszt Ferenc",
+      "zeneszerző",
+      "zongorista"
+    ]
   },
   {
     "question_hu": "Ki szerezte a Bánk bán operát?",
@@ -528,7 +736,10 @@
     "answer_en": "The opera Bánk bán was composed by Ferenc Erkel. Erkel also composed the music of the national anthem (Himnusz).",
     "topic": 3,
     "difficulty": 2,
-    "keywords_hu": ["Erkel Ferenc", "Bánk bán"]
+    "keywords_hu": [
+      "Erkel Ferenc",
+      "Bánk bán"
+    ]
   },
   {
     "question_hu": "Ki volt Bartók Béla?",
@@ -537,7 +748,11 @@
     "answer_en": "Béla Bartók was one of the most significant Hungarian composers of 20th-century music, and a pioneer of folk music research.",
     "topic": 3,
     "difficulty": 1,
-    "keywords_hu": ["Bartók Béla", "zeneszerző", "népzene"]
+    "keywords_hu": [
+      "Bartók Béla",
+      "zeneszerző",
+      "népzene"
+    ]
   },
   {
     "question_hu": "Ki volt Kodály Zoltán, és mi az a Kodály módszer?",
@@ -546,7 +761,11 @@
     "answer_en": "Zoltán Kodály was a Hungarian composer and folk music researcher. The Kodály method is a world-famous music pedagogy system based on singing-centered music education.",
     "topic": 3,
     "difficulty": 2,
-    "keywords_hu": ["Kodály Zoltán", "Kodály módszer", "zenepedagógia"]
+    "keywords_hu": [
+      "Kodály Zoltán",
+      "Kodály módszer",
+      "zenepedagógia"
+    ]
   },
   {
     "question_hu": "Ki írta a Don Quijotét?",
@@ -555,7 +774,9 @@
     "answer_en": "Don Quixote was written by the Spanish writer Miguel de Cervantes.",
     "topic": 3,
     "difficulty": 1,
-    "keywords_hu": ["Cervantes"]
+    "keywords_hu": [
+      "Cervantes"
+    ]
   },
   {
     "question_hu": "Ki volt Shakespeare, Goethe és Tolsztoj?",
@@ -564,7 +785,11 @@
     "answer_en": "Shakespeare was an English playwright, Goethe a German poet and writer, and Tolstoy a Russian novelist – outstanding figures of world literature.",
     "topic": 3,
     "difficulty": 1,
-    "keywords_hu": ["Shakespeare", "Goethe", "Tolsztoj"]
+    "keywords_hu": [
+      "Shakespeare",
+      "Goethe",
+      "Tolsztoj"
+    ]
   },
   {
     "question_hu": "Melyik híres magyar költő halt meg a szabadságharcban 1849-ben?",
@@ -573,7 +798,10 @@
     "answer_en": "Sándor Petőfi died in 1849 at the Battle of Segesvár during the war of independence.",
     "topic": 3,
     "difficulty": 2,
-    "keywords_hu": ["Petőfi Sándor", "1849"]
+    "keywords_hu": [
+      "Petőfi Sándor",
+      "1849"
+    ]
   },
   {
     "question_hu": "Milyen kapcsolat volt Petőfi Sándor és Arany János között?",
@@ -582,7 +810,11 @@
     "answer_en": "Sándor Petőfi and János Arany were close friends and were the two greatest figures of 19th-century Hungarian literature.",
     "topic": 3,
     "difficulty": 3,
-    "keywords_hu": ["Petőfi Sándor", "Arany János", "barátság"]
+    "keywords_hu": [
+      "Petőfi Sándor",
+      "Arany János",
+      "barátság"
+    ]
   },
   {
     "question_hu": "Mi az Alaptörvény, és mikor lépett hatályba?",
@@ -591,7 +823,11 @@
     "answer_en": "The Alaptörvény (Fundamental Law) is Hungary's current constitution, which entered into force on January 1, 2012, replacing the previous Constitution.",
     "topic": 4,
     "difficulty": 1,
-    "keywords_hu": ["Alaptörvény", "2012", "alkotmány"]
+    "keywords_hu": [
+      "Alaptörvény",
+      "2012",
+      "alkotmány"
+    ]
   },
   {
     "question_hu": "Mi volt az Alaptörvény előtt Magyarország alkotmánya?",
@@ -600,7 +836,10 @@
     "answer_en": "Before the Fundamental Law, the Constitution of the Republic of Hungary (Act XX of 1949, fundamentally amended in 1989) was in force.",
     "topic": 4,
     "difficulty": 2,
-    "keywords_hu": ["Alkotmány", "1989"]
+    "keywords_hu": [
+      "Alkotmány",
+      "1989"
+    ]
   },
   {
     "question_hu": "Mi az Országgyűlés, és hány képviselőből áll?",
@@ -609,7 +848,12 @@
     "answer_en": "The Országgyűlés (Parliament) is Hungary's supreme representative and legislative body, consisting of 199 representatives. It operates in a unicameral system.",
     "topic": 4,
     "difficulty": 1,
-    "keywords_hu": ["Országgyűlés", "199", "képviselő", "egykamarás"]
+    "keywords_hu": [
+      "Országgyűlés",
+      "199",
+      "képviselő",
+      "egykamarás"
+    ]
   },
   {
     "question_hu": "Hány évente tartanak országgyűlési választásokat Magyarországon?",
@@ -618,7 +862,10 @@
     "answer_en": "Parliamentary elections are held every four years in Hungary.",
     "topic": 4,
     "difficulty": 1,
-    "keywords_hu": ["négyévente", "4 év"]
+    "keywords_hu": [
+      "négyévente",
+      "4 év"
+    ]
   },
   {
     "question_hu": "Ki a köztársasági elnök, és hogyan választják?",
@@ -627,7 +874,12 @@
     "answer_en": "The President of the Republic is the head of state, elected by Parliament for 5 years. The president can be elected for a maximum of two consecutive terms. The current president is Tamás Sulyok (since 2024).",
     "topic": 4,
     "difficulty": 1,
-    "keywords_hu": ["köztársasági elnök", "Országgyűlés", "5 év", "Sulyok Tamás"]
+    "keywords_hu": [
+      "köztársasági elnök",
+      "Országgyűlés",
+      "5 év",
+      "Sulyok Tamás"
+    ]
   },
   {
     "question_hu": "Ki a jelenlegi magyar miniszterelnök?",
@@ -636,7 +888,10 @@
     "answer_en": "The current Hungarian Prime Minister is Viktor Orbán (since 2010).",
     "topic": 4,
     "difficulty": 1,
-    "keywords_hu": ["Orbán Viktor", "miniszterelnök"]
+    "keywords_hu": [
+      "Orbán Viktor",
+      "miniszterelnök"
+    ]
   },
   {
     "question_hu": "Mi a kormány szerepe Magyarországon?",
@@ -645,7 +900,11 @@
     "answer_en": "The government is the supreme body of executive power, which manages the country's public administration under the leadership of the Prime Minister.",
     "topic": 4,
     "difficulty": 1,
-    "keywords_hu": ["kormány", "végrehajtó hatalom", "miniszterelnök"]
+    "keywords_hu": [
+      "kormány",
+      "végrehajtó hatalom",
+      "miniszterelnök"
+    ]
   },
   {
     "question_hu": "Mi az Alkotmánybíróság feladata?",
@@ -654,7 +913,11 @@
     "answer_en": "The role of the Constitutional Court is to review the constitutionality of laws and to protect the Fundamental Law.",
     "topic": 4,
     "difficulty": 2,
-    "keywords_hu": ["Alkotmánybíróság", "alkotmányosság", "Alaptörvény"]
+    "keywords_hu": [
+      "Alkotmánybíróság",
+      "alkotmányosság",
+      "Alaptörvény"
+    ]
   },
   {
     "question_hu": "Ki az Alapvető Jogok Biztosa?",
@@ -663,7 +926,10 @@
     "answer_en": "The Commissioner for Fundamental Rights (ombudsman) is the defender of citizens' fundamental rights, elected by Parliament.",
     "topic": 4,
     "difficulty": 2,
-    "keywords_hu": ["Alapvető Jogok Biztosa", "ombudsman"]
+    "keywords_hu": [
+      "Alapvető Jogok Biztosa",
+      "ombudsman"
+    ]
   },
   {
     "question_hu": "Mi az Állami Számvevőszék feladata?",
@@ -672,7 +938,10 @@
     "answer_en": "The State Audit Office is Parliament's supreme financial auditing body, which monitors the use of public funds.",
     "topic": 4,
     "difficulty": 2,
-    "keywords_hu": ["Állami Számvevőszék", "pénzügyi ellenőrzés"]
+    "keywords_hu": [
+      "Állami Számvevőszék",
+      "pénzügyi ellenőrzés"
+    ]
   },
   {
     "question_hu": "Mi a Magyar Nemzeti Bank szerepe?",
@@ -681,7 +950,10 @@
     "answer_en": "The Hungarian National Bank is Hungary's central bank, responsible for monetary policy and financial stability.",
     "topic": 4,
     "difficulty": 2,
-    "keywords_hu": ["Magyar Nemzeti Bank", "monetáris politika"]
+    "keywords_hu": [
+      "Magyar Nemzeti Bank",
+      "monetáris politika"
+    ]
   },
   {
     "question_hu": "Mi a legfelsőbb bíróság neve Magyarországon?",
@@ -690,7 +962,9 @@
     "answer_en": "The highest judicial body in Hungary is the Kúria (Supreme Court).",
     "topic": 4,
     "difficulty": 2,
-    "keywords_hu": ["Kúria"]
+    "keywords_hu": [
+      "Kúria"
+    ]
   },
   {
     "question_hu": "Mi a bíróságok szerepe Magyarországon?",
@@ -699,7 +973,11 @@
     "answer_en": "Courts are independent judicial bodies responsible for settling legal disputes and administering justice.",
     "topic": 4,
     "difficulty": 1,
-    "keywords_hu": ["bíróság", "független", "igazságszolgáltatás"]
+    "keywords_hu": [
+      "bíróság",
+      "független",
+      "igazságszolgáltatás"
+    ]
   },
   {
     "question_hu": "Mi az ügyészség szerepe?",
@@ -708,7 +986,11 @@
     "answer_en": "The prosecution is an independent body that represents public charges and participates in the administration of justice.",
     "topic": 4,
     "difficulty": 2,
-    "keywords_hu": ["ügyészség", "független", "közvád"]
+    "keywords_hu": [
+      "ügyészség",
+      "független",
+      "közvád"
+    ]
   },
   {
     "question_hu": "Mi a helyi önkormányzatok szerepe?",
@@ -717,7 +999,10 @@
     "answer_en": "Local governments are responsible for managing local public affairs and providing local public services.",
     "topic": 4,
     "difficulty": 2,
-    "keywords_hu": ["helyi önkormányzat", "közügyek"]
+    "keywords_hu": [
+      "helyi önkormányzat",
+      "közügyek"
+    ]
   },
   {
     "question_hu": "Milyen hatalmi ágak vannak Magyarországon?",
@@ -726,7 +1011,12 @@
     "answer_en": "Hungary applies the principle of separation of powers: legislative power (Parliament), executive power (Government), and judicial power (courts).",
     "topic": 4,
     "difficulty": 1,
-    "keywords_hu": ["törvényhozó", "végrehajtó", "bírói", "hatalommegosztás"]
+    "keywords_hu": [
+      "törvényhozó",
+      "végrehajtó",
+      "bírói",
+      "hatalommegosztás"
+    ]
   },
   {
     "question_hu": "Hány ciklusra választható a köztársasági elnök?",
@@ -735,7 +1025,11 @@
     "answer_en": "The President of the Republic can be elected for a maximum of two consecutive terms.",
     "topic": 4,
     "difficulty": 2,
-    "keywords_hu": ["két", "ciklus", "köztársasági elnök"]
+    "keywords_hu": [
+      "két",
+      "ciklus",
+      "köztársasági elnök"
+    ]
   },
   {
     "question_hu": "Mik az első generációs emberi jogok?",
@@ -744,7 +1038,12 @@
     "answer_en": "First-generation rights are civil and political rights, such as freedom of speech, freedom of religion, and freedom of assembly.",
     "topic": 5,
     "difficulty": 1,
-    "keywords_hu": ["polgári", "politikai jogok", "szólásszabadság", "vallásszabadság"]
+    "keywords_hu": [
+      "polgári",
+      "politikai jogok",
+      "szólásszabadság",
+      "vallásszabadság"
+    ]
   },
   {
     "question_hu": "Mik a második generációs emberi jogok?",
@@ -753,7 +1052,11 @@
     "answer_en": "Second-generation rights are economic, social, and cultural rights, such as the right to work, education, and healthcare.",
     "topic": 5,
     "difficulty": 1,
-    "keywords_hu": ["gazdasági", "szociális", "kulturális jogok"]
+    "keywords_hu": [
+      "gazdasági",
+      "szociális",
+      "kulturális jogok"
+    ]
   },
   {
     "question_hu": "Mik a harmadik generációs emberi jogok?",
@@ -762,7 +1065,11 @@
     "answer_en": "Third-generation rights are collective rights, such as the right to peace and the right to a clean environment.",
     "topic": 5,
     "difficulty": 2,
-    "keywords_hu": ["kollektív jogok", "béke", "tiszta környezet"]
+    "keywords_hu": [
+      "kollektív jogok",
+      "béke",
+      "tiszta környezet"
+    ]
   },
   {
     "question_hu": "Mi a Magna Carta, és mikor keletkezett?",
@@ -771,7 +1078,11 @@
     "answer_en": "The Magna Carta was created in 1215 in England. It is one of the earliest documents that limited royal power.",
     "topic": 5,
     "difficulty": 1,
-    "keywords_hu": ["Magna Carta", "1215", "Anglia"]
+    "keywords_hu": [
+      "Magna Carta",
+      "1215",
+      "Anglia"
+    ]
   },
   {
     "question_hu": "Milyen kapcsolat van a Magna Carta és az Aranybulla között?",
@@ -780,7 +1091,11 @@
     "answer_en": "Both are early documents limiting royal power: the Magna Carta was created in 1215 in England, and the Golden Bull in 1222 in Hungary.",
     "topic": 5,
     "difficulty": 2,
-    "keywords_hu": ["Magna Carta", "Aranybulla", "királyi hatalom"]
+    "keywords_hu": [
+      "Magna Carta",
+      "Aranybulla",
+      "királyi hatalom"
+    ]
   },
   {
     "question_hu": "Mikor született a francia Emberi és Polgári Jogok Nyilatkozata?",
@@ -789,7 +1104,10 @@
     "answer_en": "The Declaration of the Rights of Man and of the Citizen was created in 1789, during the French Revolution.",
     "topic": 5,
     "difficulty": 2,
-    "keywords_hu": ["Emberi és Polgári Jogok Nyilatkozata", "1789"]
+    "keywords_hu": [
+      "Emberi és Polgári Jogok Nyilatkozata",
+      "1789"
+    ]
   },
   {
     "question_hu": "Mikor fogadták el az ENSZ Emberi Jogok Egyetemes Nyilatkozatát?",
@@ -798,7 +1116,11 @@
     "answer_en": "The UN Universal Declaration of Human Rights was adopted in 1948.",
     "topic": 5,
     "difficulty": 1,
-    "keywords_hu": ["ENSZ", "Emberi Jogok Egyetemes Nyilatkozata", "1948"]
+    "keywords_hu": [
+      "ENSZ",
+      "Emberi Jogok Egyetemes Nyilatkozata",
+      "1948"
+    ]
   },
   {
     "question_hu": "Mikor törölték el a halálbüntetést Magyarországon?",
@@ -807,7 +1129,10 @@
     "answer_en": "The death penalty was abolished in Hungary in 1990.",
     "topic": 5,
     "difficulty": 2,
-    "keywords_hu": ["halálbüntetés", "1990"]
+    "keywords_hu": [
+      "halálbüntetés",
+      "1990"
+    ]
   },
   {
     "question_hu": "Milyen kötelezettségei vannak a magyar állampolgároknak?",
@@ -816,7 +1141,11 @@
     "answer_en": "The obligations of Hungarian citizens include paying taxes, compulsory education, and defense obligation.",
     "topic": 5,
     "difficulty": 1,
-    "keywords_hu": ["adófizetés", "tankötelezettség", "honvédelmi kötelezettség"]
+    "keywords_hu": [
+      "adófizetés",
+      "tankötelezettség",
+      "honvédelmi kötelezettség"
+    ]
   },
   {
     "question_hu": "Hány éves kortól szavazhatnak a magyar állampolgárok?",
@@ -825,7 +1154,10 @@
     "answer_en": "In Hungary, citizens can vote from the age of 18.",
     "topic": 5,
     "difficulty": 1,
-    "keywords_hu": ["18", "szavazás"]
+    "keywords_hu": [
+      "18",
+      "szavazás"
+    ]
   },
   {
     "question_hu": "Mit jelent a szólásszabadság joga?",
@@ -834,7 +1166,10 @@
     "answer_en": "Freedom of speech means that every person has the right to express their opinion freely without being persecuted for it.",
     "topic": 5,
     "difficulty": 1,
-    "keywords_hu": ["szólásszabadság", "vélemény"]
+    "keywords_hu": [
+      "szólásszabadság",
+      "vélemény"
+    ]
   },
   {
     "question_hu": "Mit jelent a vallásszabadság?",
@@ -843,7 +1178,10 @@
     "answer_en": "Freedom of religion means that every person can freely choose their religion, practice their faith, or choose to live without religion.",
     "topic": 5,
     "difficulty": 1,
-    "keywords_hu": ["vallásszabadság", "hit"]
+    "keywords_hu": [
+      "vallásszabadság",
+      "hit"
+    ]
   },
   {
     "question_hu": "Mit jelent a gyülekezési jog?",
@@ -852,7 +1190,10 @@
     "answer_en": "The right to assembly means that citizens have the right to peacefully gather, demonstrate, and collectively express their opinions.",
     "topic": 5,
     "difficulty": 1,
-    "keywords_hu": ["gyülekezési jog", "békés"]
+    "keywords_hu": [
+      "gyülekezési jog",
+      "békés"
+    ]
   },
   {
     "question_hu": "Mi a tankötelezettség Magyarországon?",
@@ -861,7 +1202,10 @@
     "answer_en": "In Hungary, compulsory education lasts until the age of 16, meaning children must attend school.",
     "topic": 5,
     "difficulty": 2,
-    "keywords_hu": ["tankötelezettség", "16"]
+    "keywords_hu": [
+      "tankötelezettség",
+      "16"
+    ]
   },
   {
     "question_hu": "Mi Magyarország fővárosa?",
@@ -870,7 +1214,12 @@
     "answer_en": "The capital of Hungary is Budapest, created by the unification of Buda and Pest on the two banks of the Danube.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["Budapest", "Buda", "Pest", "Duna"]
+    "keywords_hu": [
+      "Budapest",
+      "Buda",
+      "Pest",
+      "Duna"
+    ]
   },
   {
     "question_hu": "Mekkora Magyarország területe?",
@@ -879,7 +1228,10 @@
     "answer_en": "The area of Hungary is 93,030 square kilometers.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["93 030", "négyzetkilométer"]
+    "keywords_hu": [
+      "93 030",
+      "négyzetkilométer"
+    ]
   },
   {
     "question_hu": "Mennyi Magyarország lakossága?",
@@ -888,7 +1240,9 @@
     "answer_en": "The population of Hungary is approximately 9.7 million people.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["9,7 millió"]
+    "keywords_hu": [
+      "9,7 millió"
+    ]
   },
   {
     "question_hu": "Mi Magyarország hivatalos pénzneme?",
@@ -897,7 +1251,9 @@
     "answer_en": "Hungary's official currency is the forint (HUF).",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["forint"]
+    "keywords_hu": [
+      "forint"
+    ]
   },
   {
     "question_hu": "Melyek Magyarország szomszédos országai?",
@@ -906,7 +1262,15 @@
     "answer_en": "Hungary has 7 neighbors: Austria, Slovakia, Ukraine, Romania, Serbia, Croatia, and Slovenia.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["Ausztria", "Szlovákia", "Ukrajna", "Románia", "Szerbia", "Horvátország", "Szlovénia"]
+    "keywords_hu": [
+      "Ausztria",
+      "Szlovákia",
+      "Ukrajna",
+      "Románia",
+      "Szerbia",
+      "Horvátország",
+      "Szlovénia"
+    ]
   },
   {
     "question_hu": "Melyik Magyarország legnagyobb tava?",
@@ -915,7 +1279,10 @@
     "answer_en": "Hungary's largest lake is Lake Balaton, also known as the 'Hungarian sea'.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["Balaton", "magyar tenger"]
+    "keywords_hu": [
+      "Balaton",
+      "magyar tenger"
+    ]
   },
   {
     "question_hu": "Melyik Európa legnagyobb termáltava?",
@@ -924,7 +1291,10 @@
     "answer_en": "The largest natural thermal lake in Europe is Lake Hévíz in Hungary.",
     "topic": 6,
     "difficulty": 2,
-    "keywords_hu": ["Hévíz", "termáltó"]
+    "keywords_hu": [
+      "Hévíz",
+      "termáltó"
+    ]
   },
   {
     "question_hu": "Melyek Magyarország legfontosabb folyói?",
@@ -933,7 +1303,10 @@
     "answer_en": "Hungary's most important rivers are the Danube (Duna) and the Tisza.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["Duna", "Tisza"]
+    "keywords_hu": [
+      "Duna",
+      "Tisza"
+    ]
   },
   {
     "question_hu": "Mi Magyarország legmagasabb pontja?",
@@ -942,7 +1315,11 @@
     "answer_en": "The highest point in Hungary is Kékes (1,014 meters), located in the Mátra mountains.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["Kékes", "1014", "Mátra"]
+    "keywords_hu": [
+      "Kékes",
+      "1014",
+      "Mátra"
+    ]
   },
   {
     "question_hu": "Hány megye van Magyarországon?",
@@ -951,7 +1328,11 @@
     "answer_en": "Hungary has 19 counties and the capital, Budapest.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["19", "megye", "Budapest"]
+    "keywords_hu": [
+      "19",
+      "megye",
+      "Budapest"
+    ]
   },
   {
     "question_hu": "Mikor csatlakozott Magyarország az Európai Unióhoz?",
@@ -960,7 +1341,10 @@
     "answer_en": "Hungary joined the European Union on May 1, 2004.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["2004", "Európai Unió"]
+    "keywords_hu": [
+      "2004",
+      "Európai Unió"
+    ]
   },
   {
     "question_hu": "Mikor csatlakozott Magyarország a schengeni övezethez?",
@@ -969,7 +1353,10 @@
     "answer_en": "Hungary joined the Schengen Area on December 21, 2007.",
     "topic": 6,
     "difficulty": 2,
-    "keywords_hu": ["2007", "Schengen"]
+    "keywords_hu": [
+      "2007",
+      "Schengen"
+    ]
   },
   {
     "question_hu": "Mikor csatlakozott Magyarország a NATO-hoz?",
@@ -978,7 +1365,10 @@
     "answer_en": "Hungary joined NATO in 1999.",
     "topic": 6,
     "difficulty": 2,
-    "keywords_hu": ["1999", "NATO"]
+    "keywords_hu": [
+      "1999",
+      "NATO"
+    ]
   },
   {
     "question_hu": "Mi Magyarország hivatalos nyelve?",
@@ -987,7 +1377,9 @@
     "answer_en": "The official language of Hungary is Hungarian.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["magyar"]
+    "keywords_hu": [
+      "magyar"
+    ]
   },
   {
     "question_hu": "Milyen éghajlat jellemző Magyarországra?",
@@ -996,7 +1388,10 @@
     "answer_en": "Hungary has a continental (temperate) climate.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["kontinentális", "éghajlat"]
+    "keywords_hu": [
+      "kontinentális",
+      "éghajlat"
+    ]
   },
   {
     "question_hu": "Mi a gulyás?",
@@ -1005,7 +1400,10 @@
     "answer_en": "Gulyás (goulash soup) is one of the most famous dishes of Hungarian cuisine, a soup made from beef, paprika, vegetables, and csipetke (pinched noodles). It is a Hungarikum.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["gulyás", "hungarikum"]
+    "keywords_hu": [
+      "gulyás",
+      "hungarikum"
+    ]
   },
   {
     "question_hu": "Soroljon fel legalább öt hungarikumot!",
@@ -1014,7 +1412,13 @@
     "answer_en": "Hungarikums include, for example: goulash, pálinka, Tokaji wine, Herend porcelain, Túró Rudi, Pick salami, mangalica pig, puli dog, paprika.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["hungarikum", "gulyás", "pálinka", "Tokaji", "paprika"]
+    "keywords_hu": [
+      "hungarikum",
+      "gulyás",
+      "pálinka",
+      "Tokaji",
+      "paprika"
+    ]
   },
   {
     "question_hu": "Mi a pálinka?",
@@ -1023,7 +1427,11 @@
     "answer_en": "Pálinka is a Hungarian fruit brandy, which is a Hungarikum. It is made from fruit (plum, apricot, pear, cherry, etc.).",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["pálinka", "hungarikum", "gyümölcs"]
+    "keywords_hu": [
+      "pálinka",
+      "hungarikum",
+      "gyümölcs"
+    ]
   },
   {
     "question_hu": "Miért híres a Tokaji bor?",
@@ -1032,7 +1440,11 @@
     "answer_en": "Tokaji wine is a world-famous Hungarian wine specialty and a Hungarikum. French King Louis XIV called it 'the king of wines, the wine of kings'.",
     "topic": 6,
     "difficulty": 2,
-    "keywords_hu": ["Tokaji", "bor", "hungarikum"]
+    "keywords_hu": [
+      "Tokaji",
+      "bor",
+      "hungarikum"
+    ]
   },
   {
     "question_hu": "Mi a Lánchíd, és ki építtette?",
@@ -1041,7 +1453,11 @@
     "answer_en": "The Chain Bridge (Széchenyi Chain Bridge) is Budapest's most famous bridge, built on the initiative of Count István Széchenyi based on the designs of Adam Clark.",
     "topic": 6,
     "difficulty": 2,
-    "keywords_hu": ["Lánchíd", "Széchenyi", "Clark Ádám"]
+    "keywords_hu": [
+      "Lánchíd",
+      "Széchenyi",
+      "Clark Ádám"
+    ]
   },
   {
     "question_hu": "Hol található az Országház?",
@@ -1050,7 +1466,11 @@
     "answer_en": "The Parliament building is located in Budapest, on the bank of the Danube. It is Hungary's largest building.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["Országház", "Budapest", "Duna"]
+    "keywords_hu": [
+      "Országház",
+      "Budapest",
+      "Duna"
+    ]
   },
   {
     "question_hu": "Ki találta fel a Rubik-kockát?",
@@ -1059,7 +1479,10 @@
     "answer_en": "The Rubik's Cube was invented by Hungarian inventor and architect Ernő Rubik.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["Rubik-kocka", "Rubik Ernő"]
+    "keywords_hu": [
+      "Rubik-kocka",
+      "Rubik Ernő"
+    ]
   },
   {
     "question_hu": "Ki találta fel a golyóstollat?",
@@ -1068,7 +1491,10 @@
     "answer_en": "The ballpoint pen was invented by Hungarian journalist and inventor László Bíró.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["golyóstoll", "Bíró László"]
+    "keywords_hu": [
+      "golyóstoll",
+      "Bíró László"
+    ]
   },
   {
     "question_hu": "Ki volt Semmelweis Ignác?",
@@ -1077,7 +1503,11 @@
     "answer_en": "Ignác Semmelweis was a Hungarian doctor who recognized the importance of hand washing in preventing puerperal fever. He is also known as the 'savior of mothers'.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["Semmelweis Ignác", "orvos", "kézmosás"]
+    "keywords_hu": [
+      "Semmelweis Ignác",
+      "orvos",
+      "kézmosás"
+    ]
   },
   {
     "question_hu": "Ki volt Szent-Györgyi Albert?",
@@ -1086,7 +1516,11 @@
     "answer_en": "Albert Szent-Györgyi was a Hungarian biochemist who received the Nobel Prize in 1937 for discovering vitamin C.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["Szent-Györgyi Albert", "Nobel-díj", "C-vitamin"]
+    "keywords_hu": [
+      "Szent-Györgyi Albert",
+      "Nobel-díj",
+      "C-vitamin"
+    ]
   },
   {
     "question_hu": "Ki volt Neumann János?",
@@ -1095,7 +1529,11 @@
     "answer_en": "János Neumann (John von Neumann) was a Hungarian-born mathematician considered one of the fathers of the modern computer.",
     "topic": 6,
     "difficulty": 2,
-    "keywords_hu": ["Neumann János", "matematikus", "számítógép"]
+    "keywords_hu": [
+      "Neumann János",
+      "matematikus",
+      "számítógép"
+    ]
   },
   {
     "question_hu": "Mi a mangalica?",
@@ -1104,7 +1542,11 @@
     "answer_en": "The mangalica is an ancient Hungarian pig breed known for its curly hair. It is a Hungarikum.",
     "topic": 6,
     "difficulty": 2,
-    "keywords_hu": ["mangalica", "sertés", "hungarikum"]
+    "keywords_hu": [
+      "mangalica",
+      "sertés",
+      "hungarikum"
+    ]
   },
   {
     "question_hu": "Mi a puli?",
@@ -1113,7 +1555,11 @@
     "answer_en": "The puli is an ancient Hungarian herding dog breed known for its corded coat. It is a Hungarikum.",
     "topic": 6,
     "difficulty": 2,
-    "keywords_hu": ["puli", "kutya", "hungarikum"]
+    "keywords_hu": [
+      "puli",
+      "kutya",
+      "hungarikum"
+    ]
   },
   {
     "question_hu": "Melyik folyó osztja ketté Budapestet?",
@@ -1122,7 +1568,11 @@
     "answer_en": "The two parts of Budapest, Buda and Pest, are separated by the Danube (Duna) river.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["Duna", "Buda", "Pest"]
+    "keywords_hu": [
+      "Duna",
+      "Buda",
+      "Pest"
+    ]
   },
   {
     "question_hu": "Mi a Herendi porcelán?",
@@ -1131,7 +1581,10 @@
     "answer_en": "Herend porcelain is the product of a world-renowned Hungarian porcelain manufactory and is a Hungarikum.",
     "topic": 6,
     "difficulty": 2,
-    "keywords_hu": ["Herendi porcelán", "hungarikum"]
+    "keywords_hu": [
+      "Herendi porcelán",
+      "hungarikum"
+    ]
   },
   {
     "question_hu": "Mi a Pick szalámi?",
@@ -1140,7 +1593,11 @@
     "answer_en": "Pick salami is a world-famous Hungarian winter salami originating from Szeged, and is a Hungarikum.",
     "topic": 6,
     "difficulty": 2,
-    "keywords_hu": ["Pick szalámi", "hungarikum", "Szeged"]
+    "keywords_hu": [
+      "Pick szalámi",
+      "hungarikum",
+      "Szeged"
+    ]
   },
   {
     "question_hu": "Mi a Túró Rudi?",
@@ -1149,7 +1606,10 @@
     "answer_en": "Túró Rudi is a chocolate-coated curd dessert, a Hungarikum, and one of Hungary's most popular sweets.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["Túró Rudi", "hungarikum"]
+    "keywords_hu": [
+      "Túró Rudi",
+      "hungarikum"
+    ]
   },
   {
     "question_hu": "Miért nevezik a Balatont 'magyar tengernek'?",
@@ -1158,7 +1618,11 @@
     "answer_en": "Lake Balaton is called the 'Hungarian sea' because it is Central Europe's largest lake, and since Hungary has no seacoast, Balaton fills that role.",
     "topic": 6,
     "difficulty": 2,
-    "keywords_hu": ["Balaton", "magyar tenger", "Közép-Európa"]
+    "keywords_hu": [
+      "Balaton",
+      "magyar tenger",
+      "Közép-Európa"
+    ]
   },
   {
     "question_hu": "Hány szomszédos országa van Magyarországnak?",
@@ -1167,7 +1631,10 @@
     "answer_en": "Hungary has 7 neighboring countries.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["7", "szomszéd"]
+    "keywords_hu": [
+      "7",
+      "szomszéd"
+    ]
   },
   {
     "question_hu": "Melyik hegységben található a Kékes?",
@@ -1176,7 +1643,10 @@
     "answer_en": "Kékes is located in the Mátra mountain range.",
     "topic": 6,
     "difficulty": 1,
-    "keywords_hu": ["Kékes", "Mátra"]
+    "keywords_hu": [
+      "Kékes",
+      "Mátra"
+    ]
   },
   {
     "question_hu": "Mi a paprika jelentősége a magyar kultúrában?",
@@ -1185,6 +1655,10 @@
     "answer_en": "Paprika is a fundamental spice of Hungarian cuisine, a Hungarikum, and one of Hungary's symbols. The paprika from Szeged and Kalocsa is particularly famous.",
     "topic": 6,
     "difficulty": 2,
-    "keywords_hu": ["paprika", "hungarikum", "fűszer"]
+    "keywords_hu": [
+      "paprika",
+      "hungarikum",
+      "fűszer"
+    ]
   }
 ]

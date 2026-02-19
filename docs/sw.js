@@ -1,4 +1,4 @@
-const CACHE = 'magyar-exam-v1';
+const CACHE = 'magyar-exam-v2';
 const ASSETS = [
   './',
   './index.html',

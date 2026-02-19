@@ -29,7 +29,11 @@
     <header class="topbar">
       <span class="topbar-flag">🇭🇺</span>
       <span class="topbar-title">Magyar Exam</span>
+      <button class="icon-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle theme">☀️</button>
       <button class="icon-btn" onclick="showStats()" title="Statistics">📊</button>
+      <button class="icon-btn" onclick="exportProgress()" title="Export progress">💾</button>
+      <button class="icon-btn" onclick="importProgress()" title="Import progress">📂</button>
+      <input type="file" id="import-file-input" accept=".json" style="display:none" onchange="onImportFile(event)">
     </header>
     <div class="scroll-area">
       <div id="home-banner" class="banner"></div>

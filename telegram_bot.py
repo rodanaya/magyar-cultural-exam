@@ -310,16 +310,107 @@ WELCOME_TEXT = (
 )
 
 
+def remove_job_if_exists(name: str, context: ContextTypes.DEFAULT_TYPE) -> bool:
+    """Cancel any scheduled jobs with the given name. Returns True if any were removed."""
+    current_jobs = context.job_queue.get_jobs_by_name(name)
+    for job in current_jobs:
+        job.schedule_removal()
+    return bool(current_jobs)
+
+
+async def send_srs_reminder(context: ContextTypes.DEFAULT_TYPE) -> None:
+    """JobQueue callback: send a daily SRS review reminder to the user."""
+    job = context.job
+    chat_id = job.chat_id
+    user_data = context.application.user_data.get(chat_id, {})
+    progress = user_data.get("progress", {})
+    srs = progress.get("srs", {})
+    today = datetime.date.today().isoformat()
+    due_count = sum(1 for entry in srs.values() if entry.get("due", "9999") <= today)
+    if due_count > 0:
+        await context.bot.send_message(
+            chat_id=chat_id,
+            text=(
+                f"\u23f0 *SRS Review Reminder*\n\n"
+                f"You have *{due_count}* card{'s' if due_count != 1 else ''} due for review today\\!\n\n"
+                f"Tap /start to begin studying \U0001f4da"
+            ),
+            parse_mode="MarkdownV2",
+        )
+
+
 async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if not context.user_data: context.user_data.update(init_user_data())
     elif "progress" not in context.user_data: context.user_data["progress"] = init_progress()
     context.user_data["state"] = "home"
+    chat_id = update.effective_chat.id
+    context.user_data["chat_id"] = chat_id
+    reminder_hour = context.user_data.get("reminder_hour", 8)
+    remove_job_if_exists(str(chat_id), context)
+    context.job_queue.run_daily(
+        send_srs_reminder,
+        time=datetime.time(hour=reminder_hour, minute=0, tzinfo=datetime.timezone.utc),
+        chat_id=chat_id,
+        name=str(chat_id),
+        data={"chat_id": chat_id},
+    )
     await update.message.reply_text(WELCOME_TEXT, reply_markup=main_menu_keyboard(), parse_mode="HTML")
 
 
 async def cmd_stats(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if not context.user_data: context.user_data.update(init_user_data())
     await send_statistics(update.message.reply_text, context)
+
+
+async def cmd_remind(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Set (or show) the daily SRS reminder time. Usage: /remind [0-23]"""
+    if not context.user_data:
+        context.user_data.update(init_user_data())
+    chat_id = update.effective_chat.id
+    context.user_data["chat_id"] = chat_id
+    args = context.args
+    if not args:
+        # Show current reminder time
+        current_hour = context.user_data.get("reminder_hour", 8)
+        await update.message.reply_text(
+            f"\u23f0 Your daily reminder is currently set for <b>{current_hour:02d}:00 UTC</b>.\n"
+            f"Use <code>/remind &lt;hour&gt;</code> (0\u201323) to change it.",
+            parse_mode="HTML",
+        )
+        return
+    try:
+        hour = int(args[0])
+        if not 0 <= hour <= 23:
+            raise ValueError
+    except ValueError:
+        await update.message.reply_text(
+            "Please provide a valid hour between 0 and 23.\nExample: <code>/remind 9</code>",
+            parse_mode="HTML",
+        )
+        return
+    context.user_data["reminder_hour"] = hour
+    remove_job_if_exists(str(chat_id), context)
+    context.job_queue.run_daily(
+        send_srs_reminder,
+        time=datetime.time(hour=hour, minute=0, tzinfo=datetime.timezone.utc),
+        chat_id=chat_id,
+        name=str(chat_id),
+        data={"chat_id": chat_id},
+    )
+    await update.message.reply_text(
+        f"\u2705 Daily reminder set for <b>{hour:02d}:00 UTC</b>.",
+        parse_mode="HTML",
+    )
+
+
+async def cmd_noremind(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Cancel the daily SRS reminder for this user."""
+    chat_id = update.effective_chat.id
+    removed = remove_job_if_exists(str(chat_id), context)
+    if removed:
+        await update.message.reply_text("\U0001f515 Daily reminder cancelled.")
+    else:
+        await update.message.reply_text("\u2139\ufe0f No active reminder to cancel.")
 
 
 async def send_statistics(reply_fn, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -631,6 +722,8 @@ def main() -> None:
     app.bot_data["questions"] = questions
     app.add_handler(CommandHandler(["start", "menu"], cmd_start))
     app.add_handler(CommandHandler("stats", cmd_stats))
+    app.add_handler(CommandHandler("remind", cmd_remind))
+    app.add_handler(CommandHandler("noremind", cmd_noremind))
     app.add_handler(CallbackQueryHandler(callback_handler))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message_handler))
     print("Bot is running. Press Ctrl+C to stop.")
