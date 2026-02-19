@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="MagyarExam">
+  <meta name="theme-color" content="#0d1117">
+  <title>Magyar Cultural Exam</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ── Loading ── -->
+  <div id="screen-loading" class="screen active">
+    <div class="splash">
+      <div class="splash-flag">🇭🇺</div>
+      <h1>Magyar Cultural Exam</h1>
+      <p class="muted">Loading questions…</p>
+      <div class="spinner"></div>
+    </div>
+  </div>
+
+  <!-- ── Home ── -->
+  <div id="screen-home" class="screen">
+    <header class="topbar">
+      <span class="topbar-flag">🇭🇺</span>
+      <span class="topbar-title">Magyar Exam</span>
+      <button class="icon-btn" onclick="showStats()" title="Statistics">📊</button>
+    </header>
+    <div class="scroll-area">
+      <div id="home-banner" class="banner"></div>
+      <div id="home-meta" class="meta-row"></div>
+
+      <div class="section-head">Topics</div>
+      <div id="topic-grid" class="topic-grid"></div>
+
+      <div id="selected-topic-label" class="selected-label hidden"></div>
+
+      <div class="section-head">Study Mode</div>
+      <div class="mode-grid">
+        <button class="mode-btn" onclick="launchMode('learn')">📖<br><span>Learn</span></button>
+        <button class="mode-btn" onclick="launchMode('mc')">🔢<br><span>M-Choice</span></button>
+        <button class="mode-btn" onclick="launchMode('quiz')">❓<br><span>Quiz</span></button>
+        <button class="mode-btn" onclick="launchMode('weak')">⚠️<br><span>Weak</span></button>
+        <button class="mode-btn srs-btn" onclick="launchMode('srs')">⏰<br><span>SRS</span></button>
+        <button class="mode-btn" onclick="launchMode('exam')">📝<br><span>Exam</span></button>
+      </div>
+
+      <div class="section-head">SRS Forecast — next 7 days</div>
+      <div id="forecast-chart" class="forecast"></div>
+    </div>
+  </div>
+
+  <!-- ── Learn ── -->
+  <div id="screen-learn" class="screen">
+    <header class="topbar">
+      <button class="back-btn" onclick="goHome()">←</button>
+      <span id="learn-title" class="topbar-title">Learn</span>
+      <span id="learn-counter" class="counter-badge"></span>
+    </header>
+    <div class="scroll-area">
+      <div class="card" id="learn-card">
+        <div id="learn-diff" class="diff-stars"></div>
+        <div id="learn-question" class="q-text"></div>
+        <hr class="card-divider hidden" id="learn-divider">
+        <div id="learn-answer" class="a-text hidden"></div>
+        <div id="learn-keywords" class="kw-text hidden"></div>
+      </div>
+      <button class="big-btn primary" id="learn-reveal-btn" onclick="revealLearnCard()">
+        Reveal Answer
+      </button>
+      <div id="learn-rating" class="rating-row hidden">
+        <button class="rate-btn bad"  onclick="rateLearnCard(1)">😕<br>Didn't know</button>
+        <button class="rate-btn ok"   onclick="rateLearnCard(3)">🤔<br>Almost</button>
+        <button class="rate-btn good" onclick="rateLearnCard(5)">✅<br>Got it!</button>
+      </div>
+      <div id="learn-srs-note" class="srs-note hidden"></div>
+    </div>
+  </div>
+
+  <!-- ── Quiz ── -->
+  <div id="screen-quiz" class="screen">
+    <header class="topbar">
+      <button class="back-btn" onclick="goHome()">←</button>
+      <span id="quiz-title" class="topbar-title">Quiz</span>
+      <span id="quiz-counter" class="counter-badge"></span>
+    </header>
+    <div class="scroll-area">
+      <div id="quiz-exam-timer" class="exam-timer hidden"></div>
+      <div class="card">
+        <div id="quiz-diff" class="diff-stars"></div>
+        <div id="quiz-question" class="q-text"></div>
+      </div>
+      <textarea id="quiz-input" class="answer-input" placeholder="Type your answer in Hungarian…" rows="3" autocomplete="off" autocorrect="off" spellcheck="false"></textarea>
+      <div class="btn-row">
+        <button class="big-btn primary" id="quiz-submit-btn" onclick="submitQuizAnswer()">Submit</button>
+        <button class="big-btn secondary" id="quiz-hint-btn" onclick="showQuizHint()">💡 Hint</button>
+      </div>
+      <div id="quiz-feedback" class="feedback hidden"></div>
+      <button class="big-btn success hidden" id="quiz-next-btn" onclick="nextQuizQuestion()">Next →</button>
+    </div>
+  </div>
+
+  <!-- ── Multiple Choice ── -->
+  <div id="screen-mc" class="screen">
+    <header class="topbar">
+      <button class="back-btn" onclick="goHome()">←</button>
+      <span class="topbar-title">Multiple Choice</span>
+      <span id="mc-counter" class="counter-badge"></span>
+    </header>
+    <div class="scroll-area">
+      <div class="card">
+        <div id="mc-diff" class="diff-stars"></div>
+        <div id="mc-question" class="q-text"></div>
+      </div>
+      <div id="mc-options" class="mc-options"></div>
+      <div id="mc-feedback" class="feedback hidden"></div>
+      <button class="big-btn success hidden" id="mc-next-btn" onclick="nextMCQuestion()">Next →</button>
+    </div>
+  </div>
+
+  <!-- ── Stats ── -->
+  <div id="screen-stats" class="screen">
+    <header class="topbar">
+      <button class="back-btn" onclick="goHome()">←</button>
+      <span class="topbar-title">Statistics</span>
+    </header>
+    <div id="stats-content" class="scroll-area"></div>
+  </div>
+
+  <!-- ── Result ── -->
+  <div id="screen-result" class="screen">
+    <header class="topbar">
+      <button class="back-btn" onclick="goHome()">←</button>
+      <span class="topbar-title">Session Complete</span>
+    </header>
+    <div class="scroll-area">
+      <div id="result-content" class="result-card"></div>
+      <button class="big-btn primary" onclick="goHome()">Back to Home</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
