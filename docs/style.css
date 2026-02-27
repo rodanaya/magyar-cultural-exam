@@ -97,6 +97,8 @@ html, body {
   cursor: pointer;
   padding: 4px;
   flex-shrink: 0;
+  min-width: 44px; min-height: 44px;
+  display: inline-flex; align-items: center; justify-content: center;
 }
 .counter-badge {
   font-size: 13px;
@@ -129,6 +131,7 @@ html, body {
 }
 .banner.due    { background: var(--warn-bg); color: var(--yellow); border: 1px solid var(--warning); display: block; }
 .banner.clear  { background: #0d2119; color: var(--green); border: 1px solid #236623; display: block; }
+.banner.info   { background: #112240; color: var(--accent); border: 1px solid var(--accent); display: block; }
 
 .meta-row      { display: flex; gap: 16px; color: var(--muted); font-size: 14px; }
 .meta-row b    { color: var(--text); }
@@ -367,6 +370,55 @@ html, body {
 .result-card .verdict.pass { color: var(--green); }
 .result-card .verdict.fail { color: var(--red); }
 
+/* ── Toast Notifications ── */
+.toast {
+  position: fixed;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 16px);
+  left: 50%; transform: translateX(-50%);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 14px;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity .25s;
+  pointer-events: none;
+  min-width: 200px;
+  text-align: center;
+}
+.toast.visible { opacity: 1; pointer-events: auto; }
+.toast.success { border-color: var(--green); }
+.toast.error   { border-color: var(--red); }
+
+/* ── Resume Checkpoint Banner ── */
+.resume-banner {
+  position: fixed;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 72px);
+  left: 50%; transform: translateX(-50%);
+  background: var(--panel);
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(0,0,0,.4);
+}
+.resume-btn {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.resume-btn.primary   { background: var(--primary); color: #fff; }
+.resume-btn.secondary { background: var(--panel); color: var(--muted); border: 1px solid var(--border); }
+
 /* ── Utilities ── */
 .hidden { display: none !important; }
 .muted  { color: var(--muted); }
@@ -394,3 +446,4 @@ html, body {
 [data-theme="light"] .mc-opt.correct { background: #dafbe1; }
 [data-theme="light"] .mc-opt.wrong   { background: #ffebe9; }
 [data-theme="light"] .banner.clear   { background: #dafbe1; }
+[data-theme="light"] .banner.info    { background: #ddf4ff; }

@@ -57,7 +57,7 @@
     "answer_hu": "A Himnusz szövegét Kölcsey Ferenc írta 1823-ban.",
     "answer_en": "The text of the Himnusz was written by Ferenc Kölcsey in 1823.",
     "topic": 1,
-    "difficulty": 1,
+    "difficulty": 2,
     "keywords_hu": [
       "Kölcsey Ferenc",
       "1823"
@@ -271,7 +271,7 @@
     "answer_hu": "Magyarország első királya Szent István (I. István) volt, akit 1000-ben (vagy 1001. január 1-jén) koronáztak meg.",
     "answer_en": "Hungary's first king was Saint Stephen (Stephen I), who was crowned in 1000 (or January 1, 1001).",
     "topic": 2,
-    "difficulty": 1,
+    "difficulty": 2,
     "keywords_hu": [
       "Szent István",
       "1000",
@@ -297,7 +297,7 @@
     "answer_hu": "Az Aranybullát 1222-ben adta ki II. András király. Ez a magyar 'Magna Carta', amely korlátozta a királyi hatalmat és biztosított bizonyos jogokat a nemességnek.",
     "answer_en": "The Golden Bull was issued by King Andrew II in 1222. It is the Hungarian 'Magna Carta', which limited royal power and guaranteed certain rights to the nobility.",
     "topic": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "keywords_hu": [
       "Aranybulla",
       "1222",
@@ -337,7 +337,7 @@
     "answer_hu": "A török hódoltság mintegy 150 évig tartott Magyarországon (1541-1699).",
     "answer_en": "The Turkish occupation lasted about 150 years in Hungary (1541-1699).",
     "topic": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "keywords_hu": [
       "150",
       "török hódoltság"
@@ -399,7 +399,7 @@
     "answer_hu": "A kiegyezés 1867-ben jött létre Ausztria és Magyarország között, létrehozva az Osztrák-Magyar Monarchiát.",
     "answer_en": "The Compromise was established in 1867 between Austria and Hungary, creating the Austro-Hungarian Monarchy.",
     "topic": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "keywords_hu": [
       "kiegyezés",
       "1867",
@@ -412,7 +412,7 @@
     "answer_hu": "A trianoni békeszerződést 1920. június 4-én írták alá a versailles-i Nagy-Trianon palotában.",
     "answer_en": "The Treaty of Trianon was signed on June 4, 1920, at the Grand Trianon Palace in Versailles.",
     "topic": 2,
-    "difficulty": 1,
+    "difficulty": 2,
     "keywords_hu": [
       "Trianon",
       "1920",
@@ -527,7 +527,9 @@
     "topic": 2,
     "difficulty": 2,
     "keywords_hu": [
-      "tengelyhatalmak"
+      "tengelyhatalmak",
+      "Axis",
+      "náci"
     ]
   },
   {
@@ -549,7 +551,7 @@
     "answer_hu": "Janus Pannonius a 15. századi magyar reneszánsz legjelentősebb költője volt, aki latin nyelven írt.",
     "answer_en": "Janus Pannonius was the most significant poet of the 15th-century Hungarian Renaissance, who wrote in Latin.",
     "topic": 3,
-    "difficulty": 2,
+    "difficulty": 3,
     "keywords_hu": [
       "Janus Pannonius",
       "reneszánsz",
@@ -708,7 +710,7 @@
     "answer_hu": "Kertész Imre kapta meg az irodalmi Nobel-díjat 2002-ben, a Sorstalanság című regényéért.",
     "answer_en": "Imre Kertész received the Nobel Prize in Literature in 2002 for his novel Sorstalanság (Fatelessness).",
     "topic": 3,
-    "difficulty": 1,
+    "difficulty": 2,
     "keywords_hu": [
       "Kertész Imre",
       "2002",
@@ -775,7 +777,9 @@
     "topic": 3,
     "difficulty": 1,
     "keywords_hu": [
-      "Cervantes"
+      "Cervantes",
+      "Miguel de Cervantes",
+      "spanyol"
     ]
   },
   {
@@ -797,7 +801,7 @@
     "answer_hu": "Petőfi Sándor halt meg 1849-ben a segesvári csatában a szabadságharc idején.",
     "answer_en": "Sándor Petőfi died in 1849 at the Battle of Segesvár during the war of independence.",
     "topic": 3,
-    "difficulty": 2,
+    "difficulty": 3,
     "keywords_hu": [
       "Petőfi Sándor",
       "1849"
@@ -822,7 +826,7 @@
     "answer_hu": "Az Alaptörvény Magyarország hatályos alkotmánya, amely 2012. január 1-jén lépett hatályba, felváltva a korábbi Alkotmányt.",
     "answer_en": "The Alaptörvény (Fundamental Law) is Hungary's current constitution, which entered into force on January 1, 2012, replacing the previous Constitution.",
     "topic": 4,
-    "difficulty": 1,
+    "difficulty": 2,
     "keywords_hu": [
       "Alaptörvény",
       "2012",
@@ -835,7 +839,7 @@
     "answer_hu": "Az Alaptörvény előtt a Magyar Köztársaság Alkotmánya (1949. évi XX. törvény, amelyet 1989-ben alapvetően módosítottak) volt hatályban.",
     "answer_en": "Before the Fundamental Law, the Constitution of the Republic of Hungary (Act XX of 1949, fundamentally amended in 1989) was in force.",
     "topic": 4,
-    "difficulty": 2,
+    "difficulty": 3,
     "keywords_hu": [
       "Alkotmány",
       "1989"
@@ -847,7 +851,7 @@
     "answer_hu": "Az Országgyűlés Magyarország legfőbb népképviseleti és törvényhozó szerve, amely 199 képviselőből áll. Egykamarás rendszerben működik.",
     "answer_en": "The Országgyűlés (Parliament) is Hungary's supreme representative and legislative body, consisting of 199 representatives. It operates in a unicameral system.",
     "topic": 4,
-    "difficulty": 1,
+    "difficulty": 2,
     "keywords_hu": [
       "Országgyűlés",
       "199",
@@ -963,7 +967,9 @@
     "topic": 4,
     "difficulty": 2,
     "keywords_hu": [
-      "Kúria"
+      "Kúria",
+      "legfelsőbb",
+      "bíróság"
     ]
   },
   {
@@ -1090,7 +1096,7 @@
     "answer_hu": "Mindkettő a királyi hatalom korlátozásának korai dokumentuma: a Magna Carta 1215-ben Angliában, az Aranybulla 1222-ben Magyarországon keletkezett.",
     "answer_en": "Both are early documents limiting royal power: the Magna Carta was created in 1215 in England, and the Golden Bull in 1222 in Hungary.",
     "topic": 5,
-    "difficulty": 2,
+    "difficulty": 3,
     "keywords_hu": [
       "Magna Carta",
       "Aranybulla",
@@ -1103,7 +1109,7 @@
     "answer_hu": "Az Emberi és Polgári Jogok Nyilatkozata 1789-ben, a francia forradalom idején született.",
     "answer_en": "The Declaration of the Rights of Man and of the Citizen was created in 1789, during the French Revolution.",
     "topic": 5,
-    "difficulty": 2,
+    "difficulty": 3,
     "keywords_hu": [
       "Emberi és Polgári Jogok Nyilatkozata",
       "1789"
@@ -1115,7 +1121,7 @@
     "answer_hu": "Az ENSZ Emberi Jogok Egyetemes Nyilatkozatát 1948-ban fogadták el.",
     "answer_en": "The UN Universal Declaration of Human Rights was adopted in 1948.",
     "topic": 5,
-    "difficulty": 1,
+    "difficulty": 2,
     "keywords_hu": [
       "ENSZ",
       "Emberi Jogok Egyetemes Nyilatkozata",
@@ -1241,7 +1247,9 @@
     "topic": 6,
     "difficulty": 1,
     "keywords_hu": [
-      "9,7 millió"
+      "9,7 millió",
+      "kilencmillió",
+      "millió"
     ]
   },
   {
@@ -1252,7 +1260,9 @@
     "topic": 6,
     "difficulty": 1,
     "keywords_hu": [
-      "forint"
+      "forint",
+      "HUF",
+      "Ft"
     ]
   },
   {
@@ -1340,7 +1350,7 @@
     "answer_hu": "Magyarország 2004. május 1-jén csatlakozott az Európai Unióhoz.",
     "answer_en": "Hungary joined the European Union on May 1, 2004.",
     "topic": 6,
-    "difficulty": 1,
+    "difficulty": 2,
     "keywords_hu": [
       "2004",
       "Európai Unió"
@@ -1352,7 +1362,7 @@
     "answer_hu": "Magyarország 2007. december 21-én csatlakozott a schengeni övezethez.",
     "answer_en": "Hungary joined the Schengen Area on December 21, 2007.",
     "topic": 6,
-    "difficulty": 2,
+    "difficulty": 3,
     "keywords_hu": [
       "2007",
       "Schengen"
@@ -1378,7 +1388,8 @@
     "topic": 6,
     "difficulty": 1,
     "keywords_hu": [
-      "magyar"
+      "magyar",
+      "Magyar nyelv"
     ]
   },
   {

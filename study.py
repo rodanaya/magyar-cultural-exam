@@ -65,9 +65,9 @@ TOPIC_NAMES_HU = {
 }
 
 DIFFICULTY_STARS = {
-    "easy": "\u2605",
-    "medium": "\u2605\u2605",
-    "hard": "\u2605\u2605\u2605",
+    1: "\u2605",
+    2: "\u2605\u2605",
+    3: "\u2605\u2605\u2605",
 }
 
 # ANSI color codes
@@ -382,7 +382,7 @@ def mode_learn(questions, progress, topic):
 
     for idx, q in enumerate(topic_qs):
         print_divider()
-        stars = DIFFICULTY_STARS.get(q.get("difficulty", "medium"), "\u2605")
+        stars = DIFFICULTY_STARS.get(q.get("difficulty", 1), "\u2605")
         print(f"\n  {BOLD}[Q {idx + 1}/{total}]{RESET} Topic {topic} - {topic_label} {YELLOW}{stars}{RESET}")
         print(f"  {CYAN}\U0001f1ed\U0001f1fa {q['question_hu']}{RESET}")
         print(f"  {DIM}\U0001f1ec\U0001f1e7 {q['question_en']}{RESET}")
@@ -447,7 +447,7 @@ def run_quiz(questions_list, progress, mode_name="quiz", topic=None, show_timer=
                 save_progress(progress, PROGRESS_FILE)
                 return (total_score, total)
 
-        stars = DIFFICULTY_STARS.get(q.get("difficulty", "medium"), "\u2605")
+        stars = DIFFICULTY_STARS.get(q.get("difficulty", 1), "\u2605")
         topic_num = q.get("topic", "?")
         topic_label = TOPIC_NAMES_HU.get(topic_num, f"Topic {topic_num}")
 

@@ -22,6 +22,18 @@ let session = {
 };
 
 /* ══════════════════════════════════════════
+   TOAST NOTIFICATIONS
+══════════════════════════════════════════ */
+
+function showToast(msg, type = 'info', ms = 3000) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = `toast visible ${type}`;
+  clearTimeout(el._t);
+  el._t = setTimeout(() => el.classList.remove('visible'), ms);
+}
+
+/* ══════════════════════════════════════════
    TEXT / SCORING HELPERS
 ══════════════════════════════════════════ */
 
@@ -194,6 +206,16 @@ function showScreen(name) {
 
 let selectedTopic = null;
 
+function studyStreak() {
+  const days = [...new Set(progress.sessions.map(s => s.date))].sort().reverse();
+  let streak = 0;
+  for (let i = 0; i < days.length; i++) {
+    const exp = new Date(Date.now() - i * 86400000).toISOString().slice(0, 10);
+    if (days[i] === exp) streak++; else break;
+  }
+  return streak;
+}
+
 function renderHome() {
   showScreen('home');
 
@@ -211,12 +233,21 @@ function renderHome() {
     banner.textContent = '';
   }
 
+  // ── U5: First-time empty state ──
+  if (!Object.keys(progress.questions).length && !progress.sessions.length) {
+    banner.className = 'banner info';
+    banner.textContent = '👋 Welcome! Select a topic below, then tap Learn to start.';
+  }
+
   // ── Meta row ──
   const total    = Object.keys(progress.questions).length;
   const sessions = progress.sessions.length;
+  const streak   = studyStreak();
+  const streakHtml = streak > 0 ? `<span>🔥 <b>${streak}</b> day streak</span>` : '';
   document.getElementById('home-meta').innerHTML =
     `<span>Studied: <b>${total}</b> cards</span>
-     <span>Sessions: <b>${sessions}</b></span>`;
+     <span>Sessions: <b>${sessions}</b></span>
+     ${streakHtml}`;
 
   // ── Leech badge ──
   const leechCount = Object.values(progress.questions).filter(r => r.is_leech).length;
@@ -348,7 +379,7 @@ function weightedSample(pool, n) {
 
 function startLearn() {
   const pool = shuffle(weightedSample(getPool(), 20));
-  if (pool.length === 0) { alert('No questions for selected topic.'); return; }
+  if (pool.length === 0) { showToast('No questions for selected topic.', 'error'); return; }
   session = { mode: 'learn', topic: selectedTopic, cards: pool, idx: 0, score: 0, total: pool.length,
               hintUsed: false, revealed: false, examEnd: null, timerHandle: null };
   showScreen('learn');
@@ -430,7 +461,7 @@ function rateLearnCard(quality) {
 
 function startQuiz() {
   const pool = shuffle(weightedSample(getPool(), 20));
-  if (pool.length === 0) { alert('No questions for selected topic.'); return; }
+  if (pool.length === 0) { showToast('No questions for selected topic.', 'error'); return; }
   session = { mode: 'quiz', topic: selectedTopic, cards: pool, idx: 0, score: 0, total: pool.length,
               hintUsed: false, revealed: false, examEnd: null, timerHandle: null };
   showScreen('quiz');
@@ -509,6 +540,7 @@ function submitQuizAnswer() {
   if (!raw) { input.focus(); return; }
 
   input.disabled = true;
+  input.blur();
   document.getElementById('quiz-submit-btn').classList.add('hidden');
   document.getElementById('quiz-hint-btn').classList.add('hidden');
 
@@ -553,7 +585,7 @@ function nextQuizQuestion() {
 
 function startMC() {
   const pool = shuffle(weightedSample(getPool(), 20));
-  if (pool.length < 4) { alert('Need at least 4 questions for Multiple Choice.'); return; }
+  if (pool.length < 4) { showToast('Need at least 4 questions for Multiple Choice.', 'error'); return; }
   session = { mode: 'mc', topic: selectedTopic, cards: pool, idx: 0, score: 0, total: pool.length,
               hintUsed: false, revealed: false, examEnd: null, timerHandle: null };
   showScreen('mc');
@@ -637,7 +669,7 @@ function startWeak() {
     return rec.accuracy < 0.6;
   });
   if (pool.length === 0) {
-    alert('No weak spots yet! Study some cards first, or you\'re doing great.');
+    showToast('No weak spots yet! Study some cards first, or you\'re doing great.', 'info', 4000);
     return;
   }
   pool = shuffle(pool);
@@ -656,7 +688,7 @@ function startWeak() {
 function startSRS() {
   const pool = shuffle(getDueQuestions());
   if (pool.length === 0) {
-    alert('No cards due for review! Check back later.');
+    showToast('No cards due for review! Check back later.', 'info');
     return;
   }
   session = { mode: 'srs', topic: null, cards: pool, idx: 0, score: 0, total: pool.length,
@@ -811,14 +843,21 @@ function onImportFile(event) {
   reader.onload = e => {
     try {
       const data = JSON.parse(e.target.result);
+      // U8: confirm overwrite if existing data present
+      const hasData = Object.keys(progress.questions).length > 0;
+      if (hasData) {
+        if (!window.confirm('This will overwrite your existing progress. Continue?')) {
+          event.target.value = ''; return;
+        }
+      }
       // merge: prefer imported data but keep local srs if imported has none
       progress.questions = data.questions || progress.questions;
       progress.sessions  = data.sessions  || progress.sessions;
       progress.srs       = data.srs       || progress.srs;
       saveProgress();
       renderHome();
-      alert('Progress imported successfully!');
-    } catch(_) { alert('Invalid file — could not import.'); }
+      showToast('Progress imported successfully!', 'success');
+    } catch(_) { showToast('Invalid file — could not import.', 'error'); }
   };
   reader.readAsText(file);
   event.target.value = '';
@@ -853,6 +892,37 @@ function applyTheme() {
 }
 
 /* ══════════════════════════════════════════
+   SESSION CHECKPOINT (F7)
+══════════════════════════════════════════ */
+
+window.addEventListener('beforeunload', () => {
+  if (session.mode && session.idx > 0) {
+    localStorage.setItem('session_ckpt', JSON.stringify({
+      mode:      session.mode,
+      topic:     session.topic,
+      idx:       session.idx,
+      total:     session.total,
+      timestamp: Date.now(),
+    }));
+  }
+});
+
+function resumeSession() {
+  const ckpt = JSON.parse(localStorage.getItem('session_ckpt') || 'null');
+  localStorage.removeItem('session_ckpt');
+  document.getElementById('resume-banner').classList.add('hidden');
+  if (!ckpt) return;
+  // Re-launch the same mode so the user continues from a fresh start of that mode
+  // (full state cannot be restored without the card list, so we restart the mode)
+  launchMode(ckpt.mode);
+}
+
+function dismissResume() {
+  localStorage.removeItem('session_ckpt');
+  document.getElementById('resume-banner').classList.add('hidden');
+}
+
+/* ══════════════════════════════════════════
    INIT
 ══════════════════════════════════════════ */
 
@@ -874,6 +944,17 @@ async function init() {
   }
 
   renderHome();
+
+  // F7: Check for an interrupted session checkpoint (< 1 hour old)
+  const ckpt = JSON.parse(localStorage.getItem('session_ckpt') || 'null');
+  if (ckpt && Date.now() - ckpt.timestamp < 3600000) {
+    const modeLabel = { learn:'Learn', quiz:'Quiz', mc:'Multiple Choice',
+                        weak:'Weak Spots', srs:'SRS Review', exam:'Exam' }[ckpt.mode] || ckpt.mode;
+    const topicPart = ckpt.topic ? ` — ${ckpt.topic}` : '';
+    document.getElementById('resume-banner-text').textContent =
+      `Resume ${modeLabel}${topicPart}? (${ckpt.idx}/${ckpt.total} done)`;
+    document.getElementById('resume-banner').classList.remove('hidden');
+  }
 }
 
 document.addEventListener('DOMContentLoaded', init);

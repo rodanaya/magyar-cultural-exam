@@ -201,6 +201,12 @@ def record_attempt(progress: dict, q: dict, score: float) -> None:
     if score >= 0.6: entry["correct"] += 1
     entry["last_seen"] = datetime.datetime.now().isoformat()
     entry["accuracy"] = entry["correct"] / entry["attempts"]
+    # F3 — Leech detection
+    if score >= 0.6:
+        entry["consecutive_wrong"] = 0
+    else:
+        entry["consecutive_wrong"] = entry.get("consecutive_wrong", 0) + 1
+    entry["is_leech"] = entry.get("consecutive_wrong", 0) >= 5
 
 
 def record_session(progress: dict, mode: str, score: float, total: int, topic=None) -> None:
@@ -215,10 +221,70 @@ def get_questions_for_topic(questions: list, topic: int) -> list:
 
 def get_weak_questions(progress: dict, questions: list) -> list:
     pq = progress.get("questions", {})
-    return [
+    weak_qs = [
         q for q in questions
         if (lambda e: e is None or e.get("accuracy", 0.0) < WEAK_THRESHOLD)(pq.get(question_id(q["question_hu"])))
     ]
+    # Sort so worst-accuracy questions come first
+    return sorted(weak_qs, key=lambda q: progress["questions"].get(question_id(q["question_hu"]), {}).get("accuracy", 0.0))
+
+
+# F2 — Weighted sampling
+def weighted_sample(questions: list, n: int, progress: dict) -> list:
+    """
+    Sample up to n questions, weighting by inverse accuracy so that
+    less-accurate questions are more likely to be selected.
+    """
+    pq = progress.get("questions", {})
+    weights = []
+    for q in questions:
+        qid = question_id(q["question_hu"])
+        accuracy = pq.get(qid, {}).get("accuracy", 0.5)
+        weight = 1.0 - min(accuracy, 0.9)
+        weights.append(weight)
+    k = min(n, len(questions))
+    if k <= 0:
+        return []
+    total_weight = sum(weights)
+    if total_weight == 0:
+        return random.sample(questions, k)
+    # Weighted sampling without replacement
+    selected = []
+    remaining = list(zip(weights, questions))
+    for _ in range(k):
+        if not remaining:
+            break
+        tw = sum(w for w, _ in remaining)
+        r = random.uniform(0, tw)
+        cumulative = 0.0
+        chosen_idx = 0
+        for i, (w, _) in enumerate(remaining):
+            cumulative += w
+            if r <= cumulative:
+                chosen_idx = i
+                break
+        selected.append(remaining[chosen_idx][1])
+        remaining.pop(chosen_idx)
+    return selected
+
+
+# F5 — SRS forecast
+def srs_forecast(srs_data: dict, n: int = 7) -> list:
+    """
+    Return a list of daily due counts for the next n days (index 0 = today).
+    A question is due on day D if its due date <= (today + D days).isoformat().
+    """
+    today = datetime.date.today()
+    counts = []
+    for d in range(n):
+        target = (today + datetime.timedelta(days=d)).isoformat()
+        count = sum(
+            1 for card in srs_data.values()
+            if card.get("due", "9999-99-99") <= target
+        )
+        counts.append(count)
+    return counts
+
 
 # --- Keyboard builders ---
 
@@ -255,11 +321,14 @@ def reveal_keyboard() -> InlineKeyboardMarkup:
 
 
 def rating_keyboard() -> InlineKeyboardMarkup:
-    return InlineKeyboardMarkup([[
-        InlineKeyboardButton("1 ✗ Didn’t know", callback_data="learn:rate:1"),
-        InlineKeyboardButton("2 ~ Almost", callback_data="learn:rate:2"),
-        InlineKeyboardButton("3 ✓ Got it!", callback_data="learn:rate:3"),
-    ]])
+    # U11 — 5-button rating scale in 2 rows
+    return InlineKeyboardMarkup([
+        [InlineKeyboardButton("1 ✗ No", callback_data="learn:rate:1"),
+         InlineKeyboardButton("2 Hard", callback_data="learn:rate:2")],
+        [InlineKeyboardButton("3 OK", callback_data="learn:rate:3"),
+         InlineKeyboardButton("4 Easy", callback_data="learn:rate:4"),
+         InlineKeyboardButton("5 ✓ Yes", callback_data="learn:rate:5")],
+    ])
 
 
 def next_keyboard(cb: str = "next") -> InlineKeyboardMarkup:
@@ -316,6 +385,15 @@ def remove_job_if_exists(name: str, context: ContextTypes.DEFAULT_TYPE) -> bool:
     for job in current_jobs:
         job.schedule_removal()
     return bool(current_jobs)
+
+
+# B4 — Safe edit helper
+async def safe_edit(query, text, **kwargs):
+    """Try to edit the existing message; fall back to a new reply if that fails."""
+    try:
+        await query.edit_message_text(text, **kwargs)
+    except Exception:
+        await query.message.reply_text(text, **kwargs)
 
 
 async def send_srs_reminder(context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -418,6 +496,7 @@ async def send_statistics(reply_fn, context: ContextTypes.DEFAULT_TYPE) -> None:
     progress = ud.get("progress", init_progress())
     sessions = progress.get("sessions", [])
     pq = progress.get("questions", {})
+    srs_data = progress.get("srs", {})
     dates = sorted({s["date"][:10] for s in sessions}, reverse=True)
     streak, today = 0, datetime.date.today()
     for i, d in enumerate(dates):
@@ -433,14 +512,29 @@ async def send_statistics(reply_fn, context: ContextTypes.DEFAULT_TYPE) -> None:
             topic_lines.append(f"T{tid} {TOPIC_EMOJI[tid]} ░░░░░░░░░░ no data")
     all_q: list = context.bot_data.get("questions", [])
     srs_due = len(get_due_questions(progress, all_q))
+    # F3 — Leech count
+    leech_count = sum(1 for e in pq.values() if e.get("is_leech", False))
     out = [
         "<b>📊 Your Statistics</b>\n",
         f"Sessions: <b>{len(sessions)}</b>",
         f"Streak: <b>{streak} day(s)</b>",
         f"Questions tracked: <b>{len(pq)}</b>",
-        f"SRS due today: <b>{srs_due}</b>\n",
-        "<b>Topic Accuracy:</b>",
-    ] + topic_lines
+        f"SRS due today: <b>{srs_due}</b>",
+        f"Leeches: <b>{leech_count}</b>\n",
+    ]
+    # F5 — SRS 7-day forecast
+    if srs_data:
+        forecast = srs_forecast(srs_data, n=7)
+        max_count = max(forecast) if forecast else 1
+        max_count = max(max_count, 1)
+        forecast_lines = ["📅 7-day forecast:"]
+        day_labels = ["Today"] + [f"Day {i+2}" for i in range(6)]
+        for i, (label, count) in enumerate(zip(day_labels, forecast)):
+            bar_filled = round((count / max_count) * 10)
+            bar = "█" * bar_filled + "░" * (10 - bar_filled)
+            forecast_lines.append(f"{label:<6} {bar}  {count}")
+        out.append("\n".join(forecast_lines) + "\n")
+    out += ["<b>Topic Accuracy:</b>"] + topic_lines
     await reply_fn("\n".join(out), parse_mode="HTML", reply_markup=main_menu_keyboard())
 
 
@@ -525,25 +619,25 @@ async def callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -
         mode = data.split(":")[1]
         if mode in ("learn", "quiz", "mc"):
             label = {"learn": "Learn", "quiz": "Quiz", "mc": "Multiple Choice"}[mode]
-            await query.edit_message_text(f"Select a topic for <b>{label}</b> mode:",
-                                           reply_markup=topic_keyboard(mode), parse_mode="HTML")
+            await safe_edit(query, f"Select a topic for <b>{label}</b> mode:",
+                            reply_markup=topic_keyboard(mode), parse_mode="HTML")
         elif mode == "weak":
             qs = get_weak_questions(ud["progress"], all_q)
             if not qs:
-                await query.edit_message_text("🎉 No weak spots! You are doing great!",
-                                               reply_markup=main_menu_keyboard())
+                await safe_edit(query, "🎉 No weak spots! You are doing great!",
+                                reply_markup=main_menu_keyboard())
                 return
             start_session(ud, "quiz", qs)
-            await send_quiz_question(query.edit_message_text, ud)
+            await send_quiz_question(lambda *a, **kw: safe_edit(query, *a, **kw), ud)
         elif mode == "srs":
             qs = get_due_questions(ud["progress"], all_q)
             if not qs:
-                await query.edit_message_text("⏰ No SRS cards due today! Check back tomorrow.",
-                                               reply_markup=main_menu_keyboard())
+                await safe_edit(query, "⏰ No SRS cards due today! Check back tomorrow.",
+                                reply_markup=main_menu_keyboard())
                 return
             random.shuffle(qs)
             start_session(ud, "learn", qs[:50])
-            await send_learn_card(query.edit_message_text, ud)
+            await send_learn_card(lambda *a, **kw: safe_edit(query, *a, **kw), ud)
         elif mode == "exam":
             exam_qs = []
             for t in range(1, 7):
@@ -551,9 +645,11 @@ async def callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -
                 exam_qs.extend(random.sample(tqs, 2) if len(tqs) >= 2 else tqs)
             random.shuffle(exam_qs)
             start_session(ud, "exam", exam_qs)
-            await send_quiz_question(query.edit_message_text, ud)
+            # F6 — store exam start time
+            ud["session"]["exam_start"] = datetime.datetime.now().isoformat()
+            await send_quiz_question(lambda *a, **kw: safe_edit(query, *a, **kw), ud)
         elif mode == "stats":
-            await send_statistics(query.edit_message_text, context)
+            await send_statistics(lambda *a, **kw: safe_edit(query, *a, **kw), context)
 
     elif data.startswith("topic:"):
         _, mode, tid_str = data.split(":")
@@ -561,23 +657,28 @@ async def callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -
         ud["selected_topic"] = tid
         qs = get_questions_for_topic(all_q, tid)
         if not qs:
-            await query.edit_message_text("No questions for that topic.", reply_markup=main_menu_keyboard())
+            await safe_edit(query, "No questions for that topic.", reply_markup=main_menu_keyboard())
             return
-        start_session(ud, mode, list(qs))
-        if mode == "learn": await send_learn_card(query.edit_message_text, ud)
-        elif mode == "mc": await send_mc_question(query.edit_message_text, ud, all_q)
-        elif mode == "quiz": await send_quiz_question(query.edit_message_text, ud)
+        # F2 — use weighted_sample for non-SRS modes
+        sampled = weighted_sample(list(qs), len(qs), ud["progress"])
+        start_session(ud, mode, sampled)
+        if mode == "learn":
+            await send_learn_card(lambda *a, **kw: safe_edit(query, *a, **kw), ud)
+        elif mode == "mc":
+            await send_mc_question(lambda *a, **kw: safe_edit(query, *a, **kw), ud, all_q)
+        elif mode == "quiz":
+            await send_quiz_question(lambda *a, **kw: safe_edit(query, *a, **kw), ud)
 
     elif data.startswith("back:"):
         ud["state"] = "home"
-        await query.edit_message_text(WELCOME_TEXT, reply_markup=main_menu_keyboard(), parse_mode="HTML")
+        await safe_edit(query, WELCOME_TEXT, reply_markup=main_menu_keyboard(), parse_mode="HTML")
 
     elif data == "learn:reveal":
         sess = ud["session"]
         idx = sess["idx"]
         q = sess["questions"][idx]
         sess["revealed"] = True
-        await query.edit_message_text(
+        await safe_edit(query,
             format_question_text(q, idx, len(sess["questions"]), "Learn") + format_answer_text(q),
             reply_markup=rating_keyboard(), parse_mode="HTML")
 
@@ -586,7 +687,8 @@ async def callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -
         sess = ud["session"]
         idx = sess["idx"]
         q = sess["questions"][idx]
-        score = (rating - 1) / 2.0
+        # U11 — updated score mapping for 5-button scale
+        score = (rating - 1) / 4.0
         update_srs(ud["progress"], question_id(q["question_hu"]), srs_quality(score))
         record_attempt(ud["progress"], q, score)
         sess["score"] += score
@@ -596,11 +698,11 @@ async def callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -
             avg = sess["score"] / total if total > 0 else 0.0
             record_session(ud["progress"], "learn", avg, total, ud.get("selected_topic"))
             ud["state"] = "home"
-            await query.edit_message_text(
+            await safe_edit(query,
                 f"<b>🎉 Session Complete!</b>\n\nCards: <b>{total}</b>  Avg: <b>{avg:.0%}</b>",
                 reply_markup=main_menu_keyboard(), parse_mode="HTML")
         else:
-            await send_learn_card(query.edit_message_text, ud)
+            await send_learn_card(lambda *a, **kw: safe_edit(query, *a, **kw), ud)
 
     elif data.startswith("mc:answer:"):
         choice = int(data.split(":")[2])
@@ -621,7 +723,7 @@ async def callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -
         feedback = f"{icon} <b>{verdict}</b>"
         if not is_correct: feedback += f"\nCorrect: <b>{labels[correct_idx]}) {correct_ans}</b>"
         text = format_question_text(q, idx, len(sess["questions"]), "Multiple Choice") + f"\n\n{feedback}"
-        await query.edit_message_text(text, reply_markup=next_keyboard("mc:next"), parse_mode="HTML")
+        await safe_edit(query, text, reply_markup=next_keyboard("mc:next"), parse_mode="HTML")
 
     elif data == "mc:next":
         sess = ud["session"]
@@ -632,11 +734,11 @@ async def callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -
             pct = int(sc / total * 100) if total > 0 else 0
             record_session(ud["progress"], "mc", sc, total, ud.get("selected_topic"))
             ud["state"] = "home"
-            await query.edit_message_text(
+            await safe_edit(query,
                 f"<b>🎯 Multiple Choice Complete!</b>\n\nScore: <b>{round(sc)}/{total}</b> ({pct}%)",
                 reply_markup=main_menu_keyboard(), parse_mode="HTML")
         else:
-            await send_mc_question(query.edit_message_text, ud, all_q)
+            await send_mc_question(lambda *a, **kw: safe_edit(query, *a, **kw), ud, all_q)
 
     elif data == "quiz:hint":
         sess = ud["session"]
@@ -647,7 +749,7 @@ async def callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -
         sess["hint_used"] = True
         text = format_question_text(q, idx, len(sess["questions"]), "Quiz")
         text += f"\n\n<b>💡 Hint (-20%):</b> {masked}\n<i>Type your answer below...</i>"
-        await query.edit_message_text(text, reply_markup=hint_next_keyboard(), parse_mode="HTML")
+        await safe_edit(query, text, reply_markup=hint_next_keyboard(), parse_mode="HTML")
 
     elif data == "quiz:skip":
         sess = ud["session"]
@@ -655,18 +757,30 @@ async def callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -
         record_attempt(ud["progress"], q, 0.0)
         update_srs(ud["progress"], question_id(q["question_hu"]), 0)
         sess["idx"] += 1
-        if sess["idx"] >= len(sess["questions"]): await finish_quiz(query.edit_message_text, ud, context)
-        else: await send_quiz_question(query.edit_message_text, ud)
+        if sess["idx"] >= len(sess["questions"]):
+            await finish_quiz(lambda *a, **kw: safe_edit(query, *a, **kw), ud, context)
+        else:
+            await send_quiz_question(lambda *a, **kw: safe_edit(query, *a, **kw), ud)
 
     elif data == "quiz:next":
         sess = ud["session"]
-        if sess["idx"] >= len(sess["questions"]): await finish_quiz(query.edit_message_text, ud, context)
-        else: await send_quiz_question(query.edit_message_text, ud)
+        if sess["idx"] >= len(sess["questions"]):
+            await finish_quiz(lambda *a, **kw: safe_edit(query, *a, **kw), ud, context)
+        else:
+            await send_quiz_question(lambda *a, **kw: safe_edit(query, *a, **kw), ud)
 
     elif data == "exam:next":
         sess = ud["session"]
-        if sess["idx"] >= len(sess["questions"]): await finish_exam(query.edit_message_text, ud)
-        else: await send_quiz_question(query.edit_message_text, ud)
+        # F6 — enforce exam time limit
+        if sess.get("mode") == "exam" and sess.get("exam_start"):
+            elapsed = (datetime.datetime.now() - datetime.datetime.fromisoformat(sess["exam_start"])).seconds
+            if elapsed > 45 * 60:
+                await finish_exam(lambda *a, **kw: safe_edit(query, *a, **kw), ud)
+                return
+        if sess["idx"] >= len(sess["questions"]):
+            await finish_exam(lambda *a, **kw: safe_edit(query, *a, **kw), ud)
+        else:
+            await send_quiz_question(lambda *a, **kw: safe_edit(query, *a, **kw), ud)
 
 
 async def message_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -677,6 +791,12 @@ async def message_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
         await update.message.reply_text("Use /start to open the study menu.", reply_markup=main_menu_keyboard())
         return
     sess = ud["session"]
+    # F6 — enforce exam time limit on message answers too
+    if sess.get("mode") == "exam" and sess.get("exam_start"):
+        elapsed = (datetime.datetime.now() - datetime.datetime.fromisoformat(sess["exam_start"])).seconds
+        if elapsed > 45 * 60:
+            await finish_exam(update.message.reply_text, ud)
+            return
     q = sess["questions"][sess["idx"]]
     user_input = update.message.text.strip()
     score, matched, missed = score_answer(user_input, q.get("keywords_hu", []))
@@ -732,4 +852,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

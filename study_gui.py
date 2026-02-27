@@ -21,9 +21,9 @@ import unicodedata
 
 try:
     from textual.app import App, ComposeResult
-    from textual.widgets import Header, Footer, Button, Static, Input, Rule
+    from textual.widgets import Header, Footer, Button, Static, Input, Rule, ProgressBar
     from textual.containers import Container, ScrollableContainer, Horizontal, Vertical
-    from textual.screen import Screen
+    from textual.screen import Screen, ModalScreen
     from textual.binding import Binding
     from textual import on
 except ImportError:
@@ -438,7 +438,7 @@ class HomeScreen(Screen):
             random.shuffle(qs)
             app.push_screen(QuizScreen(qs, "srs"))
         elif mode == "exam":
-            app.push_screen(QuizScreen(self._exam_questions(), "exam", is_exam=True))
+            app.push_screen(ExamBriefingScreen(self._exam_questions()))
         elif mode == "vocab":
             app.push_screen(VocabScreen(app.selected_topic))
         elif mode == "stats":
@@ -454,6 +454,8 @@ class HomeScreen(Screen):
             if entry is None or acc < 0.6:
                 weak.append((acc, q))
         weak.sort(key=lambda x: x[0])
+        if topic := self.app.selected_topic:
+            weak = [(a, q) for a, q in weak if q.get("topic") == topic]
         return [q for _, q in weak]
 
     def _exam_questions(self) -> list:
@@ -495,6 +497,32 @@ class HomeScreen(Screen):
             self._launch(mode_map[bid])
 
 
+# ── Confirm Screen ────────────────────────────────────────────────────────────
+
+
+class ConfirmScreen(ModalScreen):
+    """Modal dialog asking the user to confirm leaving mid-session."""
+
+    def __init__(self, message: str = "Leave this session? Progress will not be saved.") -> None:
+        super().__init__()
+        self.message = message
+
+    def compose(self) -> ComposeResult:
+        with Container(id="confirm-dialog"):
+            yield Static(self.message, id="confirm-message")
+            with Horizontal(id="confirm-buttons"):
+                yield Button("Yes, leave", id="btn-confirm-yes", variant="error")
+                yield Button("No, stay",   id="btn-confirm-no",  variant="primary")
+
+    @on(Button.Pressed, "#btn-confirm-yes")
+    def on_yes(self) -> None:
+        self.dismiss(True)
+
+    @on(Button.Pressed, "#btn-confirm-no")
+    def on_no(self) -> None:
+        self.dismiss(False)
+
+
 # ── Learn Screen ──────────────────────────────────────────────────────────────
 
 
@@ -507,6 +535,7 @@ class LearnScreen(Screen):
         Binding("1",      "rate_bad",   "1 Didn't know", show=True),
         Binding("3",      "rate_ok",    "3 Got it",    show=True),
         Binding("5",      "rate_good",  "5 Easy",      show=True),
+        Binding("s",      "skip",       "Skip",        show=True),
         Binding("right",  "next_card",  "Next",        show=False),
         Binding("left",   "prev_card",  "Prev",        show=False),
         Binding("escape", "go_home",    "Home"),
@@ -523,6 +552,7 @@ class LearnScreen(Screen):
         yield Header(show_clock=True)
         with Container(id="learn-layout"):
             yield Static(id="learn-progress", classes="section-title")
+            yield ProgressBar(total=len(self.questions), id="session-bar", show_eta=False)
             yield Rule()
             with ScrollableContainer(id="card-area"):
                 yield Static(id="card-question", classes="question-text")
@@ -533,6 +563,7 @@ class LearnScreen(Screen):
                     yield Button("1  Didn't know", id="btn-rate-1", variant="error")
                     yield Button("2  Almost",      id="btn-rate-2", variant="warning")
                     yield Button("3  Got it!",     id="btn-rate-3", variant="success")
+                    yield Button("Skip  [S]",      id="btn-skip",   variant="default")
             yield Rule()
             with Horizontal(id="learn-nav"):
                 yield Button("← Prev",  id="btn-prev", variant="default")
@@ -545,9 +576,10 @@ class LearnScreen(Screen):
     def _show_card(self) -> None:
         q = self.questions[self.idx]
         total = len(self.questions)
-        diff = {"easy": "★", "medium": "★★", "hard": "★★★"}.get(
-            q.get("difficulty", "medium"), "★★"
+        diff = {1: "★", 2: "★★", 3: "★★★"}.get(
+            q.get("difficulty", 1), "★"
         )
+        self.query_one("#session-bar", ProgressBar).update(progress=self.idx)
         self.query_one("#learn-progress", Static).update(
             f"[bold]Learn — Topic {self.topic}: {TOPIC_SHORT.get(self.topic, '')}[/bold]  "
             f"[dim]Card {self.idx + 1}/{total}[/dim]  [yellow]{diff}[/yellow]"
@@ -643,8 +675,27 @@ class LearnScreen(Screen):
             self.idx -= 1
             self._show_card()
 
+    def action_skip(self) -> None:
+        """Skip the current card without updating SRS."""
+        self.idx += 1
+        if self.idx >= len(self.questions):
+            record_session(
+                self.app.progress, "learn", 0, len(self.questions), self.topic
+            )
+            save_progress(self.app.progress, PROGRESS_FILE)
+            self.notify("All cards reviewed!", severity="information")
+            self.app.pop_screen()
+        else:
+            self._show_card()
+
     def action_go_home(self) -> None:
-        self.app.pop_screen()
+        if self.idx > 0:
+            def _handle_confirm(confirmed: bool) -> None:
+                if confirmed:
+                    self.app.pop_screen()
+            self.app.push_screen(ConfirmScreen(), _handle_confirm)
+        else:
+            self.app.pop_screen()
 
     # ── Button handlers ───────────────────────────────────────────────────────
 
@@ -668,9 +719,13 @@ class LearnScreen(Screen):
     def on_prev(self) -> None:
         self.action_prev_card()
 
+    @on(Button.Pressed, "#btn-skip")
+    def on_skip(self) -> None:
+        self.action_skip()
+
     @on(Button.Pressed, "#btn-home")
     def on_home(self) -> None:
-        self.app.pop_screen()
+        self.action_go_home()
 
 
 # ── Quiz Screen ───────────────────────────────────────────────────────────────
@@ -708,6 +763,7 @@ class QuizScreen(Screen):
         yield Header(show_clock=True)
         with Container(id="quiz-layout"):
             yield Static(id="quiz-header", classes="section-title")
+            yield ProgressBar(total=len(self.questions), id="session-bar", show_eta=False)
             yield Rule()
             with ScrollableContainer(id="quiz-area"):
                 yield Static(id="quiz-question", classes="question-text")
@@ -762,9 +818,10 @@ class QuizScreen(Screen):
 
         q = self.questions[self.idx]
         total = len(self.questions)
-        diff = {"easy": "★", "medium": "★★", "hard": "★★★"}.get(
-            q.get("difficulty", "medium"), "★★"
+        diff = {1: "★", 2: "★★", 3: "★★★"}.get(
+            q.get("difficulty", 1), "★"
         )
+        self.query_one("#session-bar", ProgressBar).update(progress=self.idx)
         t_num = q.get("topic", "?")
         t_name = TOPIC_SHORT.get(t_num, f"Topic {t_num}")
 
@@ -786,7 +843,7 @@ class QuizScreen(Screen):
         inp.focus()
 
         self.query_one("#btn-submit", Button).display = True
-        self.query_one("#btn-hint",   Button).display = True
+        self.query_one("#btn-hint",   Button).display = not self.is_exam
         self.query_one("#btn-next",   Button).display = False
         self.answered = False
         self.hint_used = False
@@ -794,6 +851,8 @@ class QuizScreen(Screen):
     # ── Hint ──────────────────────────────────────────────────────────────────
 
     def _show_hint(self) -> None:
+        if self.is_exam:
+            return
         if self.answered or self.hint_used:
             return
         self.hint_used = True
@@ -885,7 +944,13 @@ class QuizScreen(Screen):
     # ── Keyboard actions ──────────────────────────────────────────────────────
 
     def action_go_back(self) -> None:
-        self.app.pop_screen()
+        if self.idx > 0:
+            def _handle_confirm(confirmed: bool) -> None:
+                if confirmed:
+                    self.app.pop_screen()
+            self.app.push_screen(ConfirmScreen(), _handle_confirm)
+        else:
+            self.app.pop_screen()
 
     def action_hint(self) -> None:
         self._show_hint()
@@ -923,7 +988,7 @@ class QuizScreen(Screen):
 
     @on(Button.Pressed, "#btn-back")
     def on_back(self) -> None:
-        self.app.pop_screen()
+        self.action_go_back()
 
 
 # ── Multiple Choice Screen ────────────────────────────────────────────────────
@@ -1068,7 +1133,13 @@ class MultiChoiceScreen(Screen):
             self._show_question()
 
     def action_go_back(self) -> None:
-        self.app.pop_screen()
+        if self.idx > 0:
+            def _handle_confirm(confirmed: bool) -> None:
+                if confirmed:
+                    self.app.pop_screen()
+            self.app.push_screen(ConfirmScreen(), _handle_confirm)
+        else:
+            self.app.pop_screen()
 
     # ── Button handlers ───────────────────────────────────────────────────────
 
@@ -1081,7 +1152,7 @@ class MultiChoiceScreen(Screen):
             self.idx += 1
             self._show_question()
         elif bid == "btn-back":
-            self.app.pop_screen()
+            self.action_go_back()
 
 
 # ── Vocab Screen ──────────────────────────────────────────────────────────────
@@ -1375,6 +1446,50 @@ class StatsScreen(Screen):
         self.app.pop_screen()
 
 
+# ── Exam Briefing Screen ──────────────────────────────────────────────────────
+
+
+class ExamBriefingScreen(Screen):
+    """Briefing screen shown before the mock exam starts."""
+
+    BINDINGS = [Binding("escape", "go_back", "Back")]
+
+    def __init__(self, exam_questions: list) -> None:
+        super().__init__()
+        self.exam_questions = exam_questions
+
+    def compose(self) -> ComposeResult:
+        yield Header(show_clock=True)
+        with Container(id="briefing-layout"):
+            yield Static(
+                "[bold]📋 Mock Exam[/bold]",
+                id="briefing-title",
+                classes="section-title",
+            )
+            yield Rule()
+            yield Static(
+                "\n[bold]Rules:[/bold]\n"
+                "  • 30 questions · 2 per topic · 45 minutes · Pass: 60%\n\n"
+                "[dim]Hints are disabled during the exam.[/dim]\n",
+                id="briefing-rules",
+            )
+            yield Button("Start Exam", id="btn-start-exam", variant="primary")
+            yield Button("⌂ Back  [Esc]", id="btn-back", variant="warning")
+        yield Footer()
+
+    def action_go_back(self) -> None:
+        self.app.pop_screen()
+
+    @on(Button.Pressed, "#btn-start-exam")
+    def on_start(self) -> None:
+        self.app.pop_screen()
+        self.app.push_screen(QuizScreen(self.exam_questions, "exam", is_exam=True))
+
+    @on(Button.Pressed, "#btn-back")
+    def on_back(self) -> None:
+        self.app.pop_screen()
+
+
 # ── App ───────────────────────────────────────────────────────────────────────
 
 
@@ -1445,9 +1560,23 @@ class StudyApp(App):
 
     #stats-scroll { padding: 1 2; height: 1fr; }
 
-    Input  { margin: 1 0 0 0; }
-    Button { margin: 0 1 0 0; }
-    Rule   { margin: 1 0; }
+    Input       { margin: 1 0 0 0; }
+    Button      { margin: 0 1 0 0; }
+    Rule        { margin: 1 0; }
+    ProgressBar { height: 1; margin: 0 1; }
+
+    ConfirmScreen {
+        align: center middle;
+    }
+    #confirm-dialog {
+        width: 60;
+        height: auto;
+        padding: 2 4;
+        background: $surface;
+        border: thick $primary;
+    }
+    #confirm-message { margin-bottom: 2; }
+    #confirm-buttons { height: 3; align: center middle; }
     """
 
     def __init__(self) -> None:
