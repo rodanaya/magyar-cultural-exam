@@ -1,13 +1,44 @@
 # Flashcards — Magyar Kulturális Ismereti Vizsga
 
-> **Használat:** Nyomtasd ki · Vágd szét a sorok mentén · Kérdezd magad (vagy kérj segítséget)
+> **A vizsga magyarul van! Tanuld meg a magyar kifejezéseket!**
+> Nyomtasd ki · Vágd szét a sorok mentén · Hajtsd félbe a vonal mentén: bal = kérdés, jobb = válasz
 
 ---
 
 ## Téma 1 · Nemzeti Jelképek és Ünnepek
 
-| # | KÉRDÉS | VÁLASZ |
-|---|--------|--------|
+### Kulcsszavak — Téma 1
+
+| Magyar kifejezés | Jelentés (angolul) |
+|-----------------|-------------------|
+| **zászló / lobogó** | flag |
+| **sáv** | stripe |
+| **piros** | red |
+| **fehér** | white |
+| **zöld** | green |
+| **erő** | strength |
+| **hűség** | loyalty |
+| **remény** | hope |
+| **címer** | coat of arms |
+| **kettős kereszt** | double cross |
+| **hármas halom** | triple hill |
+| **Szent Korona** | Holy Crown |
+| **koronázási jelvények** | coronation insignia |
+| **jogar** | sceptre |
+| **országalma** | orb |
+| **palást** | coronation mantle |
+| **Himnusz** | national anthem |
+| **Szózat** | appeal / second anthem |
+| **nemzeti ünnep** | national holiday |
+| **forradalom** | revolution |
+| **szabadságharc** | war of independence |
+| **kokárda** | rosette / cockade |
+| **lyukas zászló** | flag with a hole (1956 symbol) |
+
+### Kérdés-Válasz kártyák
+
+| # | ✏️ KÉRDÉS (hajtsd ide) | ✅ VÁLASZ (hajtsd el) |
+|---|----------------------|---------------------|
 | 1 | Milyen színű a magyar nemzeti zászló, és hogyan helyezkednek el a sávok? | A magyar zászló három vízszintes sávból áll: felül piros, középen fehér, alul zöld. |
 | 2 | Mi látható a magyar címer bal oldalán? | A magyar címer bal oldalán négy ezüst és négy piros vágás (sáv) látható, amely az Árpád-házi királyokat jelképezi. |
 | 3 | Mi látható a magyar címer jobb oldalán? | A magyar címer jobb oldalán egy hármas halmon álló kettős kereszt látható. |
@@ -32,8 +63,41 @@
 
 ## Téma 2 · Magyarország Történelme
 
-| # | KÉRDÉS | VÁLASZ |
-|---|--------|--------|
+### Kulcsszavak — Téma 2
+
+| Magyar kifejezés | Jelentés (angolul) |
+|-----------------|-------------------|
+| **honfoglalás** | conquest / settling of the homeland |
+| **törzs** | tribe |
+| **fejedelem** | prince / chieftain |
+| **Kárpát-medence** | Carpathian Basin |
+| **államalapítás** | foundation of the state |
+| **koronázás** | coronation |
+| **király** | king |
+| **Aranybulla** | Golden Bull (1222) |
+| **tatárjárás** | Mongol invasion |
+| **ostrom** | siege |
+| **török hódoltság** | Ottoman occupation |
+| **vereség** | defeat |
+| **győzelem** | victory |
+| **forradalom** | revolution |
+| **szabadságharc** | war of independence |
+| **vértanú** | martyr |
+| **honvéd** | homeland defender |
+| **kiegyezés** | Compromise / Ausgleich |
+| **Monarchia** | Austro-Hungarian Monarchy |
+| **rendszerváltás** | regime change |
+| **békediktátum / békeszerződés** | peace treaty / diktat |
+| **miniszterelnök** | Prime Minister |
+| **köztársasági elnök** | President of the Republic |
+| **megtorlás** | retaliation / retribution |
+| **egypártrendszer** | one-party system |
+| **újratemetés** | ceremonial reburial |
+
+### Kérdés-Válasz kártyák
+
+| # | ✏️ KÉRDÉS (hajtsd ide) | ✅ VÁLASZ (hajtsd el) |
+|---|----------------------|---------------------|
 | 1 | Mikor volt a honfoglalás, és ki vezette? | A honfoglalás 895-896-ban volt. Árpád fejedelem vezette a hét magyar törzset a Kárpát-medencébe. |
 | 2 | Hány magyar törzs érkezett a Kárpát-medencébe a honfoglalás idején? | Hét magyar törzs érkezett a Kárpát-medencébe a honfoglalás idején. |
 | 3 | Ki volt Magyarország első királya, és mikor koronázták meg? | Magyarország első királya Szent István (I. István) volt, akit 1000-ben (vagy 1001. január 1-jén) koronáztak meg. |
@@ -63,8 +127,35 @@
 
 ## Téma 3 · Irodalom és Zenetörténet
 
-| # | KÉRDÉS | VÁLASZ |
-|---|--------|--------|
+### Kulcsszavak — Téma 3
+
+| Magyar kifejezés | Jelentés (angolul) |
+|-----------------|-------------------|
+| **népzene** | folk music |
+| **népdal** | folk song |
+| **zenész / zeneszerző** | musician / composer |
+| **opera** | opera |
+| **szimfónia** | symphony |
+| **rapszódia** | rhapsody |
+| **korszak** | era / period |
+| **reneszánsz** | Renaissance |
+| **barokk** | Baroque |
+| **felvilágosodás** | Enlightenment |
+| **klasszicizmus** | Classicism |
+| **romantika** | Romanticism |
+| **költő** | poet |
+| **író** | writer |
+| **költemény / vers** | poem |
+| **regény** | novel |
+| **dráma** | drama / play |
+| **eposz** | epic poem |
+| **nyelvújítás** | language reform |
+| **népzenekutató** | folk music researcher |
+
+### Kérdés-Válasz kártyák
+
+| # | ✏️ KÉRDÉS (hajtsd ide) | ✅ VÁLASZ (hajtsd el) |
+|---|----------------------|---------------------|
 | 1 | Ki volt Janus Pannonius? | Janus Pannonius a 15. századi magyar reneszánsz legjelentősebb költője volt, aki latin nyelven írt. |
 | 2 | Ki volt Balassi Bálint? | Balassi Bálint a 16. századi magyar irodalom első nagy lírai költője volt. |
 | 3 | Mi Zrínyi Miklós legismertebb irodalmi műve? | Zrínyi Miklós legismertebb műve a Szigeti veszedelem (A Siege of Sziget), amely a barokk kor kiemelkedő alkotása. |
@@ -92,8 +183,32 @@
 
 ## Téma 4 · Az Alaptörvény Intézményei
 
-| # | KÉRDÉS | VÁLASZ |
-|---|--------|--------|
+### Kulcsszavak — Téma 4
+
+| Magyar kifejezés | Jelentés (angolul) |
+|-----------------|-------------------|
+| **Alaptörvény** | Fundamental Law / Constitution |
+| **alkotmány** | constitution |
+| **jogrend** | legal system |
+| **Országgyűlés** | National Assembly / Parliament |
+| **képviselő** | MP / representative |
+| **megbízatás** | mandate / term of office |
+| **törvényhozás** | legislation / law-making |
+| **költségvetés** | budget |
+| **Kormány** | Government |
+| **miniszterelnök** | Prime Minister |
+| **minisztérium** | ministry |
+| **végrehajtó hatalom** | executive power |
+| **köztársasági elnök** | President of the Republic |
+| **államfő** | head of state |
+| **titkos szavazás** | secret ballot |
+| **főparancsnok** | Commander-in-Chief |
+| **feloszlatás** | dissolution (of Parliament) |
+
+### Kérdés-Válasz kártyák
+
+| # | ✏️ KÉRDÉS (hajtsd ide) | ✅ VÁLASZ (hajtsd el) |
+|---|----------------------|---------------------|
 | 1 | Mi az Alaptörvény, és mikor lépett hatályba? | Az Alaptörvény Magyarország hatályos alkotmánya, amely 2012. január 1-jén lépett hatályba, felváltva a korábbi Alkotmányt. |
 | 2 | Mi volt az Alaptörvény előtt Magyarország alkotmánya? | Az Alaptörvény előtt a Magyar Köztársaság Alkotmánya (1949. évi XX. törvény, amelyet 1989-ben alapvetően módosítottak) volt hatályban. |
 | 3 | Mi az Országgyűlés, és hány képviselőből áll? | Az Országgyűlés Magyarország legfőbb népképviseleti és törvényhozó szerve, amely 199 képviselőből áll. Egykamarás rendszerben működik. |
@@ -116,8 +231,32 @@
 
 ## Téma 5 · Állampolgári Jogok és Kötelezettségek
 
-| # | KÉRDÉS | VÁLASZ |
-|---|--------|--------|
+### Kulcsszavak — Téma 5
+
+| Magyar kifejezés | Jelentés (angolul) |
+|-----------------|-------------------|
+| **alapjog** | fundamental right |
+| **állampolgár** | citizen |
+| **jogegyenlőség** | legal equality |
+| **szabadság** | freedom / liberty |
+| **gyülekezési szabadság** | freedom of assembly |
+| **szólásszabadság / véleménynyilvánítás szabadsága** | freedom of speech / expression |
+| **lelkiismereti és vallásszabadság** | freedom of conscience and religion |
+| **sajtószabadság** | freedom of the press |
+| **emberi méltóság** | human dignity |
+| **halálbüntetés** | capital punishment |
+| **Alkotmánybíróság** | Constitutional Court |
+| **alkotmányellenes** | unconstitutional |
+| **polgári jog** | civil right |
+| **szociális jog** | social right |
+| **kollektív jog** | collective right |
+| **sérthetetlen** | inviolable |
+| **elidegeníthetetlen** | inalienable |
+
+### Kérdés-Válasz kártyák
+
+| # | ✏️ KÉRDÉS (hajtsd ide) | ✅ VÁLASZ (hajtsd el) |
+|---|----------------------|---------------------|
 | 1 | Mik az első generációs emberi jogok? | Az első generációs jogok a polgári és politikai jogok, például a szólásszabadság, a vallásszabadság és a gyülekezési jog. |
 | 2 | Mik a második generációs emberi jogok? | A második generációs jogok a gazdasági, szociális és kulturális jogok, például a munkához való jog, az oktatáshoz és az egészségügyi ellátáshoz való jog. |
 | 3 | Mik a harmadik generációs emberi jogok? | A harmadik generációs jogok a kollektív jogok, például a békéhez való jog és a tiszta környezethez való jog. |
@@ -137,8 +276,33 @@
 
 ## Téma 6 · Európa és Magyarország a Mindennapokban
 
-| # | KÉRDÉS | VÁLASZ |
-|---|--------|--------|
+### Kulcsszavak — Téma 6
+
+| Magyar kifejezés | Jelentés (angolul) |
+|-----------------|-------------------|
+| **főváros** | capital city |
+| **vármegye** | county |
+| **kerület** | district |
+| **szomszédos ország** | neighbouring country |
+| **tájegység** | geographical region |
+| **pénznem** | currency |
+| **folyó** | river |
+| **tó** | lake |
+| **hungarikum** | a uniquely Hungarian thing/tradition |
+| **felekezet** | religious denomination |
+| **kereszténység** | Christianity |
+| **tagállam** | member state |
+| **csatlakozás** | joining / accession |
+| **schengeni övezet** | Schengen Area |
+| **Európai Parlament** | European Parliament |
+| **képviselő** | MEP / representative |
+| **alapanyag** | ingredient / raw material |
+| **nép- és iparművészet** | folk and applied arts |
+
+### Kérdés-Válasz kártyák
+
+| # | ✏️ KÉRDÉS (hajtsd ide) | ✅ VÁLASZ (hajtsd el) |
+|---|----------------------|---------------------|
 | 1 | Mi Magyarország fővárosa? | Magyarország fővárosa Budapest, amelyet a Duna két partján fekvő Buda és Pest egyesítésével hoztak létre. |
 | 2 | Mekkora Magyarország területe? | Magyarország területe 93 030 négyzetkilométer. |
 | 3 | Mennyi Magyarország lakossága? | Magyarország lakossága körülbelül 9,7 millió fő. |

@@ -17,18 +17,191 @@ TOPIC_NAMES = {
     6: "Európa és Magyarország a Mindennapokban",
 }
 
+# Key Hungarian vocabulary per topic: (magyar szó, English gloss)
+VOCAB = {
+    1: [
+        ("zászló / lobogó", "flag"),
+        ("sáv", "stripe"),
+        ("piros", "red"),
+        ("fehér", "white"),
+        ("zöld", "green"),
+        ("erő", "strength"),
+        ("hűség", "loyalty"),
+        ("remény", "hope"),
+        ("címer", "coat of arms"),
+        ("kettős kereszt", "double cross"),
+        ("hármas halom", "triple hill"),
+        ("Szent Korona", "Holy Crown"),
+        ("koronázási jelvények", "coronation insignia"),
+        ("jogar", "sceptre"),
+        ("országalma", "orb"),
+        ("palást", "coronation mantle"),
+        ("Himnusz", "national anthem"),
+        ("Szózat", "appeal / second anthem"),
+        ("nemzeti ünnep", "national holiday"),
+        ("forradalom", "revolution"),
+        ("szabadságharc", "war of independence"),
+        ("kokárda", "rosette / cockade"),
+        ("lyukas zászló", "flag with a hole (1956 symbol)"),
+    ],
+    2: [
+        ("honfoglalás", "conquest / settling of the homeland"),
+        ("törzs", "tribe"),
+        ("fejedelem", "prince / chieftain"),
+        ("Kárpát-medence", "Carpathian Basin"),
+        ("államalapítás", "foundation of the state"),
+        ("koronázás", "coronation"),
+        ("király", "king"),
+        ("Aranybulla", "Golden Bull (1222)"),
+        ("tatárjárás", "Mongol invasion"),
+        ("ostrom", "siege"),
+        ("török hódoltság", "Ottoman occupation"),
+        ("vereség", "defeat"),
+        ("győzelem", "victory"),
+        ("forradalom", "revolution"),
+        ("szabadságharc", "war of independence"),
+        ("vértanú", "martyr"),
+        ("honvéd", "homeland defender"),
+        ("kiegyezés", "Compromise / Ausgleich"),
+        ("Monarchia", "Austro-Hungarian Monarchy"),
+        ("rendszerváltás", "regime change"),
+        ("békediktátum / békeszerződés", "peace treaty / diktat"),
+        ("miniszterelnök", "Prime Minister"),
+        ("köztársasági elnök", "President of the Republic"),
+        ("megtorlás", "retaliation / retribution"),
+        ("egypártrendszer", "one-party system"),
+        ("újratemetés", "ceremonial reburial"),
+    ],
+    3: [
+        ("népzene", "folk music"),
+        ("népdal", "folk song"),
+        ("zenész / zeneszerző", "musician / composer"),
+        ("opera", "opera"),
+        ("szimfónia", "symphony"),
+        ("rapszódia", "rhapsody"),
+        ("korszak", "era / period"),
+        ("reneszánsz", "Renaissance"),
+        ("barokk", "Baroque"),
+        ("felvilágosodás", "Enlightenment"),
+        ("klasszicizmus", "Classicism"),
+        ("romantika", "Romanticism"),
+        ("költő", "poet"),
+        ("író", "writer"),
+        ("költemény / vers", "poem"),
+        ("regény", "novel"),
+        ("dráma", "drama / play"),
+        ("eposz", "epic poem"),
+        ("nyelvújítás", "language reform"),
+        ("népzenekutató", "folk music researcher"),
+    ],
+    4: [
+        ("Alaptörvény", "Fundamental Law / Constitution"),
+        ("alkotmány", "constitution"),
+        ("jogrend", "legal system"),
+        ("Országgyűlés", "National Assembly / Parliament"),
+        ("képviselő", "MP / representative"),
+        ("megbízatás", "mandate / term of office"),
+        ("törvényhozás", "legislation / law-making"),
+        ("költségvetés", "budget"),
+        ("Kormány", "Government"),
+        ("miniszterelnök", "Prime Minister"),
+        ("minisztérium", "ministry"),
+        ("végrehajtó hatalom", "executive power"),
+        ("köztársasági elnök", "President of the Republic"),
+        ("államfő", "head of state"),
+        ("titkos szavazás", "secret ballot"),
+        ("főparancsnok", "Commander-in-Chief"),
+        ("feloszlatás", "dissolution (of Parliament)"),
+    ],
+    5: [
+        ("alapjog", "fundamental right"),
+        ("állampolgár", "citizen"),
+        ("jogegyenlőség", "legal equality"),
+        ("szabadság", "freedom / liberty"),
+        ("gyülekezési szabadság", "freedom of assembly"),
+        ("szólásszabadság / véleménynyilvánítás szabadsága", "freedom of speech / expression"),
+        ("lelkiismereti és vallásszabadság", "freedom of conscience and religion"),
+        ("sajtószabadság", "freedom of the press"),
+        ("emberi méltóság", "human dignity"),
+        ("halálbüntetés", "capital punishment"),
+        ("Alkotmánybíróság", "Constitutional Court"),
+        ("alkotmányellenes", "unconstitutional"),
+        ("polgári jog", "civil right"),
+        ("szociális jog", "social right"),
+        ("kollektív jog", "collective right"),
+        ("sérthetetlen", "inviolable"),
+        ("elidegeníthetetlen", "inalienable"),
+    ],
+    6: [
+        ("főváros", "capital city"),
+        ("vármegye", "county"),
+        ("kerület", "district"),
+        ("szomszédos ország", "neighbouring country"),
+        ("tájegység", "geographical region"),
+        ("pénznem", "currency"),
+        ("folyó", "river"),
+        ("tó", "lake"),
+        ("hungarikum", "a uniquely Hungarian thing/tradition"),
+        ("felekezet", "religious denomination"),
+        ("kereszténység", "Christianity"),
+        ("tagállam", "member state"),
+        ("csatlakozás", "joining / accession"),
+        ("schengeni övezet", "Schengen Area"),
+        ("Európai Parlament", "European Parliament"),
+        ("képviselő", "MEP / representative"),
+        ("alapanyag", "ingredient / raw material"),
+        ("nép- és iparművészet", "folk and applied arts"),
+    ],
+}
+
+# Extra vocabulary to blank in fill-in-the-blank (in addition to keywords_hu)
+EXTRA_BLANK = {
+    1: ["zászló", "lobogó", "piros", "fehér", "zöld", "erő", "hűség", "remény",
+        "címer", "kettős kereszt", "hármas halom", "jogar", "országalma", "palást",
+        "Himnusz", "Szózat", "kokárda", "lyukas"],
+    2: ["honfoglalás", "törzs", "Kárpát-medence", "Aranybulla", "tatárjárás",
+        "kiegyezés", "rendszerváltás", "vértanú", "honvéd", "szabadságharc",
+        "forradalom", "Monarchia", "békediktátum", "megtorlás"],
+    3: ["népzene", "népdal", "reneszánsz", "barokk", "felvilágosodás",
+        "klasszicizmus", "romantika", "nyelvújítás", "szimfónia", "rapszódia"],
+    4: ["Alaptörvény", "Országgyűlés", "képviselő", "miniszterelnök",
+        "köztársasági elnök", "minisztérium", "titkos szavazás", "főparancsnok"],
+    5: ["alapjog", "jogegyenlőség", "halálbüntetés", "Alkotmánybíróság",
+        "alkotmányellenes", "sérthetetlen", "elidegeníthetetlen", "gyülekezési"],
+    6: ["vármegye", "főváros", "hungarikum", "felekezet", "tagállam",
+        "schengeni", "csatlakozás"],
+}
+
+# ─────────────────────────────────────────
+# HELPER: vocab box for a topic
+# ─────────────────────────────────────────
+def vocab_box(t):
+    lines = []
+    lines.append(f"### Kulcsszavak — Téma {t}\n\n")
+    lines.append("| Magyar kifejezés | Jelentés (angolul) |\n")
+    lines.append("|-----------------|-------------------|\n")
+    for hu, en in VOCAB[t]:
+        lines.append(f"| **{hu}** | {en} |\n")
+    lines.append("\n")
+    return "".join(lines)
+
 # ─────────────────────────────────────────
 # 1. FLASHCARDS
 # ─────────────────────────────────────────
+# Format: vocabulary glossary per topic, then cut-able Q|A table
 lines = []
 lines.append("# Flashcards — Magyar Kulturális Ismereti Vizsga\n\n")
-lines.append("> **Használat:** Nyomtasd ki · Vágd szét a sorok mentén · Kérdezd magad (vagy kérj segítséget)\n\n")
+lines.append("> **A vizsga magyarul van! Tanuld meg a magyar kifejezéseket!**\n")
+lines.append("> Nyomtasd ki · Vágd szét a sorok mentén · Hajtsd félbe a vonal mentén: bal = kérdés, jobb = válasz\n\n")
 lines.append("---\n\n")
 
 for t in sorted(by_topic):
     lines.append(f"## Téma {t} · {TOPIC_NAMES[t]}\n\n")
-    lines.append("| # | KÉRDÉS | VÁLASZ |\n")
-    lines.append("|---|--------|--------|\n")
+    # Vocab glossary first
+    lines.append(vocab_box(t))
+    lines.append("### Kérdés-Válasz kártyák\n\n")
+    lines.append("| # | ✏️ KÉRDÉS (hajtsd ide) | ✅ VÁLASZ (hajtsd el) |\n")
+    lines.append("|---|----------------------|---------------------|\n")
     for i, q in enumerate(by_topic[t], 1):
         qtext = q['question_hu'].replace('\n', ' ').replace('|', '/')
         atext = q['answer_hu'].replace('\n', ' ').replace('|', '/')
@@ -52,19 +225,51 @@ practice = {
 }
 pts_schedule = [3, 2, 3, 2, 2, 3, 3, 2, 3, 2, 2, 3]
 
+# Hints: key Hungarian words the answer should contain
+HINTS = {
+    1: [
+        ["piros", "fehér", "zöld", "vízszintes sávok"],
+        ["március 15.", "augusztus 20.", "október 23.", "forradalom", "szabadságharc", "államalapítás"],
+    ],
+    2: [
+        ["Szent István", "1001. január 1.", "keresztény", "király", "koronázás"],
+        ["forradalom", "1848. március 15.", "Pilvax", "12 pont", "Petőfi Sándor"],
+    ],
+    3: [
+        ["Zrínyi Miklós", "Szigeti veszedelem", "barokk"],
+        ["Petőfi Sándor", "Nemzeti dal", "romantika"],
+    ],
+    4: [
+        ["Alaptörvény", "alkotmány", "2012. január 1.", "jogrend"],
+        ["Országgyűlés", "199 képviselő", "4 év", "törvényhozás"],
+    ],
+    5: [
+        ["első generáció", "élethez való jog", "szólásszabadság", "vallásszabadság", "gyülekezési szabadság"],
+        ["törvény előtti egyenlőség", "emberi méltóság", "véleménynyilvánítás", "gyülekezési szabadság"],
+    ],
+    6: [
+        ["Budapest", "Duna", "1873", "Pest", "Buda", "Óbuda"],
+        ["2004. május 1.", "Európai Unió", "csatlakozás"],
+    ],
+}
+
 lines = []
 lines.append("# Mintavizsga — Magyar Kulturális Ismereti Vizsga\n\n")
-lines.append("> **Format:** 12 kérdés · 6 témakör · 2 kérdés/témakör · 30 pont · Átmenő: 16 pont\n\n")
+lines.append("> **A vizsga magyarul van! Írj magyarul!**\n")
+lines.append("> 12 kérdés · 6 témakör · 2 kérdés/témakör · 30 pont · Átmenő: 16 pont\n\n")
 lines.append("**Dátum:** _________________________  **Pontszám:** _____ / 30\n\n")
 lines.append("---\n\n")
 
 q_num = 0
 for t in sorted(practice):
     lines.append(f"## Témakör {t} · {TOPIC_NAMES[t]}\n\n")
-    for q in practice[t]:
+    for qi, q in enumerate(practice[t]):
         pts = pts_schedule[q_num]
         q_num += 1
-        lines.append(f"**{q_num}.** ({pts} pont)  {q['question_hu']}\n\n")
+        hints = HINTS[t][qi]
+        lines.append(f"**{q_num}.** ({pts} pont)\n\n")
+        lines.append(f"**{q['question_hu']}**\n\n")
+        lines.append(f"> 💡 *Kulcsszavak a válaszhoz: {' · '.join(hints)}*\n\n")
         lines.append("_" * 72 + "\n\n")
         lines.append("_" * 72 + "\n\n")
 
@@ -72,9 +277,11 @@ lines.append("---\n\n")
 lines.append("## Megoldókulcs\n\n")
 q_num = 0
 for t in sorted(practice):
+    lines.append(f"**Témakör {t} · {TOPIC_NAMES[t]}**\n\n")
     for q in practice[t]:
         q_num += 1
         lines.append(f"**{q_num}.** {q['answer_hu']}\n\n")
+    lines.append("\n")
 
 with open('practice-test.md', 'w', encoding='utf-8') as f:
     f.writelines(lines)
@@ -83,9 +290,11 @@ print("practice-test.md done")
 # ─────────────────────────────────────────
 # 3. FILL-IN-THE-BLANK
 # ─────────────────────────────────────────
-def cloze(answer, keywords):
+def cloze(answer, keywords, extra):
     result = answer
-    for kw in keywords:
+    # Combine and deduplicate, longer phrases first to avoid partial replacements
+    all_kw = sorted(set(keywords + extra), key=lambda x: -len(x))
+    for kw in all_kw:
         if kw and kw.lower() in result.lower():
             idx = result.lower().find(kw.lower())
             blank = "_" * max(len(kw), 6)
@@ -94,18 +303,22 @@ def cloze(answer, keywords):
 
 lines = []
 lines.append("# Hiánypótló Feladatok — Magyar Kulturális Ismereti Vizsga\n\n")
-lines.append("> Töltsd ki a hiányzó szavakat! Megoldókulcs a lap alján.\n\n")
+lines.append("> **A vizsga magyarul van — gyakorold a magyar szavakat!**\n")
+lines.append("> Töltsd ki a hiányzó magyar kifejezéseket! Megoldókulcs a lap alján.\n\n")
 lines.append("---\n\n")
 
 all_cloze = []
 for t in sorted(by_topic):
     lines.append(f"## Témakör {t} · {TOPIC_NAMES[t]}\n\n")
+    # Show vocab reminder for this topic
+    lines.append("> **Emlékeztető szavak:** ")
+    vocab_str = " · ".join(f"**{hu}**" for hu, en in VOCAB[t])
+    lines.append(vocab_str + "\n\n")
     q_num = 0
+    extra = EXTRA_BLANK.get(t, [])
     for q in by_topic[t]:
         keywords = q.get('keywords_hu', [])
-        if not keywords:
-            continue
-        clozed = cloze(q['answer_hu'], keywords)
+        clozed = cloze(q['answer_hu'], keywords, extra)
         if clozed == q['answer_hu']:
             continue
         q_num += 1
@@ -124,16 +337,28 @@ with open('fill-in-the-blank.md', 'w', encoding='utf-8') as f:
 print("fill-in-the-blank.md done")
 
 # ─────────────────────────────────────────
-# 4. CHEAT SHEETS (one per topic)
+# 4. CHEAT SHEETS — Hungarian-first, vocab box on every page
 # ─────────────────────────────────────────
 cheatsheets = {}
 
 cheatsheets[1] = """\
 ## Téma 1 · Nemzeti Jelképek és Ünnepek
 
+| Magyar kifejezés | Jelentés |
+|-----------------|----------|
+| **zászló / lobogó** | flag | **sáv** | stripe |
+| **erő** | strength | **hűség** | loyalty | **remény** | hope |
+| **címer** | coat of arms | **kettős kereszt** | double cross |
+| **hármas halom** | triple hill | **jogar** | sceptre |
+| **országalma** | orb | **palást** | mantle |
+| **Himnusz** | national anthem | **Szózat** | appeal |
+| **kokárda** | cockade/rosette | **lyukas zászló** | flag with hole |
+| **nemzeti ünnep** | national holiday | **forradalom** | revolution |
+| **szabadságharc** | war of independence | **államalapítás** | foundation of state |
+
 ### Nemzeti jelképek
-| Jelkép | Lényeg |
-|--------|--------|
+| Jelkép | Részletek |
+|--------|-----------|
 | **Zászló** | Piros (erő) · Fehér (hűség) · Zöld (remény) — vízszintes sávok |
 | **Címer** | Bal: 4 ezüst + 4 piros sáv (Árpádok) · Jobb: kettős kereszt hármas halmon · Tetején: Szent Korona |
 | **Szent Korona** | Az Országházban látható · az alkotmányos folytonosság jelképe |
@@ -150,58 +375,80 @@ cheatsheets[1] = """\
 ### Nemzeti ünnepek
 | Dátum | Esemény |
 |-------|---------|
-| **Március 15.** | 1848–49-es forradalom és szabadságharc |
-| **Augusztus 20.** | Államalapítás · I. Szent István király |
-| **Október 23.** | 1956-os forradalom és szabadságharc |
-
-> **Szimbólumok:** 1848 = piros-fehér-zöld kokárda · 1956 = lyukas zászló
+| **Március 15.** | az 1848–49-es forradalom és szabadságharc emlékére |
+| **Augusztus 20.** | az államalapítás és Szent István király emlékére |
+| **Október 23.** | az 1956. évi forradalom és szabadságharc emlékére |
 """
 
 cheatsheets[2] = """\
 ## Téma 2 · Magyarország Történelme
 
+| Magyar kifejezés | Jelentés |
+|-----------------|----------|
+| **honfoglalás** | conquest of homeland | **törzs** | tribe |
+| **Kárpát-medence** | Carpathian Basin | **fejedelem** | chieftain/prince |
+| **államalapítás** | foundation of state | **koronázás** | coronation |
+| **Aranybulla** | Golden Bull | **tatárjárás** | Mongol invasion |
+| **ostrom** | siege | **török hódoltság** | Ottoman occupation |
+| **forradalom** | revolution | **szabadságharc** | war of independence |
+| **vértanú** | martyr | **honvéd** | homeland defender |
+| **kiegyezés** | Compromise/Ausgleich | **Monarchia** | Austro-Hungarian Monarchy |
+| **békediktátum** | peace diktat | **rendszerváltás** | regime change |
+| **megtorlás** | retaliation | **egypártrendszer** | one-party system |
+
+### Történelmi időrend
 | Év | Esemény |
 |----|---------|
 | **895–896** | Honfoglalás — Árpád vezette 7 törzs a Kárpát-medencébe |
 | **1001. jan. 1.** | I. Szent István megkoronázása — első keresztény király |
 | **1222** | Aranybulla — II. András (nemesek jogai) |
 | **1241–42** | Tatárjárás · IV. Béla „második honalapító" újjáépíti az országot |
-| **1301** | Árpád-ház kihalt (III. András halálával) |
 | **1456** | Nándorfehérvári csata — Hunyadi János (70 év haladék a törököknek) |
 | **1458–1490** | Hunyadi Mátyás — reneszánsz fénykor |
 | **1526. aug. 29.** | Mohácsi csata — vereség az oszmánoktól |
 | **1541** | Törökök elfoglalják Budát — ország 3 részre szakad (~150 év) |
 | **1686. szept. 2.** | Habsburgok visszafoglalják Budát |
 | **1703–1711** | II. Rákóczi Ferenc szabadságharca |
-| **1825–1848** | Reformkor (Széchenyi, Kossuth, Batthyány, Deák, Kölcsey) |
 | **1848. márc. 15.** | Forradalom — Pilvax · 12 pont · Petőfi, Jókai, Vasvári |
-| **1848. ápr. 11.** | Első felelős kormány — PM: Batthyány Lajos |
+| **1848. ápr. 11.** | Első felelős kormány — miniszterelnök: Batthyány Lajos |
 | **1849. aug. 13.** | Görgei megadja magát Világosnál |
 | **1849. okt. 6.** | 13 aradi vértanú + Batthyány kivégzése |
 | **1867** | Kiegyezés — Deák Ferenc · Osztrák–Magyar Monarchia |
 | **1914. jún. 28.** | Ferenc Ferdinánd meggyilkolása Szarajevóban |
-| **1914. júl. 28.** | I. világháború kezdete |
-| **1920. jún. 4.** | Trianoni békeszerződés — 2/3 terület, 3,3M magyar külföldön |
+| **1920. jún. 4.** | Trianoni békeszerződés — 2/3 terület elveszítve; 3,3M magyar külföldön |
 | **1944. márc. 19.** | Németek megszállják Magyarországot · holokauszt: ~500–600 ezer áldozat |
-| **1956. okt. 23.** | Forradalom — Nagy Imre · Corvin köz · Széna tér · lyukas zászló |
-| **1956. nov. 4.** | Szovjet csapatok leverik · Kádár János vezető · Nagy Imrét kivégzik |
+| **1956. okt. 23.** | Forradalom — Nagy Imre · Corvin köz · lyukas zászló |
+| **1956. nov. 4.** | Szovjet csapatok leverik · Kádár János vezető |
 | **1989. jún. 16.** | Nagy Imre ünnepélyes újratemetése |
-| **1990** | Szabad választások — PM: Antall József · Elnök: Göncz Árpád |
+| **1990** | Szabad választások — miniszterelnök: Antall József · elnök: Göncz Árpád |
 | **1991** | Szovjet csapatok végleg elhagyják Magyarországot |
 """
 
 cheatsheets[3] = """\
 ## Téma 3 · Irodalom és Zenetörténet
 
+| Magyar kifejezés | Jelentés |
+|-----------------|----------|
+| **népzene** | folk music | **népdal** | folk song |
+| **zenész / zeneszerző** | musician / composer | **opera** | opera |
+| **szimfónia** | symphony | **rapszódia** | rhapsody |
+| **korszak** | era/period | **reneszánsz** | Renaissance |
+| **barokk** | Baroque | **felvilágosodás** | Enlightenment |
+| **klasszicizmus** | Classicism | **romantika** | Romanticism |
+| **költő** | poet | **író** | writer |
+| **költemény / vers** | poem | **regény** | novel |
+| **dráma** | drama/play | **eposz** | epic poem |
+| **nyelvújítás** | language reform | **népzenekutató** | folk music researcher |
+
 ### Magyar zene
 | Zenész | Mű |
 |--------|----|
-| Erkel Ferenc | Himnusz (zene) · Bánk bán (opera) |
+| Erkel Ferenc | Himnusz (zenéje) · Bánk bán (opera) |
 | Liszt Ferenc | Magyar rapszódiák |
 | Bartók Béla | A kékszakállú herceg vára · népzenekutató |
 | Kodály Zoltán | Háry János · népzenekutató |
 
-### Magyar irodalom
+### Magyar irodalom korszakonként
 | Korszak | Szerző | Mű |
 |---------|--------|-----|
 | **Reneszánsz** | Janus Pannonius | Pannónia dicsérete |
@@ -232,7 +479,7 @@ cheatsheets[3] = """\
 | William Shakespeare | Rómeó és Júlia |
 | Voltaire | Candide |
 | J. W. von Goethe | Faust |
-| Beethoven | IX. szimfónia — **EU himnusz** (Örömóda, Schiller 1785, bemutató: 1824) |
+| Beethoven | IX. szimfónia — **EU himnusz** (Örömóda · Schiller 1785 · bemutató: 1824) |
 | Mozart | A varázsfuvola |
 | Csajkovszkij | A hattyúk tava |
 """
@@ -240,31 +487,44 @@ cheatsheets[3] = """\
 cheatsheets[4] = """\
 ## Téma 4 · Az Alaptörvény Alapvető Intézményei
 
-### Alaptörvény
+| Magyar kifejezés | Jelentés |
+|-----------------|----------|
+| **Alaptörvény** | Fundamental Law / Constitution |
+| **alkotmány** | constitution | **jogrend** | legal system |
+| **Országgyűlés** | National Assembly / Parliament |
+| **képviselő** | MP / representative | **megbízatás** | term of office |
+| **törvényhozás** | legislation | **költségvetés** | budget |
+| **Kormány** | Government | **miniszterelnök** | Prime Minister |
+| **minisztérium** | ministry | **végrehajtó hatalom** | executive power |
+| **köztársasági elnök** | President of the Republic | **államfő** | head of state |
+| **titkos szavazás** | secret ballot | **főparancsnok** | Commander-in-Chief |
+| **feloszlatás** | dissolution (of Parliament) |
+
+### Az Alaptörvény
 - Elfogadva: **2011. április 18.** · Hatályba lépett: **2012. január 1.**
 - Magyarország alkotmánya — a jogrend alapja, legmagasabb jogi erővel bír
 
-### Országgyűlés
-| | |
-|--|--|
+### Az Országgyűlés
+| Adat | Érték |
+|------|-------|
 | Szerep | Magyarország legfőbb népképviseleti szerve |
-| Képviselők | **199 fő** |
+| Képviselők száma | **199 fő** |
 | Megbízatás | **4 év** |
-| Feladatok | Alaptörvény megalkotása/módosítása · törvényhozás · költségvetés elfogadása · miniszterelnök megválasztása |
+| Főbb feladatok | Alaptörvény megalkotása/módosítása · törvényhozás · költségvetés elfogadása · miniszterelnök megválasztása |
 
-### Kormány
-| | |
-|--|--|
+### A Kormány
+| Adat | Érték |
+|------|-------|
 | Miniszterelnök | **Orbán Viktor** |
 | Megválasztja | Az Országgyűlés |
-| Feladatok | Közigazgatás irányítása · jogszabályalkotás · állami ellátórendszerek (honvédelem, rendvédelem, oktatás, egészségügy) |
-| EU képviselet | A miniszterelnök képviseli Magyarországot az Európai Tanácsban |
+| Főbb feladatok | Közigazgatás irányítása · jogszabályalkotás · állami ellátórendszerek működtetése |
+| EU-képviselet | A miniszterelnök képviseli Magyarországot az Európai Tanácsban |
 
 **14 minisztérium:** Agrár · Belügy · Energiaügy · Építési és Közlekedési · EU-ügyek · Honvédelmi · Igazságügyi · Közigazgatási és Területfejlesztési · Kulturális és Innovációs · Külgazdasági és Külügy · Miniszterelnöki Kabinetiroda · Miniszterelnökség · Nemzetgazdasági
 
-### Köztársasági Elnök
-| | |
-|--|--|
+### A Köztársasági Elnök
+| Adat | Érték |
+|------|-------|
 | Jelenlegi elnök | **Dr. Sulyok Tamás** |
 | Megválasztja | Az Országgyűlés — titkos szavazással |
 | Megbízatás | **5 év** · legfeljebb 1× újraválasztható |
@@ -273,6 +533,20 @@ cheatsheets[4] = """\
 
 cheatsheets[5] = """\
 ## Téma 5 · Állampolgári Jogok és Kötelezettségek
+
+| Magyar kifejezés | Jelentés |
+|-----------------|----------|
+| **alapjog** | fundamental right | **állampolgár** | citizen |
+| **jogegyenlőség** | legal equality | **szabadság** | freedom/liberty |
+| **gyülekezési szabadság** | freedom of assembly |
+| **szólásszabadság** | freedom of speech |
+| **sajtószabadság** | freedom of the press |
+| **lelkiismereti és vallásszabadság** | freedom of conscience and religion |
+| **emberi méltóság** | human dignity |
+| **halálbüntetés** | capital punishment |
+| **Alkotmánybíróság** | Constitutional Court |
+| **alkotmányellenes** | unconstitutional |
+| **sérthetetlen** | inviolable | **elidegeníthetetlen** | inalienable |
 
 ### Az emberi jogok fejlődése
 | Dokumentum | Év | Ország |
@@ -285,9 +559,9 @@ cheatsheets[5] = """\
 ### Az alapjogok három generációja
 | Generáció | Tartalom |
 |-----------|----------|
-| **1. generáció** (polgári-politikai) | élethez való jog · személyi szabadság · egyesülési és gyülekezési szabadság · lelkiismereti és vallásszabadság · szólás- és sajtószabadság |
-| **2. generáció** (szociális-gazdasági) | munkához való jog · sztrájkhoz való jog · oktatáshoz való jog · szociális biztonsághoz való jog |
-| **3. generáció** (kollektív) | egészséghez és környezethez való jog · gyermekek jogai · betegjogok · fogyatékkal élők jogai |
+| **1. generáció** (polgári és politikai jogok) | élethez való jog · személyi szabadság · egyesülési és gyülekezési szabadság · lelkiismereti és vallásszabadság · szólás- és sajtószabadság |
+| **2. generáció** (szociális és gazdasági jogok) | munkához való jog · sztrájkhoz való jog · oktatáshoz való jog · szociális biztonsághoz való jog |
+| **3. generáció** (kollektív jogok) | egészséghez és környezethez való jog · gyermekek jogai · betegjogok · fogyatékkal élők jogai |
 
 ### Az Alaptörvényben biztosított alapjogok
 - Törvény előtti egyenlőség
@@ -300,16 +574,27 @@ cheatsheets[5] = """\
 - Személyes adatok védelméhez való jog
 
 > **Halálbüntetés:** 1990-ben törölték el — az Alkotmánybíróság alkotmányellenesnek nyilvánította
->
 > **Alapelv:** Alapvető jogot korlátozni csak másik alapvető jog vagy alkotmányos érték védelme érdekében lehet.
 """
 
 cheatsheets[6] = """\
 ## Téma 6 · Európa és Magyarország a Mindennapokban
 
+| Magyar kifejezés | Jelentés |
+|-----------------|----------|
+| **főváros** | capital city | **vármegye** | county |
+| **kerület** | district | **szomszédos ország** | neighbouring country |
+| **tájegység** | geographical region | **pénznem** | currency |
+| **hungarikum** | uniquely Hungarian thing |
+| **felekezet** | religious denomination | **kereszténység** | Christianity |
+| **tagállam** | member state | **csatlakozás** | accession/joining |
+| **schengeni övezet** | Schengen Area |
+| **Európai Parlament** | European Parliament |
+| **nép- és iparművészet** | folk and applied arts |
+
 ### Magyarország alapadatai
-| | |
-|--|--|
+| Adat | Érték |
+|------|-------|
 | Államforma | Köztársaság |
 | Terület | 93 000 km² |
 | Népesség | 9,6 millió fő |
@@ -317,9 +602,9 @@ cheatsheets[6] = """\
 | Pénznem | Forint |
 | Hivatalos nyelv | Magyar |
 | Vármegyék száma | 19 |
-| Szomszédok | Szlovákia · Ukrajna · Románia · Szerbia · Horvátország · Szlovénia · Ausztria |
-| Nagy tavak | Balaton · Fertő tó · Velencei-tó |
-| Nagy folyók | Duna · Tisza · Dráva · Rába |
+| Szomszédos országok | Szlovákia · Ukrajna · Románia · Szerbia · Horvátország · Szlovénia · Ausztria |
+| Legnagyobb tavak | Balaton · Fertő tó · Velencei-tó |
+| Legnagyobb folyók | Duna · Tisza · Dráva · Rába |
 | Tájegységek | Alföld · Alpokalja · Dunántúli-dombság · Dunántúl-középhegység · Északi-középhegység · Kisalföld |
 
 ### Budapest
@@ -343,17 +628,17 @@ cheatsheets[6] = """\
 - Magyar szentek: **István · László · Imre · Gellért · Árpád-házi Margit · Árpád-házi Erzsébet**
 
 ### Magyarország és az Európai Unió
-| | |
-|--|--|
+| Adat | Érték |
+|------|-------|
 | EU-csatlakozás | **2004. május 1.** |
 | Schengen-csatlakozás | **2007** |
-| EU polgárok száma | 450 millió |
+| EU polgárainak száma | 450 millió |
 | EU székhelye | Brüsszel |
 | EU intézményei | Európai Bizottság · Tanács · Európai Parlament · Európai Tanács |
 | EU-választások | Ötévente |
 | Magyar EP-képviselők | **21 fő** |
 | EU zászló | Kék · 12 sárga csillag körben |
-| EU himnusz | Beethoven IX. szimfónia — Örömóda |
+| EU himnusz | Beethoven IX. szimfónia — Örömóda (Schiller, 1785) |
 
 ### Az EU 27 tagállama
 Ausztria · Belgium · Bulgária · Ciprus · Csehország · Dánia · Észtország · Finnország · Franciaország · Görögország · Hollandia · Horvátország · Írország · Lengyelország · Lettország · Litvánia · Luxemburg · **Magyarország** · Málta · Németország · Olaszország · Portugália · Románia · Spanyolország · Svédország · Szlovákia · Szlovénia
@@ -361,6 +646,7 @@ Ausztria · Belgium · Bulgária · Ciprus · Csehország · Dánia · Észtorsz
 
 lines = []
 lines.append("# Gyors Összefoglalók — Magyar Kulturális Ismereti Vizsga\n\n")
+lines.append("> **A vizsga magyarul van! Minden oldal elején megtalálod a legfontosabb magyar szavakat.**\n")
 lines.append("> Nyomtasd ki mind a hat lapot — egy-egy témakör minden oldalon!\n\n")
 lines.append("---\n\n")
 for t in sorted(cheatsheets):
