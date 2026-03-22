@@ -602,6 +602,125 @@ def build_topic_chapter(topic_num: int, questions: list) -> str:
 </div>"""
     return xhtml_page(f"Topic {topic_num}: {t['hu']}", body)
 
+def build_poetry_chapter() -> str:
+    body = """<div class="chapter">
+<h1>Poetry &amp; Anthem — What You Actually Need to Know</h1>
+
+<div class="callout info">
+<div class="callout-title">Research Finding (from people who sat the exam)</div>
+<p><b>The exam is written only — no oral recitation, no singing.</b><br/>
+You will NOT be asked to write out full poem stanzas from memory.<br/>
+You WILL be tested on: authors, years, composers, roles, and themes.<br/>
+Knowing the <b>first line</b> of each poem is widely recommended as a strong recognition anchor.</p>
+</div>
+
+<div class="callout warn">
+<div class="callout-title">What the exam varies on (real test-taker reports)</div>
+<ul>
+<li>Some sittings: 2–3 multiple-choice questions + rest are short free-text answers</li>
+<li>Some sittings: mostly or entirely multiple-choice</li>
+<li>No fill-in-the-blank poem cloze has been reported</li>
+<li>The official study guide PDF (segedanyag) is your bible — stick to it</li>
+<li>Strong B1/B2 Hungarian needed to write your answers</li>
+</ul>
+</div>
+
+<h2>The Three Key Poems — Side by Side</h2>
+<table>
+<tr><th></th><th>Himnusz</th><th>Szózat</th><th>Nemzeti dal</th></tr>
+<tr><td><b>Author</b></td><td>Kölcsey Ferenc</td><td>Vörösmarty Mihály</td><td>Petőfi Sándor</td></tr>
+<tr><td><b>Written</b></td><td><b>1823</b></td><td><b>1836</b></td><td><b>1848</b> (March 13)</td></tr>
+<tr><td><b>Music by</b></td><td>Erkel Ferenc (1844)</td><td>Egressy Béni</td><td>—</td></tr>
+<tr><td><b>Role / When sung</b></td><td>National anthem — opens ceremonies</td><td>"Second anthem" — closes ceremonies</td><td>Recited on March 15, national holiday</td></tr>
+<tr><td><b>Topic area</b></td><td>Topic 1 (National Symbols)</td><td>Topic 1 (National Symbols)</td><td>Topic 3 (Literature) + Topic 2 (1848)</td></tr>
+<tr><td><b>Genre / Tone</b></td><td>Prayer / supplication to God</td><td>Exhortation — loyalty to the homeland</td><td>Call to arms / revolutionary anthem</td></tr>
+<tr><td><b>Full title</b></td><td>Himnusz (a magyar nép zivataros századaiból)</td><td>Szózat</td><td>Nemzeti dal</td></tr>
+</table>
+
+<h2>Himnusz — First Stanza (Know by Recognition)</h2>
+<div class="callout">
+<div class="callout-title">Himnusz — Kölcsey Ferenc, 1823</div>
+<p style="font-style:italic; line-height:1.8;">
+Isten, áldd meg a magyart<br/>
+Jó kedvvel, bőséggel,<br/>
+Nyújts feléje védő kart,<br/>
+Ha küzd ellenséggel;<br/>
+Bal sors akit régen tép,<br/>
+Hozz rá víg esztendőt,<br/>
+Megbűnhődte már e nép<br/>
+A múltat s jövendőt!
+</p>
+<p><b>Translation (approximate):</b><br/>
+<i>God bless the Hungarian, with good cheer and abundance, extend over him a protective arm when he fights against his enemies. He who has long been torn by ill fate, bring him a joyful year; he has already atoned for the past and the future, this people.</i></p>
+</div>
+<p><b>Key phrase to know:</b> "Isten, áldd meg a magyart" (God, bless the Hungarian)</p>
+
+<h2>Szózat — First Stanza (Know by Recognition)</h2>
+<div class="callout">
+<div class="callout-title">Szózat — Vörösmarty Mihály, 1836</div>
+<p style="font-style:italic; line-height:1.8;">
+Hazádnak rendületlenül<br/>
+Légy híve, oh magyar;<br/>
+Bölcsőd az s majdan sírod is,<br/>
+Mely ápol és eltakar.<br/>
+A nagy világon e kívül<br/>
+Nincsen számodra hely;<br/>
+Áldjon vagy verjen sors keze:<br/>
+Itt élned s halnod kell.
+</p>
+<p><b>Translation (approximate):</b><br/>
+<i>Be steadfastly faithful to your homeland, oh Hungarian; it is your cradle and one day your grave, which nurtures and covers you. In all the great world beyond this, there is no place for you; whether fortune's hand blesses or strikes you: here you must live and die.</i></p>
+</div>
+<p><b>Key phrase to know:</b> "Hazádnak rendületlenül légy híve, oh magyar" (Be steadfastly loyal to your homeland, oh Hungarian)</p>
+
+<h2>Nemzeti dal — First Stanza (Know by Recognition)</h2>
+<div class="callout">
+<div class="callout-title">Nemzeti dal — Petőfi Sándor, 1848</div>
+<p style="font-style:italic; line-height:1.8;">
+Talpra magyar, hí a haza!<br/>
+Itt az idő, most vagy soha!<br/>
+Rabok legyünk, vagy szabadok?<br/>
+Ez a kérdés, válasszatok! —<br/>
+A magyarok Istenére<br/>
+Esküszünk,<br/>
+Esküszünk, hogy rabok tovább<br/>
+Nem leszünk!
+</p>
+<p><b>Translation (approximate):</b><br/>
+<i>Rise up, Hungarian, your homeland calls! Now is the time, now or never! Shall we be slaves or free? This is the question — choose! By the God of Hungarians we swear, we swear that we will be slaves no more!</i></p>
+</div>
+<p><b>Key phrase to know:</b> "Talpra magyar, hí a haza!" (Rise up, Hungarian, your homeland calls!)<br/>
+<b>Context:</b> Petőfi recited this on March 15, 1848 at the start of the revolution. It became the battle cry of the uprising.</p>
+
+<h2>What the Exam Actually Asks About Poems</h2>
+<p>Based on the official study materials and real exam reports, questions about poems fall into these patterns:</p>
+<table>
+<tr><th>Question type</th><th>Example</th></tr>
+<tr><td>Author identification</td><td>"Ki írta a Himnuszt?" → Kölcsey Ferenc</td></tr>
+<tr><td>Year written</td><td>"Mikor írták a Szózatot?" → 1836</td></tr>
+<tr><td>Composer identification</td><td>"Ki szerezte a Himnusz zenéjét?" → Erkel Ferenc</td></tr>
+<tr><td>Role / when used</td><td>"Mikor éneklik a Szózatot?" → national ceremonies, at the end</td></tr>
+<tr><td>Theme / character</td><td>"Milyen műfajú a Himnusz?" → ima (prayer), könyörgés (supplication)</td></tr>
+<tr><td>Connection to history</td><td>"Melyik vershez kapcsolódik március 15.?" → Nemzeti dal (Petőfi)</td></tr>
+</table>
+
+<h2>Memory Hooks</h2>
+<div class="callout tip">
+<div class="callout-title">Easy ways to remember</div>
+<ul>
+<li><b>Kölcsey</b> wrote the Himnusz in <b>1823</b> — "K" for Kölcsey, "K" for Kérem (prayer/asking God)</li>
+<li><b>Vörösmarty</b> wrote the Szózat in <b>1836</b> — 13 years after the Himnusz</li>
+<li><b>Petőfi</b> wrote the Nemzeti dal in <b>1848</b> — same year as the revolution he sparked</li>
+<li><b>Erkel Ferenc</b> composed both the Himnusz music AND the opera Bánk bán</li>
+<li>Himnusz = <b>opens</b> (starts with "Isten" = God, formal/solemn) · Szózat = <b>closes</b></li>
+<li>Szózat first word: "Hazádnak" = "to your homeland" — it's about loyalty to Hungary</li>
+<li>Nemzeti dal first word: "Talpra" = "Rise up" — it's a call to action</li>
+</ul>
+</div>
+</div>"""
+    return xhtml_page("Poetry & Anthem — What You Need to Know", body)
+
+
 def build_master_reference() -> str:
     body = """<div class="chapter">
 <h1>Master Quick-Reference</h1>
@@ -827,6 +946,7 @@ def build_epub(questions: list) -> None:
     cover_html  = build_cover()
     intro_html  = build_intro()
     topic_pages = {t: build_topic_chapter(t, questions) for t in range(1, 7)}
+    poetry_html = build_poetry_chapter()
     ref_html    = build_master_reference()
     pt_result   = build_practice_test(questions)
     pt_html, shuffled = pt_result
@@ -843,6 +963,7 @@ def build_epub(questions: list) -> None:
         ("topic4.xhtml",  "Topic 4: Constitution & Institutions", topic_pages[4]),
         ("topic5.xhtml",  "Topic 5: Citizens' Rights",            topic_pages[5]),
         ("topic6.xhtml",  "Topic 6: Europe and Everyday Hungary", topic_pages[6]),
+        ("poetry.xhtml",  "Poetry & Anthem — What You Need to Know", poetry_html),
         ("reference.xhtml","Master Quick-Reference",              ref_html),
         ("practice.xhtml","Practice Test (132 Questions)",        pt_html),
         ("answers.xhtml", "Answer Key",                           ak_html),
