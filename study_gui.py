@@ -1956,15 +1956,13 @@ class StudyApp(App):
     .topic-btn {
         width: 100%;
         margin: 0 0 1 0;
-        height: 1;
     }
-    .topic-btn-good  { width: 100%; margin: 0 0 1 0; height: 1; }
-    .topic-btn-ok    { width: 100%; margin: 0 0 1 0; height: 1; }
-    .topic-btn-poor  { width: 100%; margin: 0 0 1 0; height: 1; }
+    .topic-btn-good  { width: 100%; margin: 0 0 1 0; }
+    .topic-btn-ok    { width: 100%; margin: 0 0 1 0; }
+    .topic-btn-poor  { width: 100%; margin: 0 0 1 0; }
     .mode-btn {
         width: 100%;
         margin: 0 0 1 0;
-        height: 1;
     }
 
     /* ── Shared screen layouts ── */
