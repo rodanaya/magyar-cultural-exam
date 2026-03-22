@@ -368,13 +368,13 @@ def topic_accuracy(progress: dict, topic: int) -> tuple:
 
 def accuracy_bar(correct: int, attempts: int, width: int = 18) -> str:
     if not attempts:
-        return f"[dim]{'─' * width}[/dim] [dim]--[/dim]"
+        return f"[white]{'─' * width}[/white] [white]--[/white]"
     pct = correct / attempts
     filled = round(pct * width)
-    color = "green" if pct >= 0.6 else ("yellow" if pct >= 0.3 else "red")
+    color = "bright_green" if pct >= 0.6 else ("yellow" if pct >= 0.3 else "bright_red")
     return (
         f"[{color}]{'█' * filled}[/{color}]"
-        f"[dim]{'░' * (width - filled)}[/dim]"
+        f"[white]{'░' * (width - filled)}[/white]"
         f" [{color}]{pct * 100:.0f}%[/{color}]"
     )
 
@@ -490,28 +490,28 @@ class HomeScreen(Screen):
 
         # ── Status banner ─────────────────────────────────────────────────────
         today_str = datetime.date.today().strftime("%A, %d %B %Y")
-        lines.append(f"[dim]{today_str}[/dim]")
+        lines.append(f"[bold white]{today_str}[/bold white]")
         lines.append("")
 
         if due_count > 0:
             lines.append(
-                f"[bold yellow on black] ⚡  {due_count} SRS card(s) due for review today [/bold yellow on black]"
+                f"[bold yellow on dark_orange] ⚡  {due_count} SRS card(s) due for review today [/bold yellow on dark_orange]"
             )
         else:
             lines.append(
-                "[bold green] ✓  All caught up — no SRS cards due today [/bold green]"
+                "[bold green on dark_green] ✓  All caught up — no SRS cards due today [/bold green on dark_green]"
             )
 
-        streak_icon = "🔥" if streak >= 3 else ("✦" if streak >= 1 else "◦")
+        streak_icon = "🔥" if streak >= 3 else ("★" if streak >= 1 else "○")
         lines.append(
-            f"\n  {streak_icon}  [bold]Streak:[/bold] [green]{streak} day(s)[/green]"
-            f"     [bold]Sessions:[/bold] {len(sessions)}"
-            f"     [bold]Questions:[/bold] {len(questions)}\n"
+            f"\n  {streak_icon}  [bold white]Streak:[/bold white] [bright_green]{streak} day(s)[/bright_green]"
+            f"     [bold white]Sessions:[/bold white] [cyan]{len(sessions)}[/cyan]"
+            f"     [bold white]Questions:[/bold white] [cyan]{len(questions)}[/cyan]\n"
         )
 
         # ── Per-topic accuracy ────────────────────────────────────────────────
-        lines.append("[bold]  Per-Topic Accuracy[/bold]")
-        lines.append("  " + "─" * 50)
+        lines.append("[bold bright_white]  Per-Topic Accuracy[/bold bright_white]")
+        lines.append("  [white]" + "─" * 50 + "[/white]")
         overall_c = overall_a = 0
         topic_accs = {}
         for t in range(1, 7):
@@ -520,22 +520,22 @@ class HomeScreen(Screen):
             overall_a += a
             topic_accs[t] = (c, a)
             pct_str = f"{c/a*100:3.0f}%" if a else " -- "
-            pct_color = "green" if a and c/a >= 0.6 else ("yellow" if a and c/a >= 0.3 else ("red" if a else "dim"))
-            sel = "▶ " if t == app.selected_topic else "  "
+            pct_color = "bright_green" if a and c/a >= 0.6 else ("yellow" if a and c/a >= 0.3 else ("bright_red" if a else "white"))
+            sel = "[bold cyan]▶[/bold cyan] " if t == app.selected_topic else "  "
             lines.append(
-                f"{sel}[bold]T{t}[/bold]  {accuracy_bar(c, a, 16)}  "
-                f"[{pct_color}]{pct_str}[/{pct_color}]  [dim]{TOPIC_SHORT[t]}[/dim]"
+                f"{sel}[bold white]T{t}[/bold white]  {accuracy_bar(c, a, 16)}  "
+                f"[{pct_color}]{pct_str}[/{pct_color}]  [bright_white]{TOPIC_SHORT[t]}[/bright_white]"
             )
 
-        lines.append("  " + "─" * 50)
+        lines.append("  [white]" + "─" * 50 + "[/white]")
         if overall_a:
             opct = overall_c / overall_a * 100
-            oc = "green" if opct >= 60 else ("yellow" if opct >= 30 else "red")
+            oc = "bright_green" if opct >= 60 else ("yellow" if opct >= 30 else "bright_red")
             bar_filled = round(opct / 100 * 30)
-            bar = f"[{oc}]{'█' * bar_filled}[/{oc}][dim]{'░' * (30 - bar_filled)}[/dim]"
-            lines.append(f"  [bold]Overall Readiness:[/bold]  {bar}  [{oc}]{opct:.0f}%[/{oc}]")
+            bar = f"[{oc}]{'█' * bar_filled}[/{oc}][white]{'░' * (30 - bar_filled)}[/white]"
+            lines.append(f"  [bold white]Overall Readiness:[/bold white]  {bar}  [{oc}]{opct:.0f}%[/{oc}]")
         else:
-            lines.append("  [bold]Overall Readiness:[/bold]  [dim]No data yet — start studying![/dim]")
+            lines.append("  [bold white]Overall Readiness:[/bold white]  [white]No data yet — start studying![/white]")
 
         # ── Leech count ───────────────────────────────────────────────────────
         leech_count = sum(
@@ -544,49 +544,69 @@ class HomeScreen(Screen):
         )
         if leech_count:
             lines.append(
-                f"\n  [bold red]⚠  Leeches: {leech_count}[/bold red]  "
-                f"[dim](wrong 5× in a row — use Weak Spots mode)[/dim]"
+                f"\n  [bold bright_red]⚠  Leeches: {leech_count}[/bold bright_red]  "
+                f"[white](wrong 5× in a row — use Weak Spots mode)[/white]"
             )
 
         # ── SRS 7-day forecast ────────────────────────────────────────────────
         forecast = srs_forecast(progress, questions, 7)
         max_c = max((c for _, c in forecast), default=1) or 1
         today = datetime.date.today()
-        lines.append("\n  [bold]SRS Review Forecast[/bold]")
-        lines.append("  " + "─" * 50)
+        lines.append("\n  [bold bright_white]SRS Review Forecast[/bold bright_white]")
+        lines.append("  [white]" + "─" * 50 + "[/white]")
         for dt, count in forecast:
             delta = (dt - today).days
             day_label = dt.strftime("%a %d")
-            prefix = "[bold yellow]▶ Today  [/bold yellow]" if delta == 0 else f"[dim]  +{delta}d {day_label}[/dim]"
+            prefix = "[bold yellow]▶ Today  [/bold yellow]" if delta == 0 else f"[white]  +{delta}d {day_label}[/white]"
             bw = round(count / max_c * 18) if count else 0
-            color = "yellow" if (delta == 0 and count) else ("cyan" if count else "dim")
-            bar = f"[{color}]{'█' * bw}[/{color}][dim]{'░' * (18 - bw)}[/dim]"
-            cnt = f"[{color}]{count:>3}[/{color}]" if count else "[dim]  0[/dim]"
+            color = "yellow" if (delta == 0 and count) else ("cyan" if count else "white")
+            bar = f"[{color}]{'█' * bw}[/{color}][white]{'░' * (18 - bw)}[/white]"
+            cnt = f"[{color}]{count:>3}[/{color}]" if count else "[white]  0[/white]"
             lines.append(f"  {prefix}  {bar} {cnt}")
 
         # ── Selected topic hint ───────────────────────────────────────────────
         lines.append("")
+        lines.append("  [white]" + "─" * 50 + "[/white]")
         if app.selected_topic:
             t = app.selected_topic
             c, a = topic_accs[t]
             pct = f" · {c/a*100:.0f}% accuracy" if a else ""
             lines.append(
-                f"  [bold cyan]▶  Topic {t}: {TOPIC_HU.get(t, '')}[/bold cyan][dim]{pct}[/dim]\n"
-                f"  [dim]Press G=Guide  L=Learn  Q=Quiz  M=Choice[/dim]"
+                f"  [bold cyan]▶  Topic {t}: {TOPIC_HU.get(t, '')}[/bold cyan][white]{pct}[/white]"
+            )
+            lines.append(
+                "  [bright_white]G[/bright_white][white]=Guide  [/white]"
+                "[bright_white]L[/bright_white][white]=Learn  [/white]"
+                "[bright_white]Q[/bright_white][white]=Quiz  [/white]"
+                "[bright_white]M[/bright_white][white]=Multiple Choice  [/white]"
+                "[bright_white]W[/bright_white][white]=Weak Spots[/white]"
             )
         else:
             lines.append(
-                "  [dim]Select a topic (1–6), then:[/dim]\n"
-                "  [dim]G = Study Guide  ·  L = Learn  ·  Q = Quiz  ·  M = Multiple Choice[/dim]"
+                "  [bright_yellow]Select a topic (1–6) using the buttons or number keys[/bright_yellow]"
+            )
+            lines.append(
+                "  [bright_white]G[/bright_white][white]=Guide  [/white]"
+                "[bright_white]L[/bright_white][white]=Learn  [/white]"
+                "[bright_white]Q[/bright_white][white]=Quiz  [/white]"
+                "[bright_white]M[/bright_white][white]=Multiple Choice  [/white]"
+                "[bright_white]E[/bright_white][white]=Exam[/white]"
             )
 
-        # Also update topic button labels with accuracy %
+        # Update topic buttons: label + variant based on accuracy
         for t in range(1, 7):
             c, a = topic_accs[t]
             pct_str = f"{c/a*100:.0f}%" if a else "--"
-            self.query_one(f"#topic-{t}", Button).label = (
-                f"T{t}  {TOPIC_SHORT[t][:13]:<13} {pct_str:>4}"
-            )
+            btn = self.query_one(f"#topic-{t}", Button)
+            btn.label = f"T{t}  {TOPIC_SHORT[t][:13]:<13} {pct_str:>4}"
+            if a and c / a >= 0.6:
+                btn.variant = "success"
+            elif a and c / a >= 0.3:
+                btn.variant = "warning"
+            elif a:
+                btn.variant = "error"
+            else:
+                btn.variant = "default"
 
         self.query_one("#dashboard-content", Static).update("\n".join(lines))
 
@@ -1898,13 +1918,14 @@ class StudyApp(App):
 
     CSS = """
     /* ── Global ── */
-    Screen { background: $background; }
+    Screen { background: $background; color: $text; }
     Header { background: $primary-darken-2; color: $text; }
     Footer { background: $panel; color: $text-muted; }
     Rule   { margin: 1 0; color: $primary-darken-3; }
-    Input  { margin: 1 0 0 0; border: tall $primary-darken-1; }
+    Input  { margin: 1 0 0 0; border: tall $primary-darken-1; color: $text; }
     Button { margin: 0 1 0 0; }
     ProgressBar { height: 1; margin: 0 1; }
+    Static { color: $text; }
 
     /* ── Home Screen ── */
     #home-layout { height: 1fr; }
@@ -1920,6 +1941,7 @@ class StudyApp(App):
     #right-panel {
         padding: 1 3;
         background: $background;
+        color: $text;
     }
     .panel-title {
         color: $accent;
@@ -1933,6 +1955,9 @@ class StudyApp(App):
         margin: 0 0 1 0;
         height: 1;
     }
+    .topic-btn-good  { width: 100%; margin: 0 0 1 0; height: 1; }
+    .topic-btn-ok    { width: 100%; margin: 0 0 1 0; height: 1; }
+    .topic-btn-poor  { width: 100%; margin: 0 0 1 0; height: 1; }
     .mode-btn {
         width: 100%;
         margin: 0 0 1 0;
