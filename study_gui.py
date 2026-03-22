@@ -141,6 +141,160 @@ TOPIC_HU = {
     5: "Állampolgári jogok",            6: "Mindennapi Magyarország",
 }
 
+# ── Topic introductions (shown in Study Guide before Q&A) ─────────────────────
+
+TOPIC_INTRO = {
+    1: (
+        "Magyarország nemzeti jelképei: a piros-fehér-zöld trikolór zászló (felül piros, középen "
+        "fehér, alul zöld), a koronás kettős keresztes és hármas halmos címer, a Himnusz "
+        "(szöveg: Kölcsey Ferenc 1823, zene: Erkel Ferenc) és a Szózat (Vörösmarty Mihály). "
+        "A kokárda piros-fehér-zöld jelvény, március 15-én viselik. A három nemzeti ünnep: "
+        "március 15. (1848-as polgári forradalom), augusztus 20. (I. István király napja, "
+        "az államalapítás ünnepe), október 23. (1956-os forradalom és az 1989-es köztársaság "
+        "kikiáltásának napja).",
+        "Hungary's national symbols: the red-white-green tricolor flag (red on top, white in the "
+        "middle, green at the bottom), the crowned coat of arms with double cross and triple hill, "
+        "the Himnusz (text: Ferenc Kölcsey 1823, music: Ferenc Erkel) and the Szózat (Mihály "
+        "Vörösmarty). The kokárda (cockade) is a red-white-green badge worn on March 15. "
+        "The three national holidays: March 15 (1848 civic revolution), August 20 (St. Stephen's "
+        "Day, founding of the state), October 23 (1956 revolution and 1989 proclamation of "
+        "the Republic).",
+    ),
+    2: (
+        "Magyar történelem főbb dátumai: honfoglalás 895–896 (Árpád vezér, 7 törzs, "
+        "Kárpát-medence), keresztény királyság megalapítása 1000-ben (I. István / Szent István, "
+        "Szent Korona), tatárjárás 1241–42, Hunyadi Mátyás király 1458–90 (Corvina könyvtár, "
+        "fekete sereg), mohácsi csata 1526, török hódoltság 1526–1699, 1848-as forradalom "
+        "(Kossuth Lajos, Petőfi Sándor, Széchenyi István), Trianoni béke 1920, 1956-os "
+        "forradalom (október 23.), rendszerváltás 1989.",
+        "Key dates in Hungarian history: the conquest 895–896 (Prince Árpád, 7 tribes, "
+        "Carpathian Basin), founding of the Christian kingdom 1000 (Stephen I / Saint Stephen, "
+        "Holy Crown), Mongol invasion 1241–42, King Matthias (Mátyás) 1458–90 (Corvina library, "
+        "Black Army), Battle of Mohács 1526, Ottoman occupation 1526–1699, 1848 revolution "
+        "(Lajos Kossuth, Sándor Petőfi, István Széchenyi), Treaty of Trianon 1920, 1956 "
+        "revolution (October 23), transition to democracy 1989.",
+    ),
+    3: (
+        "A magyar irodalom és zene kiemelkedő alakjai. IRODALOM: Petőfi Sándor (János vitéz, "
+        "Nemzeti dal), Arany János (Toldi-trilógia, Buda halála), Vörösmarty Mihály (Szózat, "
+        "Csongor és Tünde), Kölcsey Ferenc (Himnusz szövege), Madách Imre (Az ember tragédiája), "
+        "Jókai Mór (Az arany ember, A kőszívű ember fiai), Gárdonyi Géza (Egri csillagok), "
+        "Katona József (Bánk bán), Ady Endre (Új versek). "
+        "ZENE: Erkel Ferenc (Himnusz zenéje, Bánk bán opera), Bartók Béla (Kékszakállú herceg "
+        "vára, Csodálatos mandarin, népdalkutatás), Kodály Zoltán (Háry János, Psalmus "
+        "Hungaricus, Kodály-módszer), Liszt Ferenc (Magyar rapszódiák, Faust-szimfónia).",
+        "Outstanding figures of Hungarian literature and music. LITERATURE: Sándor Petőfi "
+        "(John the Valiant, National Song), János Arany (Toldi trilogy, Death of Buda), "
+        "Mihály Vörösmarty (Szózat/Appeal, Csongor and Tünde), Ferenc Kölcsey (text of Himnusz), "
+        "Imre Madách (The Tragedy of Man), Mór Jókai (The Man with the Golden Touch, The Baron's "
+        "Sons), Géza Gárdonyi (Eclipse of the Crescent Moon / Stars of Eger), József Katona "
+        "(Bánk bán), Endre Ady (New Poems). "
+        "MUSIC: Ferenc Erkel (music of Himnusz, Bánk bán opera), Béla Bartók (Bluebeard's "
+        "Castle, The Miraculous Mandarin, folk music research), Zoltán Kodály (Háry János, "
+        "Psalmus Hungaricus, Kodály Method), Ferenc Liszt (Hungarian Rhapsodies, Faust Symphony).",
+    ),
+    4: (
+        "Magyarország Alaptörvénye 2012. január 1-jén lépett hatályba, felváltva az 1949-es "
+        "alkotmányt. A törvényhozó hatalom: Országgyűlés (199 képviselő, 4 évre választva). "
+        "A végrehajtó hatalom: Kormány, élén a miniszterelnökkel. Az államfő: köztársasági elnök "
+        "(5 évre, az Országgyűlés választja). Az igazságszolgáltató hatalom: bíróságok; az "
+        "Alkotmánybíróság az Alaptörvény őre. Az Állami Számvevőszék a pénzügyi ellenőrző szerv. "
+        "Az alapvető jogokat az Alaptörvény II–XXXI. cikkei rögzítik.",
+        "Hungary's Fundamental Law (constitution) entered into force on 1 January 2012, replacing "
+        "the 1949 constitution. Legislative power: the National Assembly (199 members, elected for "
+        "4 years). Executive power: the Government, led by the Prime Minister. Head of state: the "
+        "President of the Republic (elected by the National Assembly for 5 years). Judicial power: "
+        "the courts; the Constitutional Court guards the Fundamental Law. The State Audit Office "
+        "is the financial oversight body. Fundamental rights are laid down in Articles II–XXXI.",
+    ),
+    5: (
+        "Magyar állampolgárság általános feltételei: legalább 8 éves folyamatos magyarországi "
+        "lakóhely, büntetlen előélet, megélhetés biztosítása, és a kulturális ismereti vizsga "
+        "sikeres teljesítése. Kedvezményes honosítás: házastárs (3 év), menekült jogállású (3 év), "
+        "kiskorú gyermek (ha szülei állampolgárok). A kulturális vizsga: 30 kérdés, 60 perc, "
+        "az átmenéshez 16 pont kell (53%). Állampolgári kötelességek: adófizetés, honvédelem, "
+        "törvénytisztelet. Jogok: szavazati jog, szabad mozgás, oktatáshoz való jog.",
+        "General requirements for Hungarian citizenship: at least 8 years of continuous residence "
+        "in Hungary, clean criminal record, proof of livelihood, and passing the cultural knowledge "
+        "exam. Preferential naturalization: spouse (3 years), refugee status (3 years), minor child "
+        "(if parents are citizens). The cultural exam: 30 questions, 60 minutes, 16 points (53%) "
+        "needed to pass. Civic duties: paying taxes, national defence, law-abiding. "
+        "Rights: right to vote, freedom of movement, right to education.",
+    ),
+    6: (
+        "Magyarország általános adatai: terület 93.028 km², főváros Budapest (1,7 millió lakos), "
+        "teljes népesség kb. 10 millió fő. Legmagasabb pont: Kékes (1014 m, Mátra). Fő folyók: "
+        "Duna (Magyarország kettévágja), Tisza. Legnagyobb tó: Balaton (600 km², Közép-Európa "
+        "legnagyobb tava). Közigazgatás: 19 megye + Budapest. Szomszédos országok: Ausztria, "
+        "Szlovákia, Ukrajna, Románia, Szerbia, Horvátország, Szlovénia (7 ország). "
+        "Deviza: forint (HUF). EU-tagság: 2004. május 1. óta. NATO-tag: 1999 óta.",
+        "General facts about Hungary: area 93,028 km², capital Budapest (1.7M residents), "
+        "total population ~10 million. Highest point: Kékes (1014 m, Mátra mountains). Main rivers: "
+        "the Danube (Duna, bisects Hungary), Tisza. Largest lake: Balaton (600 km², Central "
+        "Europe's largest lake). Administration: 19 counties + Budapest. Neighboring countries: "
+        "Austria, Slovakia, Ukraine, Romania, Serbia, Croatia, Slovenia (7 countries). "
+        "Currency: forint (HUF). EU member since 1 May 2004. NATO member since 1999.",
+    ),
+}
+
+# ── Topic 3 Authors & Works reference (used in Study Guide) ───────────────────
+
+TOPIC3_AUTHORS = [
+    # (name_hu, name_en, works_hu, works_en)
+    ("Petőfi Sándor (1823–1849)",
+     "Sándor Petőfi (1823–1849)",
+     "János vitéz · Nemzeti dal · Az apostol · Talpra magyar! · A helység kalapácsa",
+     "John the Valiant · National Song · The Apostle · Rise Up, Hungarians! · The Village Hammer"),
+    ("Arany János (1817–1882)",
+     "János Arany (1817–1882)",
+     "Toldi · Toldi estéje · Toldi szerelme (Toldi-trilógia) · Buda halála · Rege a csodaszarvasról",
+     "Toldi · Toldi's Eve · Toldi's Love (Toldi trilogy) · Death of Buda · Legend of the Wondrous Stag"),
+    ("Vörösmarty Mihály (1800–1855)",
+     "Mihály Vörösmarty (1800–1855)",
+     "Szózat · Csongor és Tünde · Vén cigány · Zalán futása",
+     "Szózat (Appeal) · Csongor and Tünde · The Old Gypsy · The Flight of Zalán"),
+    ("Kölcsey Ferenc (1790–1838)",
+     "Ferenc Kölcsey (1790–1838)",
+     "Himnusz szövege (1823) · Huszt · Parainesis · Vanitatum vanitas",
+     "Text of the Himnusz (1823) · Huszt · Parainesis · Vanitatum vanitas"),
+    ("Madách Imre (1823–1864)",
+     "Imre Madách (1823–1864)",
+     "Az ember tragédiája (drámai költemény)",
+     "The Tragedy of Man (dramatic poem)"),
+    ("Jókai Mór (1825–1904)",
+     "Mór Jókai (1825–1904)",
+     "Az arany ember · A kőszívű ember fiai · Fekete gyémántok · Az új földesúr",
+     "The Man with the Golden Touch · The Baron's Sons · Black Diamonds · The New Landlord"),
+    ("Gárdonyi Géza (1863–1922)",
+     "Géza Gárdonyi (1863–1922)",
+     "Egri csillagok · Isten rabjai · A láthatatlan ember",
+     "Eclipse of the Crescent Moon (Stars of Eger) · Slave of God · The Invisible Man"),
+    ("Katona József (1791–1830)",
+     "József Katona (1791–1830)",
+     "Bánk bán (dráma, nemzeti tragédia)",
+     "Bánk bán (drama, national tragedy)"),
+    ("Ady Endre (1877–1919)",
+     "Endre Ady (1877–1919)",
+     "Új versek · Vér és arany · A Tisza-parton · Góg és Magóg fia vagyok én",
+     "New Poems · Blood and Gold · On the Banks of the Tisza · I am the son of Gog and Magog"),
+    ("Erkel Ferenc (1810–1893)  ♪ ZENÉSZ",
+     "Ferenc Erkel (1810–1893)  ♪ COMPOSER",
+     "Himnusz zenéje · Bánk bán (opera) · Hunyadi László (opera) · Sarolta (opera)",
+     "Music of the Himnusz · Bánk bán (opera) · Hunyadi László (opera) · Sarolta (opera)"),
+    ("Bartók Béla (1881–1945)  ♪ ZENÉSZ",
+     "Béla Bartók (1881–1945)  ♪ COMPOSER",
+     "Kékszakállú herceg vára · Csodálatos mandarin · Cantata Profana · népdalkutatás & gyűjtés",
+     "Bluebeard's Castle · The Miraculous Mandarin · Cantata Profana · folk music research & collection"),
+    ("Kodály Zoltán (1882–1967)  ♪ ZENÉSZ",
+     "Zoltán Kodály (1882–1967)  ♪ COMPOSER",
+     "Háry János (daljáték) · Psalmus Hungaricus · Budavári Te Deum · Kodály-módszer (zenepedagógia)",
+     "Háry János (musical play) · Psalmus Hungaricus · Budavári Te Deum · Kodály Method (music education)"),
+    ("Liszt Ferenc (1811–1886)  ♪ ZENÉSZ",
+     "Ferenc Liszt (1811–1886)  ♪ COMPOSER",
+     "Magyar rapszódiák (19 db) · Faust-szimfónia · Haláltánc · Les Préludes",
+     "Hungarian Rhapsodies (19 pieces) · Faust Symphony · Totentanz · Les Préludes"),
+]
+
 # ── SRS helpers ───────────────────────────────────────────────────────────────
 
 
@@ -285,6 +439,7 @@ class HomeScreen(Screen):
         Binding("4", "sel4", "T4", show=False),
         Binding("5", "sel5", "T5", show=False),
         Binding("6", "sel6", "T6", show=False),
+        Binding("g", "launch_guide",  "Guide"),
         Binding("l", "launch_learn",  "Learn"),
         Binding("q", "launch_quiz",   "Quiz"),
         Binding("m", "launch_mc",     "M-Choice"),
@@ -305,6 +460,7 @@ class HomeScreen(Screen):
                     )
                 yield Rule()
                 yield Static("MODES", classes="panel-title")
+                yield Button("📚  Study Guide",      id="mode-guide",  classes="mode-btn", variant="success")
                 yield Button("📖  Learn",           id="mode-learn",  classes="mode-btn")
                 yield Button("❓  Quiz",             id="mode-quiz",   classes="mode-btn")
                 yield Button("🔢  Multiple Choice",  id="mode-mc",     classes="mode-btn")
@@ -332,68 +488,105 @@ class HomeScreen(Screen):
 
         lines = []
 
+        # ── Status banner ─────────────────────────────────────────────────────
+        today_str = datetime.date.today().strftime("%A, %d %B %Y")
+        lines.append(f"[dim]{today_str}[/dim]")
+        lines.append("")
+
         if due_count > 0:
             lines.append(
-                f"[bold yellow]⚡ {due_count} card(s) due for SRS review today[/bold yellow]"
+                f"[bold yellow on black] ⚡  {due_count} SRS card(s) due for review today [/bold yellow on black]"
             )
         else:
-            lines.append("[bold green]✓ All caught up — no SRS cards due today[/bold green]")
+            lines.append(
+                "[bold green] ✓  All caught up — no SRS cards due today [/bold green]"
+            )
 
+        streak_icon = "🔥" if streak >= 3 else ("✦" if streak >= 1 else "◦")
         lines.append(
-            f"\n[bold]Streak:[/bold] [green]{streak} day(s)[/green]"
-            f"   [bold]Sessions:[/bold] {len(sessions)}\n"
+            f"\n  {streak_icon}  [bold]Streak:[/bold] [green]{streak} day(s)[/green]"
+            f"     [bold]Sessions:[/bold] {len(sessions)}"
+            f"     [bold]Questions:[/bold] {len(questions)}\n"
         )
 
-        # Per-topic accuracy
-        lines.append("[bold]Per-Topic Accuracy[/bold]")
-        lines.append("─" * 48)
+        # ── Per-topic accuracy ────────────────────────────────────────────────
+        lines.append("[bold]  Per-Topic Accuracy[/bold]")
+        lines.append("  " + "─" * 50)
         overall_c = overall_a = 0
+        topic_accs = {}
         for t in range(1, 7):
             c, a = topic_accuracy(progress, t)
             overall_c += c
             overall_a += a
-            lines.append(f"  [bold]T{t}[/bold]  {accuracy_bar(c, a)}  {TOPIC_SHORT[t]}")
-        lines.append("─" * 48)
+            topic_accs[t] = (c, a)
+            pct_str = f"{c/a*100:3.0f}%" if a else " -- "
+            pct_color = "green" if a and c/a >= 0.6 else ("yellow" if a and c/a >= 0.3 else ("red" if a else "dim"))
+            sel = "▶ " if t == app.selected_topic else "  "
+            lines.append(
+                f"{sel}[bold]T{t}[/bold]  {accuracy_bar(c, a, 16)}  "
+                f"[{pct_color}]{pct_str}[/{pct_color}]  [dim]{TOPIC_SHORT[t]}[/dim]"
+            )
+
+        lines.append("  " + "─" * 50)
         if overall_a:
             opct = overall_c / overall_a * 100
             oc = "green" if opct >= 60 else ("yellow" if opct >= 30 else "red")
-            lines.append(f"[bold]Overall Readiness:[/bold] [{oc}]{opct:.0f}%[/{oc}]")
+            bar_filled = round(opct / 100 * 30)
+            bar = f"[{oc}]{'█' * bar_filled}[/{oc}][dim]{'░' * (30 - bar_filled)}[/dim]"
+            lines.append(f"  [bold]Overall Readiness:[/bold]  {bar}  [{oc}]{opct:.0f}%[/{oc}]")
         else:
-            lines.append("[bold]Overall Readiness:[/bold] [dim]No data yet[/dim]")
+            lines.append("  [bold]Overall Readiness:[/bold]  [dim]No data yet — start studying![/dim]")
 
-        # Leech count
+        # ── Leech count ───────────────────────────────────────────────────────
         leech_count = sum(
             1 for entry in progress.get("questions", {}).values()
             if entry.get("is_leech")
         )
-        lines.append(
-            f"[bold red]Leeches:[/bold red]  {leech_count}  "
-            f"[dim](answered wrong 5x in a row)[/dim]\n"
-        )
+        if leech_count:
+            lines.append(
+                f"\n  [bold red]⚠  Leeches: {leech_count}[/bold red]  "
+                f"[dim](wrong 5× in a row — use Weak Spots mode)[/dim]"
+            )
 
-        # SRS 7-day forecast
+        # ── SRS 7-day forecast ────────────────────────────────────────────────
         forecast = srs_forecast(progress, questions, 7)
         max_c = max((c for _, c in forecast), default=1) or 1
         today = datetime.date.today()
-        lines.append("[bold]SRS Forecast — next 7 days[/bold]")
-        lines.append("─" * 48)
+        lines.append("\n  [bold]SRS Review Forecast[/bold]")
+        lines.append("  " + "─" * 50)
         for dt, count in forecast:
             delta = (dt - today).days
-            label = "Today  " if delta == 0 else f"  +{delta}d   "
-            bw = round(count / max_c * 20) if count else 0
+            day_label = dt.strftime("%a %d")
+            prefix = "[bold yellow]▶ Today  [/bold yellow]" if delta == 0 else f"[dim]  +{delta}d {day_label}[/dim]"
+            bw = round(count / max_c * 18) if count else 0
             color = "yellow" if (delta == 0 and count) else ("cyan" if count else "dim")
-            bar = f"[{color}]{'█' * bw}[/{color}][dim]{'░' * (20 - bw)}[/dim]"
-            cnt = f"[{color}]{count}[/{color}]" if count else "[dim]0[/dim]"
-            lines.append(f"  {label} {bar} {cnt}")
+            bar = f"[{color}]{'█' * bw}[/{color}][dim]{'░' * (18 - bw)}[/dim]"
+            cnt = f"[{color}]{count:>3}[/{color}]" if count else "[dim]  0[/dim]"
+            lines.append(f"  {prefix}  {bar} {cnt}")
 
+        # ── Selected topic hint ───────────────────────────────────────────────
         lines.append("")
         if app.selected_topic:
             t = app.selected_topic
+            c, a = topic_accs[t]
+            pct = f" · {c/a*100:.0f}% accuracy" if a else ""
             lines.append(
-                f"[bold cyan]● Topic {t}: {TOPIC_HU.get(t, TOPIC_SHORT.get(t, ''))}[/bold cyan]"
+                f"  [bold cyan]▶  Topic {t}: {TOPIC_HU.get(t, '')}[/bold cyan][dim]{pct}[/dim]\n"
+                f"  [dim]Press G=Guide  L=Learn  Q=Quiz  M=Choice[/dim]"
             )
         else:
-            lines.append("[dim]Press 1-6 to select a topic · l/q/m/w/e/s for modes[/dim]")
+            lines.append(
+                "  [dim]Select a topic (1–6), then:[/dim]\n"
+                "  [dim]G = Study Guide  ·  L = Learn  ·  Q = Quiz  ·  M = Multiple Choice[/dim]"
+            )
+
+        # Also update topic button labels with accuracy %
+        for t in range(1, 7):
+            c, a = topic_accs[t]
+            pct_str = f"{c/a*100:.0f}%" if a else "--"
+            self.query_one(f"#topic-{t}", Button).label = (
+                f"T{t}  {TOPIC_SHORT[t][:13]:<13} {pct_str:>4}"
+            )
 
         self.query_one("#dashboard-content", Static).update("\n".join(lines))
 
@@ -409,10 +602,13 @@ class HomeScreen(Screen):
 
     def _launch(self, mode: str) -> None:
         app = self.app
-        if mode in ("learn", "quiz", "mc") and not app.selected_topic:
+        if mode in ("learn", "quiz", "mc", "guide") and not app.selected_topic:
             self.notify("Select a topic first (press 1–6)", severity="warning")
             return
-        if mode == "learn":
+        if mode == "guide":
+            pool = list(get_questions_for_topic(app.questions, app.selected_topic))
+            app.push_screen(StudyGuideScreen(pool, app.selected_topic))
+        elif mode == "learn":
             pool = list(get_questions_for_topic(app.questions, app.selected_topic))
             qs = weighted_sample(pool, 20, app.progress)
             app.push_screen(LearnScreen(qs, app.selected_topic))
@@ -475,6 +671,7 @@ class HomeScreen(Screen):
     def action_sel5(self): self._select_topic(5)
     def action_sel6(self): self._select_topic(6)
 
+    def action_launch_guide(self):  self._launch("guide")
     def action_launch_learn(self):  self._launch("learn")
     def action_launch_quiz(self):   self._launch("quiz")
     def action_launch_mc(self):     self._launch("mc")
@@ -489,6 +686,7 @@ class HomeScreen(Screen):
             self._select_topic(int(bid.split("-")[1]))
             return
         mode_map = {
+            "mode-guide": "guide",
             "mode-learn": "learn", "mode-quiz": "quiz",  "mode-mc":    "mc",
             "mode-weak":  "weak",  "mode-srs":  "srs",   "mode-exam":  "exam",
             "mode-vocab": "vocab", "mode-stats": "stats",
@@ -513,6 +711,9 @@ class ConfirmScreen(ModalScreen):
             with Horizontal(id="confirm-buttons"):
                 yield Button("Yes, leave", id="btn-confirm-yes", variant="error")
                 yield Button("No, stay",   id="btn-confirm-no",  variant="primary")
+
+    def on_mount(self) -> None:
+        self.query_one("#confirm-dialog").border_title = " ⚠  Confirm "
 
     @on(Button.Pressed, "#btn-confirm-yes")
     def on_yes(self) -> None:
@@ -576,17 +777,20 @@ class LearnScreen(Screen):
     def _show_card(self) -> None:
         q = self.questions[self.idx]
         total = len(self.questions)
-        diff = {1: "★", 2: "★★", 3: "★★★"}.get(
-            q.get("difficulty", 1), "★"
-        )
+        diff = {1: "★☆☆", 2: "★★☆", 3: "★★★"}.get(q.get("difficulty", 1), "★☆☆")
+        t_name = TOPIC_SHORT.get(self.topic, "")
+
         self.query_one("#session-bar", ProgressBar).update(progress=self.idx)
         self.query_one("#learn-progress", Static).update(
-            f"[bold]Learn — Topic {self.topic}: {TOPIC_SHORT.get(self.topic, '')}[/bold]  "
-            f"[dim]Card {self.idx + 1}/{total}[/dim]  [yellow]{diff}[/yellow]"
+            f"[bold]📖  Learn[/bold]  [dim]Topic {self.topic}: {t_name}[/dim]  "
+            f"[yellow]{diff}[/yellow]"
         )
+        card_area = self.query_one("#card-area")
+        card_area.border_title = f" Card {self.idx + 1} / {total} "
+
         self.query_one("#card-question", Static).update(
-            f"[bold cyan]🇭🇺 {q['question_hu']}[/bold cyan]\n"
-            f"[dim]🇬🇧 {q['question_en']}[/dim]"
+            f"\n[bold cyan]🇭🇺  {q['question_hu']}[/bold cyan]\n\n"
+            f"[dim]🇬🇧  {q['question_en']}[/dim]\n"
         )
         self.query_one("#card-answer",   Static).update("")
         self.query_one("#card-keywords", Static).update("")
@@ -602,17 +806,22 @@ class LearnScreen(Screen):
         kw_rich = "  ".join(f"[bold magenta]{k}[/bold magenta]" for k in kws)
 
         self.query_one("#card-answer", Static).update(
-            f"\n[bold green]🇭🇺 {q['answer_hu']}[/bold green]\n"
-            f"[dim]🇬🇧 {q['answer_en']}[/dim]"
+            f"\n[bold green]🇭🇺  {q['answer_hu']}[/bold green]\n\n"
+            f"[dim]🇬🇧  {q['answer_en']}[/dim]\n"
+        )
+        kw_line = (
+            f"[dim]Keywords:[/dim]  {kw_rich}\n\n" if kw_rich else "\n"
         )
         self.query_one("#card-keywords", Static).update(
-            f"\n[dim]Keywords:[/dim]  {kw_rich}\n\n"
-            f"[dim]Rate yourself: 1 = Didn't know · 2 = Almost · 3 = Got it[/dim]"
-            if kw_rich else
-            f"\n[dim]Rate yourself: 1 = Didn't know · 2 = Almost · 3 = Got it[/dim]"
+            kw_line +
+            "[dim]Rate yourself:  "
+            "[red]1[/red] Didn't know  ·  "
+            "[yellow]2[/yellow] Almost  ·  "
+            "[green]3[/green] Got it![/dim]"
         )
         self.query_one("#btn-reveal",  Button).display = False
         self.query_one("#rating-row",  Horizontal).display = True
+        self.query_one("#card-area").border_title = " ✦ Answer revealed — rate yourself "
         self.revealed = True
 
     def _rate(self, quality: int) -> None:
@@ -825,21 +1034,30 @@ class QuizScreen(Screen):
         t_num = q.get("topic", "?")
         t_name = TOPIC_SHORT.get(t_num, f"Topic {t_num}")
 
+        diff = {1: "★☆☆", 2: "★★☆", 3: "★★★"}.get(q.get("difficulty", 1), "★☆☆")
+        pct_done = self.idx / total * 100 if total else 0
+
         if not self.is_exam:
             self.query_one("#quiz-header", Static).update(
-                f"[bold]{self._mode_label()}[/bold]  [dim]Q {self.idx + 1}/{total}[/dim]  "
-                f"[dim]Score: {self.total_score:.1f}[/dim]"
+                f"[bold]{self._mode_label()}[/bold]  "
+                f"[dim]Q {self.idx + 1}/{total}  ·  "
+                f"Score: {self.total_score:.1f}  ·  "
+                f"{pct_done:.0f}% done[/dim]"
             )
+
+        quiz_area = self.query_one("#quiz-area")
+        quiz_area.border_title = f" {self._mode_label()} — Q {self.idx + 1} / {total} "
 
         self.query_one("#quiz-question", Static).update(
             f"[dim]Topic {t_num}: {t_name}  {diff}[/dim]\n\n"
-            f"[bold cyan]🇭🇺 {q['question_hu']}[/bold cyan]\n"
-            f"[dim]🇬🇧 {q['question_en']}[/dim]"
+            f"[bold cyan]🇭🇺  {q['question_hu']}[/bold cyan]\n\n"
+            f"[dim]🇬🇧  {q['question_en']}[/dim]"
         )
         self.query_one("#quiz-feedback", Static).update("")
 
         inp = self.query_one("#answer-input", Input)
         inp.value = ""
+        inp.placeholder = "Írja ide a választ magyarul… / Type the answer in Hungarian…"
         inp.focus()
 
         self.query_one("#btn-submit", Button).display = True
@@ -893,25 +1111,29 @@ class QuizScreen(Screen):
         save_progress(self.app.progress, PROGRESS_FILE)
 
         if sc >= 0.6:
-            result = f"[bold green]✔  Correct! ({sc * 100:.0f}%)[/bold green]"
+            result = f"[bold green] ✔  Correct!  {sc * 100:.0f}% [/bold green]"
+            quiz_title = " ✔ Correct "
         elif sc >= 0.3:
-            result = f"[bold yellow]~  Partial ({sc * 100:.0f}%)[/bold yellow]"
+            result = f"[bold yellow] ~  Partial  {sc * 100:.0f}% [/bold yellow]"
+            quiz_title = " ~ Partial "
         else:
-            result = f"[bold red]✘  Incorrect ({sc * 100:.0f}%)[/bold red]"
+            result = f"[bold red] ✘  Incorrect  {sc * 100:.0f}% [/bold red]"
+            quiz_title = " ✘ Incorrect "
 
-        hint_note = "  [dim](hint penalty applied)[/dim]" if self.hint_used else ""
+        self.query_one("#quiz-area").border_title = quiz_title
+        hint_note = "  [dim](−20% hint penalty)[/dim]" if self.hint_used else ""
         srs_entry = self.app.progress.get("srs", {}).get(qid, {})
         interval = srs_entry.get("interval", 1)
-        matched_line = f"\n[green]✔  Matched:  {', '.join(matched)}[/green]" if matched else ""
-        missed_line  = f"\n[red]✘  Missed:   {', '.join(missed)}[/red]"   if missed  else ""
+        matched_line = f"\n[green]  ✔  Matched:  {', '.join(matched)}[/green]" if matched else ""
+        missed_line  = f"\n[red]  ✘  Missed:   {', '.join(missed)}[/red]"      if missed  else ""
 
         self.query_one("#quiz-feedback", Static).update(
             f"{result}{hint_note}\n\n"
-            f"[bold]Answer:[/bold]\n"
-            f"[green]🇭🇺 {q['answer_hu']}[/green]\n"
-            f"[dim]🇬🇧 {q['answer_en']}[/dim]"
+            f"[bold]Correct answer:[/bold]\n"
+            f"[bold green]🇭🇺  {q['answer_hu']}[/bold green]\n"
+            f"[dim]🇬🇧  {q['answer_en']}[/dim]"
             f"{matched_line}{missed_line}\n\n"
-            f"[dim]Next SRS review in {interval} day(s)[/dim]"
+            f"[dim]Next SRS review in {interval} day(s)  ·  Press Enter for next →[/dim]"
         )
 
         self.query_one("#btn-submit", Button).display = False
@@ -1490,6 +1712,183 @@ class ExamBriefingScreen(Screen):
         self.app.pop_screen()
 
 
+# ── Study Guide Screen ────────────────────────────────────────────────────────
+
+
+class StudyGuideScreen(Screen):
+    """Bilingual study guide: READ the material first, then jump to practice.
+
+    Left column = Magyar (Hungarian), Right column = English.
+    Includes topic overview + Authors & Works reference for Topic 3.
+    """
+
+    BINDINGS = [
+        Binding("escape", "go_back",      "Home"),
+        Binding("l",      "launch_learn", "Flashcards"),
+        Binding("q",      "launch_quiz",  "Quiz"),
+        Binding("m",      "launch_mc",    "MC"),
+    ]
+
+    def __init__(self, questions: list, topic: int) -> None:
+        super().__init__()
+        self.questions = list(questions)
+        self.topic = topic
+
+    def compose(self) -> ComposeResult:
+        yield Header(show_clock=True)
+        with Container(id="guide-layout"):
+            yield Static(id="guide-header", classes="section-title")
+            with Horizontal(id="guide-actions"):
+                yield Button("📖  Flashcards  [L]",      id="btn-guide-learn", variant="primary")
+                yield Button("❓  Quiz  [Q]",             id="btn-guide-quiz",  variant="success")
+                yield Button("🔢  Multiple Choice  [M]",  id="btn-guide-mc",    variant="default")
+                yield Button("⌂  Home  [Esc]",            id="btn-guide-home",  variant="warning")
+            yield Rule()
+            with Horizontal(id="guide-columns"):
+                with ScrollableContainer(id="guide-col-hu"):
+                    yield Static(
+                        "[bold cyan]🇭🇺  MAGYAR  —  olvasd el, majd gyakorolj![/bold cyan]",
+                        classes="guide-col-title",
+                    )
+                    yield Static(id="guide-hu-content")
+                with ScrollableContainer(id="guide-col-en"):
+                    yield Static(
+                        "[bold white]🇬🇧  ENGLISH  —  read it, then practise![/bold white]",
+                        classes="guide-col-title",
+                    )
+                    yield Static(id="guide-en-content")
+        yield Footer()
+
+    def on_mount(self) -> None:
+        self._render_guide()
+
+    def _render_guide(self) -> None:
+        t = self.topic
+        t_hu = TOPIC_HU.get(t, f"Téma {t}")
+        t_en = TOPIC_SHORT.get(t, f"Topic {t}")
+
+        self.query_one("#guide-header", Static).update(
+            f"[bold]📚  Study Guide — Topic {t}: {t_hu}[/bold]  "
+            f"[dim]/ {t_en}  ·  {len(self.questions)} kérdés/questions[/dim]"
+        )
+
+        self.query_one("#guide-columns").border_title = (
+            f" 🇭🇺 Magyar  ║  🇬🇧 English — Topic {t}: {t_en} "
+        )
+
+        hu_lines: list = []
+        en_lines: list = []
+
+        # ── Topic overview ────────────────────────────────────────────────────
+        intro = TOPIC_INTRO.get(t)
+        if intro:
+            hu_intro, en_intro = intro
+            hu_lines += [
+                "[bold yellow]══ ÖSSZEFOGLALÓ ══[/bold yellow]",
+                "",
+                hu_intro,
+                "",
+                "─" * 44,
+                "",
+            ]
+            en_lines += [
+                "[bold yellow]══ OVERVIEW ══[/bold yellow]",
+                "",
+                en_intro,
+                "",
+                "─" * 44,
+                "",
+            ]
+
+        # ── Authors & Works reference (Topic 3 only) ──────────────────────────
+        if t == 3:
+            hu_lines += [
+                "[bold magenta]══ SZERZŐK ÉS MŰVEIK ══[/bold magenta]",
+                "[dim](Olvassa el és jegyezze meg ezt a táblázatot!)[/dim]",
+                "",
+            ]
+            en_lines += [
+                "[bold magenta]══ AUTHORS AND THEIR WORKS ══[/bold magenta]",
+                "[dim](Read and memorise this reference table!)[/dim]",
+                "",
+            ]
+            for name_hu, name_en, works_hu, works_en in TOPIC3_AUTHORS:
+                hu_lines += [
+                    f"[bold cyan]{name_hu}[/bold cyan]",
+                    f"  [green]{works_hu}[/green]",
+                    "",
+                ]
+                en_lines += [
+                    f"[bold cyan]{name_en}[/bold cyan]",
+                    f"  [green]{works_en}[/green]",
+                    "",
+                ]
+            hu_lines += ["─" * 44, ""]
+            en_lines += ["─" * 44, ""]
+
+        # ── All Q&A pairs ─────────────────────────────────────────────────────
+        hu_lines += ["[bold yellow]══ KÉRDÉSEK ÉS VÁLASZOK ══[/bold yellow]", ""]
+        en_lines += ["[bold yellow]══ QUESTIONS AND ANSWERS ══[/bold yellow]", ""]
+
+        for i, q in enumerate(self.questions, 1):
+            diff = {1: "★", 2: "★★", 3: "★★★"}.get(q.get("difficulty", 1), "★")
+            kws = q.get("keywords_hu", [])
+            if isinstance(kws, str):
+                kws = [k.strip() for k in kws.split(",") if k.strip()]
+            kw_str = "  ·  ".join(f"[magenta]{k}[/magenta]" for k in kws)
+
+            hu_lines += [
+                f"[bold cyan]K{i:02d}[/bold cyan]  [yellow]{diff}[/yellow]",
+                f"[bold]{q['question_hu']}[/bold]",
+                "",
+                f"[green]→  {q['answer_hu']}[/green]",
+            ]
+            if kw_str:
+                hu_lines.append(f"[dim]Kulcsszavak:  {kw_str}[/dim]")
+            hu_lines += ["", "─" * 44, ""]
+
+            en_lines += [
+                f"[bold cyan]Q{i:02d}[/bold cyan]  [yellow]{diff}[/yellow]",
+                f"[bold]{q['question_en']}[/bold]",
+                "",
+                f"[green]→  {q['answer_en']}[/green]",
+            ]
+            if kw_str:
+                en_lines.append(f"[dim]Keywords:  {kw_str}[/dim]")
+            en_lines += ["", "─" * 44, ""]
+
+        self.query_one("#guide-hu-content", Static).update("\n".join(hu_lines))
+        self.query_one("#guide-en-content", Static).update("\n".join(en_lines))
+
+    # ── Actions ───────────────────────────────────────────────────────────────
+
+    def action_go_back(self) -> None:
+        self.app.pop_screen()
+
+    def action_launch_learn(self) -> None:
+        pool = list(get_questions_for_topic(self.app.questions, self.topic))
+        qs = weighted_sample(pool, 20, self.app.progress)
+        self.app.push_screen(LearnScreen(qs, self.topic))
+
+    def action_launch_quiz(self) -> None:
+        pool = list(get_questions_for_topic(self.app.questions, self.topic))
+        qs = weighted_sample(pool, 20, self.app.progress)
+        self.app.push_screen(QuizScreen(qs, "quiz", topic=self.topic))
+
+    def action_launch_mc(self) -> None:
+        pool = list(get_questions_for_topic(self.app.questions, self.topic))
+        qs = weighted_sample(pool, 20, self.app.progress)
+        self.app.push_screen(MultiChoiceScreen(qs, self.topic))
+
+    @on(Button.Pressed)
+    def handle_button(self, event: Button.Pressed) -> None:
+        bid = event.button.id
+        if bid == "btn-guide-learn":  self.action_launch_learn()
+        elif bid == "btn-guide-quiz": self.action_launch_quiz()
+        elif bid == "btn-guide-mc":   self.action_launch_mc()
+        elif bid == "btn-guide-home": self.app.pop_screen()
+
+
 # ── App ───────────────────────────────────────────────────────────────────────
 
 
@@ -1498,85 +1897,163 @@ class StudyApp(App):
     SUB_TITLE = "Hungarian Cultural Knowledge Exam Prep"
 
     CSS = """
-    Screen { background: $surface; }
+    /* ── Global ── */
+    Screen { background: $background; }
+    Header { background: $primary-darken-2; color: $text; }
+    Footer { background: $panel; color: $text-muted; }
+    Rule   { margin: 1 0; color: $primary-darken-3; }
+    Input  { margin: 1 0 0 0; border: tall $primary-darken-1; }
+    Button { margin: 0 1 0 0; }
+    ProgressBar { height: 1; margin: 0 1; }
 
+    /* ── Home Screen ── */
     #home-layout { height: 1fr; }
 
     #left-panel {
-        width: 32;
+        width: 36;
         dock: left;
-        border-right: solid $primary-darken-2;
+        border-right: tall $primary-darken-2;
         padding: 1 1;
         background: $panel;
         overflow-y: auto;
     }
-    #right-panel { padding: 1 2; }
-
+    #right-panel {
+        padding: 1 3;
+        background: $background;
+    }
     .panel-title {
         color: $accent;
         text-style: bold;
         margin: 1 0 0 0;
+        padding: 0 0 0 1;
+        border-left: tall $accent;
     }
-    .topic-btn, .mode-btn {
+    .topic-btn {
         width: 100%;
         margin: 0 0 1 0;
+        height: 1;
+    }
+    .mode-btn {
+        width: 100%;
+        margin: 0 0 1 0;
+        height: 1;
     }
 
+    /* ── Shared screen layouts ── */
     #learn-layout, #quiz-layout, #vocab-layout, #mc-layout {
         padding: 1 2;
         height: 1fr;
     }
-    .section-title { color: $text-muted; }
+    .section-title {
+        color: $text-muted;
+        padding-bottom: 1;
+    }
 
-    .question-text { padding: 1 0; min-height: 5; }
-    .answer-text   { padding: 1 0; min-height: 3; }
-    .feedback-text { padding: 1 0; }
-    .keywords-text { padding: 0 0 1 0; }
-
+    /* ── Card / Quiz content areas ── */
     #card-area, #quiz-area, #vocab-card, #mc-area {
         height: 1fr;
-        border: solid $primary-darken-2;
+        border: round $primary;
+        border-title-color: $accent;
+        border-title-style: bold;
         padding: 1 2;
         margin-bottom: 1;
+        background: $panel;
     }
+    .question-text {
+        padding: 1 0;
+        min-height: 5;
+        color: $text;
+    }
+    .answer-text   { padding: 1 0; min-height: 3; color: $success; }
+    .feedback-text { padding: 1 0; }
+    .keywords-text { padding: 0 0 1 0; color: $text-muted; }
 
-    #rating-row {
-        height: 3;
-        margin-top: 1;
-    }
+    /* ── Nav bars ── */
     #learn-nav, #quiz-nav, #vocab-nav, #mc-nav, #stats-nav {
         height: 3;
         align: right middle;
         padding: 0 1;
+        border-top: solid $primary-darken-2;
+        background: $panel;
     }
+    #rating-row   { height: 3; margin-top: 1; }
     #quiz-buttons { height: 3; margin-top: 1; }
     #vocab-rate   { height: 3; margin-top: 1; align: center middle; }
 
+    /* ── Multiple choice ── */
     .mc-opt {
         width: 100%;
         margin: 0 0 1 0;
+        height: 2;
     }
     #mc-options { margin-top: 1; }
 
-    #stats-scroll { padding: 1 2; height: 1fr; }
+    /* ── Stats ── */
+    #stats-scroll { padding: 1 3; height: 1fr; }
 
-    Input       { margin: 1 0 0 0; }
-    Button      { margin: 0 1 0 0; }
-    Rule        { margin: 1 0; }
-    ProgressBar { height: 1; margin: 0 1; }
-
-    ConfirmScreen {
-        align: center middle;
-    }
+    /* ── Confirm dialog ── */
+    ConfirmScreen { align: center middle; }
     #confirm-dialog {
-        width: 60;
+        width: 62;
         height: auto;
         padding: 2 4;
         background: $surface;
-        border: thick $primary;
+        border: round $warning;
+        border-title-color: $warning;
+        border-title-style: bold;
     }
-    #confirm-message { margin-bottom: 2; }
+    #confirm-message { margin-bottom: 2; text-align: center; }
     #confirm-buttons { height: 3; align: center middle; }
+
+    /* ── Study Guide ── */
+    #guide-layout {
+        height: 1fr;
+        padding: 0 1;
+    }
+    #guide-actions {
+        height: 3;
+        margin: 1 0 0 0;
+    }
+    #guide-columns {
+        height: 1fr;
+        border: round $primary;
+        border-title-color: $accent;
+        border-title-style: bold;
+        margin-top: 1;
+        background: $panel;
+    }
+    #guide-col-hu {
+        width: 1fr;
+        border-right: tall $primary-darken-2;
+        padding: 1 2;
+        overflow-y: auto;
+    }
+    #guide-col-en {
+        width: 1fr;
+        padding: 1 2;
+        overflow-y: auto;
+    }
+    .guide-col-title {
+        text-style: bold;
+        text-align: center;
+        padding: 0 0 1 0;
+        margin-bottom: 1;
+        border-bottom: solid $accent-darken-2;
+        background: $primary-darken-3;
+    }
+
+    /* ── Exam Briefing ── */
+    #briefing-layout {
+        align: center middle;
+        padding: 2 4;
+    }
+    #briefing-title { text-align: center; margin-bottom: 1; }
+    #briefing-rules {
+        border: round $primary-darken-1;
+        padding: 1 2;
+        background: $panel;
+        margin-bottom: 1;
+    }
     """
 
     def __init__(self) -> None:
