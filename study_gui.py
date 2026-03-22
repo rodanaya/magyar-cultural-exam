@@ -1923,7 +1923,10 @@ class StudyApp(App):
     Footer { background: $panel; color: $text-muted; }
     Rule   { margin: 1 0; color: $primary-darken-3; }
     Input  { margin: 1 0 0 0; border: tall $primary-darken-1; color: $text; }
-    Button { margin: 0 1 0 0; }
+    Button { margin: 0 1 0 0; color: $text; }
+    Button.-success { color: white; }
+    Button.-error   { color: white; }
+    Button.-warning { color: $text; }
     ProgressBar { height: 1; margin: 0 1; }
     Static { color: $text; }
 
